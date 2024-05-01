@@ -16,9 +16,14 @@ nav button {
   cursor: pointer;
   transition: background-color 0.4s ease;
 }
- 
+
 nav button:hover {
   background-color: #ccc;
+}
+
+.active {
+  background-color: #007bff; /* Change background color for active button */
+  color: #fff; /* Change text color for active button (optional) */
 }
 
 .content {

@@ -1,18 +1,20 @@
-const homeBtn = document.getElementById('homeBtn');
-const designsBtn = document.getElementById('designsBtn');
-const codingBtn = document.getElementById('codingBtn');
+const ShowPage = (pageName) => {
+  //Future proofing in case more pages and buttons are added
+  var pageContent, buttonLink, i;
+  pageContent = document.getElementsByClassName("pageContent");
+  for (i = 0; i < pageContent.length; i++) {
+    pageContent[i].style.display = "none";
+  }
 
-const homeSection = document.getElementById('home');
-const designsSection = document.getElementById('designs');
-const codingSection = document.getElementById('coding');
+  // Get all elements with class="buttonLink" and remove the class "active"
+  buttonLink = document.getElementsByClassName("buttonLink");
+  for (i = 0; i < buttonLink.length; i++) {
+    buttonLink[i].className = buttonLink[i].className.replace("active", "");
+  }
 
-const showSection = (section) => {
-  homeSection.style.display = 'none';
-  designsSection.style.display = 'none';
-  codingSection.style.display = 'none';
-  section.style.display = 'block';
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(pageName).style.display = "block";
+  currentTarget.className += "active";
 };
-
-homeBtn.addEventListener('click', () => showSection(homeSection));
-designsBtn.addEventListener('click', () => showSection(designsSection));
-codingBtn.addEventListener('click', () => showSection(codingSection));
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("home").click();

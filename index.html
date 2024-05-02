@@ -7,23 +7,23 @@
     <title>Christian Otty | Computer Engineer</title>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <link rel="image" href="Portrait.jpg" />
   </head>
 
   <body>
     <header>
-      <img src="Portrait.jpg" class="portrait"/>
-      <h1>Christian Otty</h1>
-      <h2>Computer Engineering Student</h2>
+      <img src="Portrait.jpg" alt="my picture :'("class="portrait"/>
+      <h1>Christian Otty | Computer Engineer</h1>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/christian-otty/" target="_blank" title="Visit my LinkedIn">LinkedIn</a>
+        <a href="https://github.com/cotty52" target="_blank" title="Visit my GitHub">GitHub</a>
+      </div>
+      
     </header>
 
     <!--start testing code-->
 
     <nav>
-      <!--<button class="tablink" onclick="showSection('London', this, 'red')" id="defaultOpen">London</button>-->
-      <button id="homeBtn" class="active" onclick="ShowPage('home', 'homeBtn')">
-        Home
-      </button>
+      <button id="homeBtn" class="active" onclick="ShowPage('home', 'homeBtn')">Home</button>
       <button id="designsBtn" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
       <button id="codingBtn" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
     </nav>

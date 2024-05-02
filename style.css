@@ -80,9 +80,7 @@ header .links {
 header a {
   background-color: rgb(180, 180, 255);
   color: white;
-  padding: 6px 6px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  padding: 4px 8px;
   border-radius: 8px;
   text-align: center;
   text-decoration: none;

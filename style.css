@@ -32,6 +32,23 @@ nav button.active {
   /*color: #27286e; /* Change text color for active button (optional) */
 }
 
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.portrait {
+  width: 200px;
+  height: auto;
+  border-radius: 100%;
+  margin-bottom: 20px;
+  box-shadow: 0 0px 12px 0 rgba(0,0,0,0.24);
+}
+
 .content {
   padding: 20px;
   border: 1px solid #ddd;

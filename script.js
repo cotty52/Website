@@ -1,20 +1,23 @@
-const ShowPage = (pageName) => {
+const ShowPage = (pageName, btnName) => {
   //Future proofing in case more pages and buttons are added
   var pageContent, buttonLink, i;
-  pageContent = document.getElementsByClassName("pageContent");
+  pageContent = document.getElementsByClassName("content");
   for (i = 0; i < pageContent.length; i++) {
     pageContent[i].style.display = "none";
   }
 
-  // Get all elements with class="buttonLink" and remove the class "active"
-  buttonLink = document.getElementsByClassName("buttonLink");
-  for (i = 0; i < buttonLink.length; i++) {
-    buttonLink[i].className = buttonLink[i].className.replace("active", "");
-  }
+  // Get id of previously active button, then remove the active class
+  const activeButton = document.querySelector('nav button.active');
+  activeButton.classList.remove('active');
 
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(pageName).style.display = "block";
-  currentTarget.className += "active";
+  // Get id of clicked button and add 'active' class
+  const clickedButton = document.getElementById(btnName);
+  clickedButton.classList.add('active');
+
+  // Get id of the new page and show it
+  const newPage = document.getElementById(pageName);
+  newPage.style.display = "block";
+
 };
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("home").click();
+//document.getElementById("homeBtn").click();

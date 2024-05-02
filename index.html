@@ -11,6 +11,7 @@
 
   <body>
     <header>
+      <!-- <img src="Portrait.jpg" alt="Logo" /> -->
       <h1>Christian Otty</h1>
       <h2>Computer Engineering Student</h2>
     </header>
@@ -19,11 +20,12 @@
 
     <nav>
       <!--<button class="tablink" onclick="showSection('London', this, 'red')" id="defaultOpen">London</button>-->
-      <button id="homeBtn" class="buttonLink" onclick="ShowPage('home')">Home</button>
-      <button id="designsBtn" class="buttonLink" onclick="ShowPage('designs')">Designs</button>
-      <button id="codingBtn" class="buttonLink" onclick="ShowPage('coding')">Coding</button>
+      <button id="homeBtn" class="active" onclick="ShowPage('home', 'homeBtn')">
+        Home
+      </button>
+      <button id="designsBtn" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
+      <button id="codingBtn" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
     </nav>
-    
 
     <!--end testing code-->
 

@@ -9,21 +9,27 @@ nav {
 }
 
 nav button {
-  margin: 0 10px;
-  padding: 10px 20px;
+  margin: 0 8px;
+  width: 80px;
+  height: 36px;
+  /* padding: 10px 20px; */
   border: none;
-  background-color: #ddd;
+  border-radius: 18px;
+  background-color: rgb(225, 225, 225);
   cursor: pointer;
   transition: background-color 0.4s ease;
+  box-shadow: 0 0px 1px 0 rgba(0,0,0,0.24), 0 1px 10px 0 rgba(0,0,0,0.19);
+  /* box-shadow: 0 0px 1px 0 rgba(0,0,0,0.24), 0 1px 10px 0 rgba(0,0,0,0.19); */
+  /* shadow: h-offset | v-offset | blur-radius | spread | color | inset | initial | inherit */
 }
 
-nav button:hover {
+nav button:hover:not(.active) {
   background-color: #ccc;
 }
 
-.active {
-  background-color: #007bff; /* Change background color for active button */
-  color: #fff; /* Change text color for active button (optional) */
+nav button.active {
+  background-color: rgb(244, 244, 244); /* Change background color for active button */
+  /*color: #27286e; /* Change text color for active button (optional) */
 }
 
 .content {

@@ -1,3 +1,11 @@
+
+
+// Whenever the site is loaded, this function is called
+SiteLoad = () => {
+  // When site is loaded, press that button. Could also call ShowPage
+  document.getElementById("designsBtn").click();
+}
+
 const ShowPage = (pageName, btnName) => {
   //Future proofing in case more pages and buttons are added
   var pageContent, i;
@@ -24,5 +32,15 @@ const ShowPage = (pageName, btnName) => {
   // Update the URL without triggering a page reload
   window.history.pushState({ path: newUrl }, "", newUrl);
 };
-// Get the element with id="defaultOpen" and click on it
-//document.getElementById("homeBtn").click();
+
+
+
+// function scrollFunction() {
+//   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+//     document.getElementById("navbar").style.padding = "30px 10px";
+//     document.getElementById("logo").style.fontSize = "25px";
+//   } else {
+//     document.getElementById("navbar").style.padding = "80px 10px";
+//     document.getElementById("logo").style.fontSize = "35px";
+//   }
+// }

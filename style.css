@@ -1,35 +1,13 @@
-body {
-  font-family: sans-serif;
+/* Global variables */
+:root {
+  --navColor: rgb(61, 110, 160);
+  --unselectedColor: rgb(220, 220, 220);
+  --selectedColor: rgb(250, 250, 250);
+  --sidePadding: 14px;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-nav button {
-  margin: 0 8px;
-  width: 80px;
-  height: 36px;
-  /* padding: 10px 20px; */
-  border: none;
-  border-radius: 18px;
-  background-color: rgb(225, 225, 225);
-  cursor: pointer;
-  transition: background-color 0.4s ease;
-  box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.24), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
-  /* box-shadow: 0 0px 1px 0 rgba(0,0,0,0.24), 0 1px 10px 0 rgba(0,0,0,0.19); */
-  /* shadow: h-offset | v-offset | blur-radius | spread | color | inset | initial | inherit */
-}
-
-nav button:hover:not(.active) {
-  background-color: #ccc;
-}
-
-nav button.active {
-  background-color: rgb(244, 244, 244); /* Change background color for active button */
-  /*color: #27286e; /* Change text color for active button (optional) */
+* {
+  font-family: Verdana, Arial, sans-serif;
 }
 
 img {
@@ -46,20 +24,12 @@ img.portrait {
   border-radius: 100%;
   margin-top: 5%;
   margin-bottom: 20px;
-  box-shadow: 0 0px 12px 0 rgba(0, 0, 0, 0.24);
-}
-
-.content {
-  padding: 20px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  display: none;
+  box-shadow: 0 0px 12px 0 rgba(0, 0, 0, 0.24), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 header h1 {
   margin-top: 10px;
-  margin-bottom: 10px;
-  font-family: "Times New Roman";
+  margin-bottom: 20px;
   text-align: center;
   font-size: 16px;
 }
@@ -67,7 +37,7 @@ header h1 {
 header h2 {
   margin-top: 10px;
   margin-bottom: 20px;
-  font-family: sans-serif;
+  font-family: Verdana;
   text-align: center;
   font-size: 16px;
 }
@@ -78,15 +48,72 @@ header .links {
 }
 
 header a {
-  background-color: rgb(180, 180, 255);
+  background-color: var(--navColor);
   color: white;
   padding: 4px 8px;
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
   font-size: 14px;
-  font-family: "Times New Roman";
 }
 
+nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: var(--navColor);
+}
 
+nav button {
+  margin: 0 8px;
+  width: 80px;
+  height: 36px;
+  /* padding: 10px 20px; */
+  border: 1px solid rgb(100,100,100);
+  border-radius: 18px;
+  background-color: var(--unselectedColor);
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  box-shadow: 
+    0px 0px 2px 0px rgba(0, 0, 0, 0.18),
+    0px 0px 10px 2px rgba(0, 0, 0, 0.3),
+    0px 0px 2px 0px rgba(0, 0, 0, 0.19) inset;
+  /* box-shadow: 0 0px 1px 0 rgba(0,0,0,0.24), 0 1px 10px 0 rgba(0,0,0,0.19); */
+  /* shadow: h-offset | v-offset | blur-radius | spread | color | inset | initial | inherit */
+}
 
+nav button:hover:not(.active) {
+  background-color: var(--unselectedColor);
+}
+
+nav button.active {
+  background-color: var(
+    --selectedColor
+  ); /* Change background color for active button */
+  /*color: #27286e; /* Change text color for active button (optional) */
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.418) inset;
+  border: 1px solid rgb(60,60,60);
+}
+
+body {
+  font-family: Verdana;
+  font-size: 16px;
+  margin: 0px;
+  border: none;
+  padding: 0px;
+}
+
+.content {
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  display: none;
+}
+
+main h2 {
+  margin-bottom: 20px;
+  font-size: 16px;
+  padding-left: var(--sidePadding);
+  padding-right: var(--sidePadding);
+}

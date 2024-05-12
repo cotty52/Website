@@ -4,48 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Christian Otty" />
-    <title>Christian Otty | Computer Engineer</title>
+    <title>Christian Otty</title>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
 
   <body onload="SiteLoad()">
     <header>
-      <img src="./Images/Portrait.jpg" alt="my picture :'("class="portrait"/>
+      <img src="./Images/Portrait.jpg" alt="sad :'(" class="portrait" />
       <h1>Christian Otty | Computer Engineer</h1>
       <div class="links">
-        <a href="https://www.linkedin.com/in/christian-otty/" target="_blank" title="Visit my LinkedIn">LinkedIn</a>
-        <a href="https://github.com/cotty52" target="_blank" title="Visit my GitHub">GitHub</a>
+        <a
+          href="https://www.linkedin.com/in/christian-otty/"
+          target="_blank"
+          title="Visit my LinkedIn"
+          >LinkedIn</a
+        >
+        <a
+          href="https://github.com/cotty52"
+          target="_blank"
+          title="Visit my GitHub"
+          >GitHub</a
+        >
       </div>
-      
     </header>
 
-    <!--start testing code-->
-
     <nav>
-      <button id="homeBtn" class="active" onclick="ShowPage('home', 'homeBtn')">Home</button>
-      <button id="designsBtn" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
-      <button id="codingBtn" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
+      <button id="homeBtn" class="active" onclick="ShowPage('home', 'homeBtn')">
+        Home
+      </button>
+      <button id="designsBtn" onclick="ShowPage('designs', 'designsBtn')">
+        Designs
+      </button>
+      <button id="codingBtn" onclick="ShowPage('coding', 'codingBtn')">
+        Coding
+      </button>
     </nav>
-
-    <!--end testing code-->
 
     <main>
       <section id="home" class="content" style="display: none">
         <!-- <h2>Welcome to My Portfolio!</h2> -->
         <p>
-          Hello, welcome to my website!
-          My name is Christian and I am an engineering student studying 
-          at Binghamton University. I am currently a senior computer engineering 
-          major, and am on track to graduate with my masters in May of 2026.
+          Hello, welcome to my website! My name is Christian and I am an
+          engineering student studying at Binghamton University. I am currently
+          a senior computer engineering major, and am on track to graduate with
+          my masters in May of 2026.
         </p>
       </section>
 
       <section id="designs" class="content" style="display: none">
-        <h2>These are some projects I have worked on that involved design and creation</h2>
-        <div id="botty">
-            
+        <p>
+          These are some projects I have worked on that involved design and
+          creation. I really enjoy making a variety of different projects,
+          ranging from 3D printed battle bot, to Blender models, to this very
+          website. I have always had a passion for learning new things,
+          especially if it allows me to express my creativity.
+        </p>
+        <div id="botty" class="project">
+          <p>
+            This is BOTTY, a 3D printed battlebot created to compete in Binghamton's 
+            Watson Combat Robotics League (WCRL)
+          </p>
+          <img src="./Images/BOTTY_front.png" alt="sad :'(" />
+
+
+
         </div>
       </section>
 
@@ -60,8 +87,18 @@
 
     <footer>
       2024 | Christian Otty
-      <a href="https://www.linkedin.com/in/christian-otty/" class="fa fa-linkedin" target="_blank" title="Visit my LinkedIn"></a>
-      <a href="https://github.com/cotty52" class="fa fa-github" target="_blank" title="Visit my GitHub"></a>
+      <a
+        href="https://www.linkedin.com/in/christian-otty/"
+        class="fa fa-linkedin"
+        target="_blank"
+        title="Visit my LinkedIn"
+      ></a>
+      <a
+        href="https://github.com/cotty52"
+        class="fa fa-github"
+        target="_blank"
+        title="Visit my GitHub"
+      ></a>
     </footer>
   </body>
 </html>

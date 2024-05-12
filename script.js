@@ -24,7 +24,7 @@ const ShowPage = (pageName, btnName) => {
 
   // Get id of the new page and show it
   const newPage = document.getElementById(pageName);
-  newPage.style.display = "block";
+  newPage.style.display = "flex";
 
   // Construct the new URL
   const newUrl = window.location.origin + "/#" + pageName;

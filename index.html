@@ -14,91 +14,65 @@
   </head>
 
   <body onload="SiteLoad()">
-    <header>
-      <img src="./Images/Portrait.jpg" alt="sad :'(" class="portrait" />
-      <h1>Christian Otty | Computer Engineer</h1>
-      <div class="links">
-        <a
-          href="https://www.linkedin.com/in/christian-otty/"
-          target="_blank"
-          title="Visit my LinkedIn"
-          >LinkedIn</a
-        >
-        <a
-          href="https://github.com/cotty52"
-          target="_blank"
-          title="Visit my GitHub"
-          >GitHub</a
-        >
-      </div>
-    </header>
-
-    <nav>
-      <button id="homeBtn" class="active" onclick="ShowPage('home', 'homeBtn')">
-        Home
-      </button>
-      <button id="designsBtn" onclick="ShowPage('designs', 'designsBtn')">
-        Designs
-      </button>
-      <button id="codingBtn" onclick="ShowPage('coding', 'codingBtn')">
-        Coding
-      </button>
-    </nav>
-
-    <main>
-      <section id="home" class="content" style="display: none">
-        <!-- <h2>Welcome to My Portfolio!</h2> -->
-        <p>
-          Hello, welcome to my website! My name is Christian and I am an
-          engineering student studying at Binghamton University. I am currently
-          a senior computer engineering major, and am on track to graduate with
-          my masters in May of 2026.
-        </p>
-      </section>
-
-      <section id="designs" class="content" style="display: none">
-        <p>
-          These are some projects I have worked on that involved design and
-          creation. I really enjoy making a variety of different projects,
-          ranging from 3D printed battle bot, to Blender models, to this very
-          website. I have always had a passion for learning new things,
-          especially if it allows me to express my creativity.
-        </p>
-        <div id="botty" class="project">
-          <p>
-            This is BOTTY, a 3D printed battlebot created to compete in Binghamton's 
-            Watson Combat Robotics League (WCRL)
-          </p>
-          <img src="./Images/BOTTY_front.png" alt="sad :'(" />
-
-
-
+    <div class="center-line"></div>
+    <div class="container">
+      <div class="header">
+        <img id="portrait" class="image item" src="./Images/Portrait.jpg" alt="sad :'("/>
+        <div class="item h1">Christian Otty | Computer Engineer</div>
+        <div class="links">
+          <a class="item" href="https://www.linkedin.com/in/christian-otty/" target="_blank" title="Visit my LinkedIn" >LinkedIn</a>
+          <a class="item" href="https://github.com/cotty52" target="_blank" title="Visit my GitHub" >GitHub</a>
         </div>
-      </section>
+      </div>
 
-      <section id="coding" class="content" style="display: none">
-        <h2>My Coding Projects</h2>
-        <p>
-          Explore my coding portfolio, featuring various web development
-          projects and my programming expertise.
-        </p>
-      </section>
-    </main>
+      <div class="nav">
+        <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')">Home</button>
+        <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
+        <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
+      </div>
 
-    <footer>
-      2024 | Christian Otty
-      <a
-        href="https://www.linkedin.com/in/christian-otty/"
-        class="fa fa-linkedin"
-        target="_blank"
-        title="Visit my LinkedIn"
-      ></a>
-      <a
-        href="https://github.com/cotty52"
-        class="fa fa-github"
-        target="_blank"
-        title="Visit my GitHub"
-      ></a>
-    </footer>
+      <div class="main">
+        <div id="home" class="page item" style="display: none">
+          <!-- <h2>Welcome to My Portfolio!</h2> -->
+          Hello, welcome to my website! My name is Christian and I am an
+          engineering student studying at Binghamton University. I am
+          currently a senior computer engineering major, and am on track to
+          graduate with my masters in May of 2026.
+        </div>
+
+        <div id="designs" class="page item" style="display: none">
+          <div class="page-content">
+            These are some projects I have worked on that involved design and
+            creation. I really enjoy making a variety of different projects,
+            ranging from 3D printed battle bot, to Blender models, to this very
+            website. I have always had a passion for learning new things,
+            especially if it allows me to express my creativity.
+          </div>  
+          
+          <div id="botty" class="project item">
+            <div class="project-content">
+              This is BOTTY, a 3D printed battlebot created to compete in
+              Binghamton's Watson Combat Robotics League (WCRL)
+            </div>
+            <img src="./Images/BOTTY_front.png" alt="sad :'(" />
+          </div>
+        </div>
+
+        <div id="coding" class="page item" style="display: none">
+          <h2>My Coding Projects</h2>
+          <p>
+            Explore my coding portfolio, featuring various web development
+            projects and my programming expertise.
+          </p>
+        </div>
+      </div>
+    
+      <div class="footer item">
+        <div>2024 | Christian Otty</div>
+        <a href="https://www.linkedin.com/in/christian-otty/" class="fa fa-linkedin" target="_blank" title="Visit my LinkedIn"></a>
+        <a href="https://github.com/cotty52" class="fa fa-github" target="_blank" title="Visit my GitHub"></a>
+      </div>
+    </div>
+
   </body>
 </html>

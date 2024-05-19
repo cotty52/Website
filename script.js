@@ -9,7 +9,7 @@ SiteLoad = () => {
 const ShowPage = (pageName, btnName) => {
   //Future proofing in case more pages and buttons are added
   var pageContent, i;
-  pageContent = document.getElementsByClassName("content");
+  pageContent = document.getElementsByClassName("page");
   for (i = 0; i < pageContent.length; i++) {
     pageContent[i].style.display = "none";
   }

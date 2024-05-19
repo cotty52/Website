@@ -22,27 +22,16 @@
 }
 /*delete this later*/
 
-
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   align-items: center;
-  border: #18ff03 5px solid;        /*delete later*/
+  border: #18ff03 5px solid; /*delete later*/
 }
 
 .item {
   /* padding: var(--sidePadding); */
-}
-
-
-#portrait {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  box-shadow: 0 0px 12px 0 rgba(0, 0, 0, 0.24), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .header {
@@ -52,22 +41,13 @@
   margin: 20px;
 }
 
-.h1 {
+#portrait {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  margin-top: 40px;
   margin-bottom: 20px;
-  font-size: 16px;
-}
-
-.links {
-  margin-bottom: 10px;
-}
-
-.header a {
-  background-color: var(--blueColor);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 14px;
+  box-shadow: 0 0px 12px 0 rgba(0, 0, 0, 0.24), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .nav {
@@ -107,6 +87,19 @@
   border: 1px solid rgb(60, 60, 60);
 }
 
+.links {
+  margin-bottom: 10px;
+}
+
+.header a {
+  background-color: var(--blueColor);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -116,12 +109,17 @@ body {
   min-height: 100vh; /* Set minimum height to viewport height */
 }
 
-main h2 {
+.h1 {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* main h2 {
   margin-bottom: 20px;
   font-size: 16px;
   padding-left: var(--sidePadding);
   padding-right: var(--sidePadding);
-}
+} */
 
 .page {
   display: flex;
@@ -130,35 +128,35 @@ main h2 {
   margin: 20px;
 }
 
-
 .page-content {
   align-self: flex-start;
   margin-bottom: 20px;
 }
 
-
-
-
 .project {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   width: 80%;
-  /* padding: 10px; */
-  border: var(--blueColor) 3px solid;
+  padding: 10px;
+  /* border: var(--blueColor) 3px solid; */
   border-radius: 25px;
+  background-color:  rgb(60, 110, 160);
+  /* text-align: center; */
+}
+
+.project img {
+  width: 400px;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 /* .project > p {
   margin: 10px;
   text-align: center;
 } */
-
-.project img {
-  width: 200px;
-}
-
 
 .footer {
   /* justify-self: flex-end; */

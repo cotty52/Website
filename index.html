@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Christian Otty" />
     <title>Christian Otty</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -55,9 +55,20 @@
               This is BOTTY, a 3D printed battlebot created to compete in
               Binghamton's Watson Combat Robotics League (WCRL) &#10148;
             </div>
-            <div class="project-image">
-              <img src="./Images/BOTTY_front.png" alt="sad :'(" />
+
+            <div class="slider">
+              <div class="slides">
+                <img class="slide" src="./Images/BOTTY_front.png" alt="sad :'(" />
+                <img class="slide" src="./Images/BOTTY_back.png" alt="sad :'(" />
+                <img class="slide" src="./Images/BOTTY_side.png" alt="sad :'(" />
+              </div>
+              <button class="prev" onclick="prevSlide()">&#10094</button>
+              <button class="next" onclick="nextSlide()">&#10095</button>
             </div>
+
+            <!-- <div class="project-image">
+              <img src="./Images/BOTTY_front.png" alt="sad :'(" />
+            </div> -->
           </div>
         </div>
 

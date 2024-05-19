@@ -146,11 +146,18 @@ body {
   /* text-align: center; */
 }
 
-.project img {
-  width: 400px;
+.project-image {
+  max-width: 400px;
+  width: auto;
   aspect-ratio: 1 / 1;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin: 10px;
+}
+
+.project-image img{
+  width: 100%;
+  border-radius: 10px;
+  
 }
 
 /* .project > p {

@@ -1,10 +1,8 @@
-
-
 // Whenever the site is loaded, this function is called
 SiteLoad = () => {
   // When site is loaded, press that button. Could also call ShowPage
   document.getElementById("designsBtn").click();
-}
+};
 
 const ShowPage = (pageName, btnName) => {
   //Future proofing in case more pages and buttons are added
@@ -33,8 +31,6 @@ const ShowPage = (pageName, btnName) => {
   window.history.pushState({ path: newUrl }, "", newUrl);
 };
 
-
-
 // function scrollFunction() {
 //   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
 //     document.getElementById("navbar").style.padding = "30px 10px";
@@ -45,9 +41,6 @@ const ShowPage = (pageName, btnName) => {
 //   }
 // }
 
-
-
-
 // IMAGE SLIDER
 
 const slides = document.querySelectorAll(".slides img");
@@ -56,32 +49,44 @@ let slideIndex = 0;
 initializeSlider();
 // document.addEventListener("DOMContentLoaded", initializeSlider);
 
-function initializeSlider(){
-    if(slides.length > 0){
-        slides[slideIndex].classList.add("displaySlide");
-    }
-}
-
-function showSlide(index){
-    if(index >= slides.length){
-        slideIndex = 0;
-    }
-    else if(index < 0){
-        slideIndex = slides.length - 1;
-    }
-
-    slides.forEach(slide => {
-        slide.classList.remove("displaySlide");
-    });
+function initializeSlider() {
+  if (slides.length > 0) {
     slides[slideIndex].classList.add("displaySlide");
+  }
 }
 
-function prevSlide(){
-    slideIndex--;
-    showSlide(slideIndex);
+function showSlide(index, direction) {
+    let prevShown = index;
+
+    if (index >= slides.length) {
+        slideIndex = 0;
+        prevShown--;
+    } else if (index < 0) {
+        slideIndex = slides.length - 1;
+        prevShown = 0;
+    }
+    else {
+        slideIndex;
+    }
+    
+    slides[slideIndex].classList.add("displaySlide");
+    if (direction == "left") {
+        slides[slideIndex].classList.add("move-left");
+    } else if (direction == "right") {
+        slides[slideIndex].classList.add("move-right");
+    }
+
+    setTimeout(() => {slides[prevShown].classList.remove("displaySlide");}, 500);
+    setTimeout(() => {slides.forEach((slide) => {slide.classList.remove("move-left", "move-right");})}, 500);
+    // slides.forEach((slide) => {slide.classList.remove("displaySlide");});
 }
 
-function nextSlide(){
-    slideIndex++;
-    showSlide(slideIndex);
+function prevSlide() {
+  slideIndex--;
+  showSlide(slideIndex, "left");
+}
+
+function nextSlide() {
+  slideIndex++;
+  showSlide(slideIndex, "right");
 }

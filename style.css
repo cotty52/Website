@@ -144,7 +144,7 @@ body {
   padding: 10px;
   /* border: var(--blueColor) 3px solid; */
   border-radius: 25px;
-  background-color:  rgb(60, 110, 160);
+  background-color: rgb(60, 110, 160);
   /* text-align: center; */
 }
 
@@ -163,59 +163,75 @@ body {
 } */
 
 /* IMAGE SLIDER */
-.slider{
+.slider {
   position: relative;
   width: 100%;
+  max-width: var(--project-img-width);
+  /* height: auto;
+  max-height: var(--project-img-width); */
   margin: auto;
   overflow: hidden;
-  max-width: var(--project-img-width);
   width: auto;
-  
   margin: 10px;
+  transition: all 0.5s ease;
 }
-.slider img{
-  flex: 1 0 100%;
+
+.slider img {
+  /* flex: 1 0 100%; */
   width: 100%;
-  scroll-snap-align: start;
-  object-fit: cover;
+  transition: all 0.5s ease;
+  /* scroll-snap-align: start; */
+  /* object-fit: cover; */
   /* border-radius: 10px; */
+  /* display: none; */
+}
+.slides{
   display: none;
 }
-img.displaySlide{
+.displaySlide {
   display: block;
 }
-.slider button{
+
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   position: absolute;
   top: 50%;
+  right: 50%;
   /* transform: translateY(-50%); */
-  font-size: 2rem;
-  /* padding: 0px 4px 4px 4px; */
+  transform: translateX(50%);
+  width: 100%;
+  align-content: center;
+  /* font-size: 2rem; */
+  padding: 0px 3px 0px 3px;
+  background: none;
+  border: none;
+}
+.nav-buttons button{
+  font-size: 1.5rem;
+  padding: 0px 3px 4px 4px;
   background: none;
   color: white;
   border: none;
+  border-radius: 20% 20% 20% 20%;
   cursor: pointer;
 }
-.button-background{
-  position: absolute;
-  top: 50%;
-  /* transform: translateY(-50%); */
-  font-size: 3rem;
-  /* padding: 0px 4px 4px 4px; */
-  background-color: none;
-  color: rgba(0, 0, 0, 0.3);
-  border: none;
-  cursor: pointer;
-}
-.prev{
-  left: 0;
+.prev {
+  justify-self: left;
+  /* left: 0; */
   rotate: 180deg;
-  transform: translateY(50%);
+  /* transform: translateY(50%); */
 }
-.next{
-  right: 0;
-  transform: translateY(-50%);
+.next {
+  /* right: 0; */
+  justify-self: right;
+  /* transform: translateY(-50%); */
 }
-.slider-nav{
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+.slider-nav {
   display: flex;
   column-gap: 1rem;
   position: absolute;
@@ -224,26 +240,32 @@ img.displaySlide{
   transform: translateX(-50%);
   z-index: 1;
 }
-.slider-nav button{
-  width: 0.5rem;
-  height: 0.5rem;
+.slider-nav button {
+  width: 1px;
+  height: 1px;
   background-color: white;
-  border-radius: 50%;
-  opacity: 0.75;
+  /* border-radius: 100%; */
+  opacity: 0.50;
   transition: opacity ease 250ms;
 }
-.slider-nav button:hover{
+.slider-nav button:hover {
   opacity: 1;
 }
-.move-right{
-  animation: slide-right 0.5s ease;
+
+/* New image */
+.move-right-in {
+  display: block;
+  /* position: absolute; */
+  animation: slide-right-in 0.5s ease;
   z-index: 2;
 }
-.move-left{
-  animation: slide-left 0.5s ease;
+.move-left-in {
+  display: block;
+  /* position: absolute; */
+  animation: slide-left-in 0.5s ease;
   z-index: 2;
 }
-@keyframes slide-left {
+@keyframes slide-left-in {
   from {
     transform: translateX(-100%);
   }
@@ -252,9 +274,9 @@ img.displaySlide{
     /* opacity: 50%; */
   }
 }
- @keyframes slide-right {
+@keyframes slide-right-out {
   from {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
   to {
     transform: translateX(0%);
@@ -262,9 +284,37 @@ img.displaySlide{
   }
 }
 
-
-
-
+/* Previous image */
+.move-right-out {
+  display: block;
+  /* position: absolute; */
+  animation: slide-right-out 0.5s ease;
+  z-index: 1;
+}
+.move-left-out {
+  display: block;
+  /* position: absolute; */
+  animation: slide-left-out 0.5s ease;
+  z-index: 1;
+}
+@keyframes slide-left-out {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+    /* opacity: 50%; */
+  }
+}
+@keyframes slide-right-out {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+    /* opacity: 50%; */
+  }
+}
 
 /* .project > p {
   margin: 10px;

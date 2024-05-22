@@ -57,15 +57,19 @@
             </div>
 
             <div class="slider">
-              <div class="slides">
-                <img id="slide-1" class="slide" src="./Images/BOTTY_front.png" alt="sad :'(" />
-                <img id="slide-2" class="slide" src="./Images/BOTTY_back.png" alt="sad :'(" />
-                <img id="slide-3" class="slide" src="./Images/BOTTY_side.png" alt="sad :'(" />
+              <div id="slide-1" class="slides">
+                <img  class="slide" src="./Images/BOTTY_front.png" alt="sad :'(" />
               </div>
-              <div class="button-background prev">&#10148</div>
-              <div class="button-background next">&#10148</div>
-              <button class="prev" onclick="prevSlide()">&#10148</button>
-              <button class="next" onclick="nextSlide()">&#10148</button>
+              <div id="slide-2" class="slides">
+                <img  class="slide" src="./Images/BOTTY_back.png" alt="sad :'(" />
+              </div>
+              <div id="slide-3" class="slides">
+                <img  class="slide" src="./Images/BOTTY_side.png" alt="sad :'(" />
+              </div>
+              <div class="nav-buttons">
+                <button class="prev" onclick="prevSlide()">&#10148</button>
+                <button class="next" onclick="nextSlide()">&#10148</button>
+              </div>
               <div class="slider-nav">
                 <button class ="slider-dot" onclick="currentSlide(1)"></button>
                 <button class ="slider-dot" onclick="currentSlide(2)"></button>

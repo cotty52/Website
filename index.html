@@ -15,7 +15,7 @@
   </head>
 
   <body onload="SiteLoad()">
-    <!--<div class="center-line"></div>     <!--delete this later-->
+    <!--<div class="center-line"></div>     --delete this later-->
     <div class="container">
       <div class="header">
         <img id="portrait" class="image item" src="./Images/Portrait.jpg" alt="sad :'("/>
@@ -23,23 +23,25 @@
         <div class="links">
           <a class="item" href="https://www.linkedin.com/in/christian-otty/" target="_blank" title="Visit my LinkedIn" >LinkedIn</a>
           <a class="item" href="https://github.com/cotty52" target="_blank" title="Visit my GitHub" >GitHub</a>
-        </div>
-      </div>
+        </div> <!-- end links -->
+      </div> <!-- end header -->
 
       <div class="nav">
         <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')">Home</button>
         <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
         <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
-      </div>
+      </div> <!-- end nav -->
 
       <div class="main">
         <div id="home" class="page item" style="display: none">
           <!-- <h2>Welcome to My Portfolio!</h2> -->
-          Hello, welcome to my website! My name is Christian and I am an
-          engineering student studying at Binghamton University. I am
-          currently a senior computer engineering major, and am on track to
-          graduate with my masters in May of 2026.
-        </div>
+          <div class="page-content">
+            Hello, welcome to my website! My name is Christian and I am an
+            engineering student studying at Binghamton University. I am
+            currently a senior computer engineering major, and am on track to
+            graduate with my masters in May of 2026.
+          </div>
+        </div> <!-- end home -->
 
         <div id="designs" class="page item" style="display: none">
           <div class="page-content">
@@ -56,8 +58,8 @@
               Binghamton's Watson Combat Robotics League (WCRL)
             </div>
 
-            <div class="slider">
-              <div id="slide-1" class="slides">
+            <div class="slider-container">
+              <div id="slide-1" class="slides displaySlide">
                 <img  class="slide" src="./Images/BOTTY_front.png" alt="sad :'(" />
               </div>
               <div id="slide-2" class="slides">
@@ -67,17 +69,17 @@
                 <img  class="slide" src="./Images/BOTTY_side.png" alt="sad :'(" />
               </div>
               <div class="nav-buttons">
-                <button class="prev" onclick="prevSlide()">&#10148</button>
-                <button class="next" onclick="nextSlide()">&#10148</button>
+                <button class="prev" onclick="PrevSlide()">&#10148</button>
+                <button class="next" onclick="NextSlide()">&#10148</button>
               </div>
               <div class="slider-nav">
                 <button class ="slider-dot" onclick="currentSlide(1)"></button>
                 <button class ="slider-dot" onclick="currentSlide(2)"></button>
                 <button class ="slider-dot" onclick="currentSlide(3)"></button>
               </div>
-            </div>
-          </div>
-        </div>
+            </div> <!-- end slider-container -->
+          </div> <!-- end botty -->
+        </div> <!-- end designs -->
 
         <div id="coding" class="page item" style="display: none">
           <h2>My Coding Projects</h2>
@@ -85,15 +87,15 @@
             Explore my coding portfolio, featuring various web development
             projects and my programming expertise.
           </p>
-        </div>
-      </div>
+        </div> <!-- end coding -->
+      </div> <!-- end main -->
     
       <div class="footer item">
         <div>2024 | Christian Otty</div>
         <a href="https://www.linkedin.com/in/christian-otty/" class="fa fa-linkedin" target="_blank" title="Visit my LinkedIn"></a>
         <a href="https://github.com/cotty52" class="fa fa-github" target="_blank" title="Visit my GitHub"></a>
-      </div>
-    </div>
+      </div> <!-- end footer -->
+    </div> <!-- end container -->
 
   </body>
 </html>

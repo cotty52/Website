@@ -43,66 +43,85 @@ const ShowPage = (pageName, btnName) => {
 
 // IMAGE SLIDER
 
-const numSlides = document.querySelector(".slider").querySelectorAll(".slides");
+const numSlides = document.querySelector(".slider-container").querySelectorAll(".slides");
+const length = numSlides.length;
+console.log(numSlides.length); // Check the number of slides
 let slideIndex = 0;
 let prevShown = 0;
 
-initializeSlider();
-// document.addEventListener("DOMContentLoaded", initializeSlider);
+InitializeSlider();
 
-function initializeSlider() {
-  if (numSlides.length > 0) {
+function InitializeSlider() {
+  if (length > 0) {
     numSlides[slideIndex].classList.add("displaySlide");
   }
+  console.log("slideIndex: " + slideIndex); // Check the current slide
 }
 
-function showSlide(index, prevShown, direction) {
-  if (index >= numSlides.length) {
+function ShowSlide(index, prevShown, direction) {
+  // console.log("index: " + index); 
+  // console.log("prevShown: " + prevShown);
+  // console.log("direction: " + direction);
+  // console.log("slideIndex: " + slideIndex);
+  if (index >= length) {
     slideIndex = 0;
-    prevShown--;
+    prevShown = length - 1;
   } else if (index < 0) {
-    slideIndex = numSlides.length - 1;
+    slideIndex = length - 1;
     prevShown = 0;
-  } else {
-    slideIndex;
   }
 
-  numSlides.forEach((slide) => {
-    slide.classList.remove("displaySlide");
-  });
-  if (direction == "left") {
-    numSlides[prevShown].classList.add("move-right-out");
-    numSlides[slideIndex].classList.add("move-left-in");
-  } else if (direction == "right") {
-    numSlides[prevShown].classList.add("move-left-out");
-    numSlides[slideIndex].classList.add("move-right-in");
+  const prevSlide = numSlides[prevShown];
+  const newSlide = numSlides[slideIndex];
+  // console.log("prevSlide: " + prevSlide);
+  // console.log("newSlide: " + newSlide);
+  
+  console.log("Before adding classes, newSlide", newSlide.classList);
+  console.log("Before adding classes, prevSlide", prevSlide.classList);
+
+
+  // slider-container.forEach(slides => {
+  //   slides.classList.remove("displaySlide");
+  // });
+  
+  if (direction === "left") {
+    newSlide.classList.add("move-left-in", "displaySlide", "z-offset");
+    prevSlide.classList.add("move-left-out");
+  } else if (direction === "right") {
+    newSlide.classList.add("move-right-in", "displaySlide", "z-offset");
+    prevSlide.classList.add("move-right-out");
   }
-  // setTimeout(() => {slides.forEach((slide) => {slide.classList.remove("displaySlide");})}, 500);
+
+  console.log("After adding classes, newSlide", newSlide.classList);
+  console.log("After adding classes, prevSlide", prevSlide.classList);
   setTimeout(() => {
-    numSlides.forEach((slide) => {
-      slide.classList.remove(
-        "move-left-in",
-        "move-right-in",
-        "move-left-out",
-        "move-right-out"
-      );
+    prevSlide.classList.remove("displaySlide");
+    numSlides.forEach(slides => {
+      slides.classList.remove("move-left-in", "move-right-in", "move-left-out", "move-right-out");
     });
   }, 500);
-  // slides.forEach((slide) => {slide.classList.remove("displaySlide");});
   setTimeout(() => {
-    numSlides[slideIndex].classList.add("displaySlide");
-  }, 500); 
-  // slides[slideIndex].classList.add("displaySlide");
+    numSlides.forEach(slides => {
+      slides.classList.remove("z-offset");
+    });
+  }, 510); 
+
+
+  // console.log("Previous slide: " + prevShown);
+  // console.log("New slide: " + slideIndex);
+
+  console.log("removing classes, newSlide", newSlide.classList);
+  console.log("removing classes, prevSlide", prevSlide.classList);
 }
 
-function prevSlide() {
+function PrevSlide() {
   prevShown = slideIndex;
   slideIndex--;
-  showSlide(slideIndex, prevShown, "left");
+  ShowSlide(slideIndex, prevShown, "left");
 }
 
-function nextSlide() {
+function NextSlide() {
   prevShown = slideIndex;
   slideIndex++;
-  showSlide(slideIndex, prevShown, "right");
+  ShowSlide(slideIndex, prevShown, "right");
 }

@@ -175,8 +175,6 @@ body {
   aspect-ratio: 1 / 1;
   overflow: hidden;
   margin: 10px;
-  /* outline: 5px solid black; */
-  /* display: block; */
   border-radius: 5%;
 }
 
@@ -185,7 +183,6 @@ body {
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0;
   z-index: 1;
   opacity: 0;
 }
@@ -215,7 +212,6 @@ body {
   transform: translateX(50%);
   width: 100%;
   align-content: center;
-  /* font-size: 2rem; */
   padding: 0px 3px 0px 3px;
   background: none;
   border: none;
@@ -232,14 +228,13 @@ body {
 }
 .prev {
   justify-self: left;
-  /* left: 0; */
   rotate: 180deg;
-  /* transform: translateY(50%); */
+  transform: translateY(50%);
 }
 .next {
   /* right: 0; */
   justify-self: right;
-  /* transform: translateY(-50%); */
+  transform: translateY(-50%);
 }
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
@@ -269,22 +264,22 @@ body {
 .move-right-in {
   right: 100%;
   animation: slide-right 0.5s ease;
-  /* z-index: 2; */
+  animation-fill-mode: forwards;
 }
 .move-left-in {
   left: 100%;
   animation: slide-left 0.5s ease;
-  /* z-index: 2; */
+  animation-fill-mode: forwards;
 }
 
 /* Previous image */
 .move-right-out {
   animation: slide-right 0.5s ease;
-  /* z-index: 1; */
+  animation-fill-mode: backwards;
 }
 .move-left-out {
   animation: slide-left 0.5s ease;
-  /* z-index: 1; */
+  animation-fill-mode: backwards;
 }
 
 @keyframes slide-left {
@@ -305,17 +300,6 @@ body {
     /* opacity: 50%; */
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* .project > p {
   margin: 10px;

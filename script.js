@@ -59,10 +59,12 @@ function InitializeSlider() {
 }
 
 function ShowSlide(index, prevShown, direction) {
-  // console.log("index: " + index); 
-  // console.log("prevShown: " + prevShown);
-  // console.log("direction: " + direction);
-  // console.log("slideIndex: " + slideIndex);
+  const sliderContainer = document.querySelector(".slider-container");
+
+  // Disable pointer events before animation
+  sliderContainer.style.pointerEvents = "none";
+  
+  
   if (index >= length) {
     slideIndex = 0;
     prevShown = length - 1;
@@ -73,45 +75,31 @@ function ShowSlide(index, prevShown, direction) {
 
   const prevSlide = numSlides[prevShown];
   const newSlide = numSlides[slideIndex];
-  // console.log("prevSlide: " + prevSlide);
-  // console.log("newSlide: " + newSlide);
-  
-  console.log("Before adding classes, newSlide", newSlide.classList);
-  console.log("Before adding classes, prevSlide", prevSlide.classList);
 
-
-  // slider-container.forEach(slides => {
-  //   slides.classList.remove("displaySlide");
-  // });
-  
   if (direction === "left") {
-    newSlide.classList.add("move-left-in", "displaySlide", "z-offset");
-    prevSlide.classList.add("move-left-out");
-  } else if (direction === "right") {
     newSlide.classList.add("move-right-in", "displaySlide", "z-offset");
     prevSlide.classList.add("move-right-out");
+  } else if (direction === "right") {
+    
+    newSlide.classList.add("move-left-in", "displaySlide", "z-offset");
+    prevSlide.classList.add("move-left-out");
   }
 
   console.log("After adding classes, newSlide", newSlide.classList);
   console.log("After adding classes, prevSlide", prevSlide.classList);
   setTimeout(() => {
+    sliderContainer.style.pointerEvents = "auto";
     prevSlide.classList.remove("displaySlide");
     numSlides.forEach(slides => {
       slides.classList.remove("move-left-in", "move-right-in", "move-left-out", "move-right-out");
     });
-  }, 500);
+  }, 510);
   setTimeout(() => {
     numSlides.forEach(slides => {
       slides.classList.remove("z-offset");
     });
   }, 510); 
 
-
-  // console.log("Previous slide: " + prevShown);
-  // console.log("New slide: " + slideIndex);
-
-  console.log("removing classes, newSlide", newSlide.classList);
-  console.log("removing classes, prevSlide", prevSlide.classList);
 }
 
 function PrevSlide() {

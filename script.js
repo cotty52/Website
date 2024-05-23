@@ -113,3 +113,19 @@ function NextSlide() {
   slideIndex++;
   ShowSlide(slideIndex, prevShown, "right");
 }
+
+function ChangeSlide(index) {
+  let direction = "left";
+  if (index == slideIndex) {
+    return;
+  }
+  else if (index > slideIndex) {
+    direction = "right";
+  }
+  else {
+    direction = "left";
+  }
+  prevShown = slideIndex;
+  slideIndex = index;
+  ShowSlide(slideIndex, prevShown, direction);
+}

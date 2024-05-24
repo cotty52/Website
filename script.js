@@ -45,7 +45,7 @@ const ShowPage = (pageName, btnName) => {
 
 const numSlides = document.querySelector(".slider-container").querySelectorAll(".slides");
 const length = numSlides.length;
-console.log(numSlides.length); // Check the number of slides
+const navButtons = document.querySelector(".slider-nav").querySelectorAll(".sliderDot");
 let slideIndex = 0;
 let prevShown = 0;
 
@@ -54,6 +54,7 @@ InitializeSlider();
 function InitializeSlider() {
   if (length > 0) {
     numSlides[slideIndex].classList.add("displaySlide");
+    navButtons[slideIndex].classList.add("current");
   }
   console.log("slideIndex: " + slideIndex); // Check the current slide
 }
@@ -63,7 +64,6 @@ function ShowSlide(index, prevShown, direction) {
 
   // Disable pointer events before animation
   sliderContainer.style.pointerEvents = "none";
-  
   
   if (index >= length) {
     slideIndex = 0;
@@ -85,11 +85,14 @@ function ShowSlide(index, prevShown, direction) {
     prevSlide.classList.add("move-left-out");
   }
 
-  console.log("After adding classes, newSlide", newSlide.classList);
-  console.log("After adding classes, prevSlide", prevSlide.classList);
+  navButtons.forEach(sliderDot => {
+    sliderDot.classList.remove("current");
+  });
+
   setTimeout(() => {
     sliderContainer.style.pointerEvents = "auto";
     prevSlide.classList.remove("displaySlide");
+    navButtons[slideIndex].classList.add("current");
     numSlides.forEach(slides => {
       slides.classList.remove("move-left-in", "move-right-in", "move-left-out", "move-right-out");
     });

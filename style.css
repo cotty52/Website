@@ -261,7 +261,10 @@ body {
   cursor: pointer;
   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
 }
-.slider-nav button:hover {
+.slider-nav button:hover{
+  opacity: 1;
+}
+.slider-nav button.current {
   opacity: 1;
 }
 
@@ -269,6 +272,7 @@ body {
   transform: scale(0.9);
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
+
 
 /* New image */
 .move-right-in {

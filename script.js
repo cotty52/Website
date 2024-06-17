@@ -2,7 +2,6 @@
 SiteLoad = () => {
   // When site is loaded, press that button. Could also call ShowPage
   document.getElementById("designsBtn").click();
-  InitializeAllSliders();
 };
 
 const ShowPage = (pageName, btnName) => {
@@ -44,17 +43,18 @@ class Slider {
     this.prevShown = 0;
     this.length = this.slides.length;
 
-    this.initializeSlider();
+    this.CreateNavigationDots();
+    this.InitializeSlider();
 
     // Bind events
-    this.prevButton.addEventListener('click', () => this.prevSlide());
-    this.nextButton.addEventListener('click', () => this.nextSlide());
+    this.prevButton.addEventListener('click', () => this.PrevSlide());
+    this.nextButton.addEventListener('click', () => this.NextSlide());
     this.navButtons.forEach((button, index) => {
-      button.addEventListener('click', () => this.changeSlide(index));
+      button.addEventListener('click', () => this.ChangeSlide(index));
     });
   }
 
-  initializeSlider() {
+  InitializeSlider() {
     if (this.length > 0) {
       this.slides[this.slideIndex].classList.add('displaySlide');
       this.navButtons[this.slideIndex].classList.add('current');
@@ -62,7 +62,23 @@ class Slider {
     console.log('slideIndex: ' + this.slideIndex); // Check the current slide
   }
 
-  showSlide(index, direction) {
+  CreateNavigationDots() {
+    this.navContainer = document.createElement("div");
+    this.navContainer.classList.add("slider-nav");
+
+    for (let i = 0; i < this.length; i++) {
+      const dot = document.createElement("button");
+      dot.classList.add("sliderDot");
+      dot.dataset.slideIndex = i;  // Store slide index in a data attribute
+
+      this.navContainer.appendChild(dot);
+    }
+
+    this.sliderContainer.appendChild(this.navContainer);
+    this.navButtons = this.navContainer.querySelectorAll('.sliderDot'); // Update reference to created buttons
+  }
+
+  ShowSlide(index, direction) {
     this.sliderContainer.style.pointerEvents = 'none';
 
     if (index >= this.length) {
@@ -106,22 +122,22 @@ class Slider {
     }, 510);
   }
 
-  prevSlide() {
-    this.showSlide(this.slideIndex - 1, 'left');
+  PrevSlide() {
+    this.ShowSlide(this.slideIndex - 1, 'left');
   }
 
-  nextSlide() {
-    this.showSlide(this.slideIndex + 1, 'right');
+  NextSlide() {
+    this.ShowSlide(this.slideIndex + 1, 'right');
   }
 
-  changeSlide(index) {
+  ChangeSlide(index) {
     let direction = 'left';
     if (index === this.slideIndex) {
       return;
     } else if (index > this.slideIndex) {
       direction = 'right';
     }
-    this.showSlide(index, direction);
+    this.ShowSlide(index, direction);
   }
 }
 

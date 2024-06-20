@@ -1,10 +1,22 @@
 // Whenever the site is loaded, this function is called
-SiteLoad = () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = document.querySelectorAll(".slider-container");
+  sliders.forEach((sliderContainer) => {
+    new Slider(sliderContainer);
+  });
   // When site is loaded, press that button. Could also call ShowPage
   document.getElementById("designsBtn").click();
-};
+});
+// SiteLoad = () => {
+//   // When site is loaded, press that button. Could also call ShowPage
+//   // document.getElementById("designsBtn").click();
+// };
 
 const ShowPage = (pageName, btnName) => {
+  const clickedButton = document.getElementById(btnName);
+  const buttons = Array.from(clickedButton.parentNode.querySelectorAll(".button"));
+  const currentIndex = buttons.findIndex((button) => button.id === btnName);
+
   //Future proofing in case more pages and buttons are added
   var pageContent, i;
   pageContent = document.getElementsByClassName("page");
@@ -15,20 +27,27 @@ const ShowPage = (pageName, btnName) => {
   // Get id of previously active button, then remove the active class
   const activeButton = document.querySelector(".button.active");
   activeButton.classList.remove("active");
-
-  // Get id of clicked button and add 'active' class
-  const clickedButton = document.getElementById(btnName);
   clickedButton.classList.add("active");
+
+  const rootStyles = getComputedStyle(document.documentElement);
+  const buttonWidth = parseFloat(rootStyles.getPropertyValue("--buttonWidth"));
+  const buttonGap = parseFloat(rootStyles.getPropertyValue("--buttonContainerGap"));
+
+  if (currentIndex !== -1) {
+    const translateX = currentIndex * (buttonWidth + buttonGap);
+    const pill = document.querySelector(".button-selector");
+    pill.style.transform = `translateX(${translateX}px)`;
+  }
 
   // Get id of the new page and show it
   const newPage = document.getElementById(pageName);
   newPage.style.display = "flex";
 
   // Construct the new URL
-  const newUrl = window.location.origin + "/#" + pageName;
+  //const newUrl = window.location.origin + "/#" + pageName;
 
   // Update the URL without triggering a page reload
-  window.history.pushState({ path: newUrl }, "", newUrl);
+  //window.history.pushState({ path: newUrl }, "", newUrl);
 };
 
 // IMAGE SLIDER
@@ -140,11 +159,3 @@ class Slider {
     this.ShowSlide(index, direction);
   }
 }
-
-// Initialize all sliders on the page
-document.addEventListener('DOMContentLoaded', () => {
-  const sliders = document.querySelectorAll('.slider-container');
-  sliders.forEach(sliderContainer => {
-    new Slider(sliderContainer);
-  });
-});

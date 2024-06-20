@@ -11,10 +11,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="icon" type="image/ico" href="D:\GitHub\Website\Images\Favicon3.png">
+    <link rel="icon" type="image/png" href="D:\GitHub\Website\Images\Favicon5.png">
+    <!-- <link rel="icon" type="image/ico" href="D:\GitHub\Website\Images\Favicon3.png"> -->
   </head>
 
-  <body onload="SiteLoad()">
+   <body> <!--onload="SiteLoad()" -->
     <!--<div class="center-line"></div>     --delete this later-->
     <div class="container">
       <div class="header">
@@ -27,35 +28,44 @@
       </div> <!-- end header -->
 
       <div class="nav">
-        <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')">Home</button>
-        <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
-        <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
+        <div class="button-container">
+          <div class="button-selector"></div>
+          <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')">Home</button>
+          <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
+          <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
+        </div> <!-- end button-container -->
       </div> <!-- end nav -->
 
       <div class="main">
         <div id="home" class="page item" style="display: none">
           <!-- <h2>Welcome to My Portfolio!</h2> -->
           <div class="page-content">
-            Hello, welcome to my website! My name is Christian and I am an
-            engineering student studying at Binghamton University. I am
-            currently a senior computer engineering major, and am on track to
-            graduate with my masters in May of 2026.
+            <p>
+              Hello, welcome to my website! My name is Christian and I am an
+              engineering student studying at Binghamton University. I am
+              currently a senior computer engineering major, and am on track to
+              graduate with my masters in May of 2026.
+            </p>
           </div>
         </div> <!-- end home -->
 
         <div id="designs" class="page item" style="display: none">
           <div class="page-content">
-            These are some projects I have worked on that involved design and
-            creation. I really enjoy making a variety of different projects,
-            ranging from 3D printed battle bot, to Blender models, to this very
-            website. I have always had a passion for learning new things,
-            especially if it allows me to express my creativity.
+            <p>
+              These are some projects I have worked on that involved design and
+              creation. I really enjoy making a variety of different projects,
+              ranging from 3D printed battle bot, to Blender models, to this very
+              website. I have always had a passion for learning new things,
+              especially if it allows me to express my creativity.
+            </p>
           </div>  
           
           <div class="project item">
             <div class="project-content">
-              This is BOTTY, a 3D printed battlebot created to compete in
-              Binghamton's Watson Combat Robotics League (WCRL)
+              <p>
+                This is BOTTY, a 3D printed battlebot created to compete in
+                Binghamton's Watson Combat Robotics League (WCRL)
+              </p>
             </div>
             <div id="botty" class="slider-container">
               <div id="slide-1" class="slides displaySlide">
@@ -81,9 +91,11 @@
 
           <div class="project item">
             <div class="project-content">
-              A group project for an engineering class where we created a simple
-              Simon Says game using Arduino. The project had to include a theme,
-              ours was aliens.......
+              <p>
+                A group project for an engineering class where we created a simple
+                Simon Says game using Arduino. The project had to include a theme,
+                ours was aliens.......
+              </p>
             </div>
             <div id="arduino" class="slider-container">
               <div id="slide-1" class="slides displaySlide">
@@ -98,6 +110,7 @@
               <div id="slide-4" class="slides">
                 <img  class="slide" src="./Images/Top.png" alt="sad :'(" />
               </div>
+
               <div class="nav-buttons">
                 <button class="prev">&#10148</button>
                 <button class="next">&#10148</button>

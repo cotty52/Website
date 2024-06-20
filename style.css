@@ -48,6 +48,7 @@
 * {
   font-family: Verdana, Arial, sans-serif;
   box-sizing: border-box;
+  font-size: 1em;
 }
 
 /*delete this later*/
@@ -144,8 +145,9 @@ p {
   padding: 0;
   background: none;
   cursor: pointer;
-  transition: background-color 0.4s ease;
+  transition: 0.3s ease-in;
   z-index: 3;
+  font-size: .9em;
 }
 
 .button-selector {
@@ -156,19 +158,19 @@ p {
   padding: 0;
   /* background-color: var(--hover-color); */
   border-radius: 999em;
-  transition: 0.3s ease;
+  transition: 0.3s ease-out;
   background-color: var(--blueColor);
   box-shadow: var(--shadow-elevation-low);
-  clip-path: inset(0 0 -2px 0);
+  clip-path: inset(-2px -2px -2px -2px);
 }
 
 .button:hover {
   background-color: var(--hoverColor1);
 }
 
-/* .button.active {
-  
-} */
+.button.active {
+  color: white;
+}
 
 .links {
   margin-bottom: 10px;
@@ -183,13 +185,12 @@ p {
   padding: 4px 8px;
   border-radius: 8px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: .9em;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  font-size: 16px;
   margin: 0px;
   /* padding: 0px; */
   min-height: 100vh; /* Set minimum height to viewport height */
@@ -197,7 +198,6 @@ body {
 
 .h1 {
   margin-bottom: 20px;
-  font-size: 16px;
 }
 
 .page {
@@ -292,7 +292,7 @@ body {
   z-index: 4;
 }
 .nav-buttons button {
-  font-size: 1.5rem;
+  font-size: 1.5em;
   padding: 0px 3px 4px 4px;
   background: none;
   color: white;
@@ -421,7 +421,7 @@ body {
   justify-content: left;
   align-items: center; */
   text-decoration: none;
-  font-size: 30px;
+  font-size: 2em;
   width: 22px;
   margin: 5px 2px;
   border: none;

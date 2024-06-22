@@ -1,148 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Christian Otty" />
     <title>Christian Otty</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="icon" type="image/png" href="D:\GitHub\Website\Images\Favicon5.png">
-    <!-- <link rel="icon" type="image/ico" href="D:\GitHub\Website\Images\Favicon3.png"> -->
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="icon" type="image/png" href="./Images/Favicon5.png">
+    <!-- <link rel="icon" type="image/ico" href="./Images/Favicon3.png"> -->
+</head>
 
-   <body> <!--onload="SiteLoad()" -->
+<body> <!--onload="SiteLoad()" -->
     <!--<div class="center-line"></div>     --delete this later-->
-    <div class="container">
-      <div class="header">
-        <img id="portrait" class="image item" src="./Images/Portrait.jpg" alt="sad :'("/>
-        <div class="item h1">Christian Otty | Computer Engineer</div>
+    <div class="header">
+        <img id="portrait" class="image " src="./Images/Portrait.jpg" alt="sad :'(" />
+        <div class="h1">Christian Otty | Computer Engineer</div>
         <div class="links">
-          <a class="item" href="https://www.linkedin.com/in/christian-otty/" target="_blank" title="Visit my LinkedIn" >LinkedIn</a>
-          <a class="item" href="https://github.com/cotty52" target="_blank" title="Visit my GitHub" >GitHub</a>
+            <a href="https://www.linkedin.com/in/christian-otty/" target="_blank" title="Visit my LinkedIn">LinkedIn</a>
+            <a href="https://github.com/cotty52" target="_blank" title="Visit my GitHub">GitHub</a>
         </div> <!-- end links -->
-      </div> <!-- end header -->
+    </div> <!-- end header -->
 
-      <div class="nav">
+    <div class="nav">
         <div class="button-container">
-          <div class="button-selector"></div>
-          <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')">Home</button>
-          <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
-          <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
+            <div class="button-selector"></div>
+            <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')">Home</button>
+            <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
+            <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
         </div> <!-- end button-container -->
-      </div> <!-- end nav -->
+    </div> <!-- end nav -->
 
-      <div class="main">
-        <div id="home" class="page item" style="display: none">
-          <!-- <h2>Welcome to My Portfolio!</h2> -->
-          <div class="page-content">
-            <p>
-              Hello, welcome to my website! My name is Christian and I am an
-              engineering student studying at Binghamton University. I am
-              currently a senior computer engineering major, and am on track to
-              graduate with my masters in May of 2026.
-            </p>
-          </div>
+    <div class="main">
+        <div id="home" class="page " style="display: none">
+            <!-- <h2>Welcome to My Portfolio!</h2> -->
+            <div class="page-content">
+                <p>
+                    Hello, welcome to my website! My name is Christian and I am an engineering student studying at
+                    Binghamton University. I am currently a senior computer engineering major, and am on track to
+                    graduate with my masters in May of 2026.
+                </p>
+            </div>
         </div> <!-- end home -->
 
-        <div id="designs" class="page item" style="display: none">
-          <div class="page-content">
-            <p>
-              These are some projects I have worked on that involved design and
-              creation. I really enjoy making a variety of different projects,
-              ranging from 3D printed battle bot, to Blender models, to this very
-              website. I have always had a passion for learning new things,
-              especially if it allows me to express my creativity.
-            </p>
-          </div>  
-          
-          <div class="project item">
-            <div class="project-content">
-              <p>
-                This is BOTTY, a 3D printed battlebot created to compete in
-                Binghamton's Watson Combat Robotics League (WCRL)
-              </p>
+        <div id="designs" class="page " style="display: none">
+            <div class="page-content">
+                <p>
+                    These are some projects I have worked on that involved design and creation. I really enjoy
+                    creating and working on all types of projects, ranging from 3D printed battle bot, to hands on
+                    work, to this very website. I have always had a passion for learning new things, especially if
+                    it allows me to express my creativity.
+                </p>
             </div>
-            <div id="botty" class="slider-container">
-              <div id="slide-1" class="slides displaySlide">
-                <img  class="slide" src="./Images/BOTTY_front.png" alt="sad :'(" />
-              </div>
-              <div id="slide-2" class="slides">
-                <img  class="slide" src="./Images/BOTTY_back.png" alt="sad :'(" />
-              </div>
-              <div id="slide-3" class="slides">
-                <img  class="slide" src="./Images/BOTTY_side.png" alt="sad :'(" />
-              </div>
-              <div class="nav-buttons">
-                <button class="prev">&#10148</button>
-                <button class="next">&#10148</button>
-              </div>
-              <div class="slider-nav">
-                <button class="sliderDot" onclick="ChangeSlide(0)"></button>
-                <button class="sliderDot" onclick="ChangeSlide(1)"></button>
-                <button class="sliderDot" onclick="ChangeSlide(2)"></button>
-              </div>
-            </div> <!-- end slider-container -->
-          </div> <!-- end botty -->
+            <div class="project">
+                <div class="project-content">
+                    <p>
+                        This is BOTTY, a 3D printed battlebot created to compete in
+                        Binghamton's Watson Combat Robotics League (WCRL)
+                    </p>
+                </div>
+                <div id="botty" class="slider-container">
+                    <div id="slide-1" class="slides displaySlide">
+                        <img class="slide" src="./Images/BOTTY_front.png" alt="sad :'(" />
+                    </div>
+                    <div id="slide-2" class="slides">
+                        <img class="slide" src="./Images/BOTTY_back.png" alt="sad :'(" />
+                    </div>
+                    <div id="slide-3" class="slides">
+                        <img class="slide" src="./Images/BOTTY_side.png" alt="sad :'(" />
+                    </div>
+                    <div class="nav-buttons">
+                        <button class="prev">&#10148</button>
+                        <button class="next">&#10148</button>
+                    </div>
+                    <div class="slider-nav">
+                        <!-- <button class="sliderDot" onclick="ChangeSlide(0)"></button>
+                            <button class="sliderDot" onclick="ChangeSlide(1)"></button>
+                            <button class="sliderDot" onclick="ChangeSlide(2)"></button> -->
+                    </div>
+                </div> <!-- end slider-container -->
+            </div> <!-- end botty -->
 
-          <div class="project item">
-            <div class="project-content">
-              <p>
-                A group project for an engineering class where we created a simple
-                Simon Says game using Arduino. The project had to include a theme,
-                ours was aliens.......
-              </p>
+            <div class="project">
+                <div class="project-content">
+                    <p>
+                        I am part of Binghamton's Formula SAE club, where many students work in teams to design and
+                        bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame
+                        subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld
+                        from industry proffesionals.
+                    </p>
+                </div>
+                <div id="formula" class="slider-container">
+                    <div id="slide-1" class="slides displaySlide">
+                        <img class="slide" src="" alt="sad" />
+                    </div>
+                    <div class="nav-buttons">
+                        <button class="prev">&#10148</button>
+                        <button class="next">&#10148</button>
+                    </div>
+                    <div class="slider-nav"></div>
+                </div>
             </div>
-            <div id="arduino" class="slider-container">
-              <div id="slide-1" class="slides displaySlide">
-                <img  class="slide" src="./Images/Angle-1.png" alt="sad :'(" />
-              </div>
-              <div id="slide-2" class="slides">
-                <img  class="slide" src="./Images/Angle-2.png" alt="sad :'(" />
-              </div>
-              <div id="slide-3" class="slides">
-                <img  class="slide" src="./Images/Angle-3.png" alt="sad :'(" />
-              </div>
-              <div id="slide-4" class="slides">
-                <img  class="slide" src="./Images/Top.png" alt="sad :'(" />
-              </div>
 
-              <div class="nav-buttons">
-                <button class="prev">&#10148</button>
-                <button class="next">&#10148</button>
-              </div>
-              <div class="slider-nav">
-                <!-- where the slider dots go -->
-              </div>
-            </div> <!-- end slider-container -->
-          </div> <!-- end arduino -->
+            <div class="project">
+                <div class="project-content">
+                    <p>
+                        A group project for an engineering class where we created a simple Simon Says game using
+                        Arduino. The project had to include a theme, ours was aliens(add more)
+                    </p>
+                </div>
+                <div id="arduino" class="slider-container">
+                    <div id="slide-1" class="slides displaySlide">
+                        <img class="slide" src="./Images/Angle-1.png" alt="sad :'(" />
+                    </div>
+                    <div id="slide-2" class="slides">
+                        <img class="slide" src="./Images/Angle-2.png" alt="sad :'(" />
+                    </div>
+                    <div id="slide-3" class="slides">
+                        <img class="slide" src="./Images/Angle-3.png" alt="sad :'(" />
+                    </div>
+                    <div id="slide-4" class="slides">
+                        <img class="slide" src="./Images/Top.png" alt="sad :'(" />
+                    </div>
 
-
-
-
+                    <div class="nav-buttons">
+                        <button class="prev">&#10148</button>
+                        <button class="next">&#10148</button>
+                    </div>
+                    <div class="slider-nav">
+                        <!-- where the slider dots go -->
+                    </div>
+                </div> <!-- end slider-container -->
+            </div> <!-- end arduino -->
 
 
         </div> <!-- end designs -->
 
-        <div id="coding" class="page item" style="display: none">
-          <h2>My Coding Projects</h2>
-          <p>
-            Explore my coding portfolio, featuring various web development
-            projects and my programming expertise.
-          </p>
-        </div> <!-- end coding -->
-      </div> <!-- end main -->
-    
-      <div class="footer item">
-        <div>2024 | Christian Otty</div>
-        <a href="https://www.linkedin.com/in/christian-otty/" class="fa fa-linkedin" target="_blank" title="Visit my LinkedIn"></a>
-        <a href="https://github.com/cotty52" class="fa fa-github" target="_blank" title="Visit my GitHub"></a>
-      </div> <!-- end footer -->
-    </div> <!-- end container -->
 
-  </body>
+        <div id="coding" class="page " style="display: none">
+            <!-- <h2>My Coding Projects</h2> -->
+            <div class="page-content">
+                <p>
+                    Here are some coding projects I have done. Most of them are in python, but I have made small
+                    scale school projects in other languages such as Java and C. I built this website from scratch
+                    using HTML, CSS, and JavaScript. Larning new languages is fun for me. Getting familiar with how
+                    they work and what makes them different or similar to other ones I've used is an enjoyable
+                    process.
+                    <br><br>
+                    During my internship of summer 2024, I got a variety of programming experience. Most of my tasks
+                    revolved around the SQL server and creating automation scripts for others to use. I utilized
+                    PowerShell to create most of the scripts, and I would sometimes impliment them into a website
+                    for easy access. This website used .NET 6 Razor Pages as its building blocks, which gave me
+                    experience with real world applications of C#, HTML, and CSS.
+                </p>
+            </div>
+
+            <div class="project ">
+                <div class="project-content">
+                    <p>
+                        This is a python script that allows you to input an image and it creates a bouncing idle
+                        screen from it.
+                    </p>
+                </div>
+                <div id="idle-screen" class="single-container">
+                    <div class="slides displaySlide">
+                        <img class="slide" src="" alt="sad :'(" />
+                    </div>
+                </div> <!-- end single-container -->
+            </div> <!-- end botty -->
+
+
+
+        </div> <!-- end coding -->
+    </div> <!-- end main -->
+
+    <div class="footer ">
+        <div>2024 | Christian Otty</div>
+        <a href="https://www.linkedin.com/in/christian-otty/" class="fa fa-linkedin" target="_blank"
+            title="Visit my LinkedIn"></a>
+        <a href="https://github.com/cotty52" class="fa fa-github" target="_blank" title="Visit my GitHub"></a>
+        <div class="horizontal-line"></div>
+    </div> <!-- end footer -->
+
+</body>
+
 </html>

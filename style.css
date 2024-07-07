@@ -1,9 +1,9 @@
 /* Global variables */
 :root {
-    --blueColor: rgb(0, 140, 250);
+    --mainRGB: 50, 140, 220;
+    --blueColor: rgb(var(--mainRGB));
     --unselectedColor: rgb(220, 220, 235);
-    --hoverColor: rgba(250, 250, 250, 0.5);
-    --hoverColor1: rgba(0, 140, 250, 0.5);
+    --hoverColor: rgba(var(--mainRGB), 0.5);
     --buttonWidth: 80px;
     --buttonHeight: 36px;
     --buttonContainerHeight: calc(var(--buttonHeight) + 4px);
@@ -151,7 +151,6 @@ p {
     width: var(--buttonWidth);
     margin: 0;
     padding: 0;
-    /* background-color: var(--hover-color); */
     border-radius: 999em;
     transition: 0.3s ease-out;
     background-color: var(--blueColor);
@@ -160,7 +159,7 @@ p {
 }
 
 .button:hover {
-    background-color: var(--hoverColor1);
+    background-color: var(--hoverColor);
 }
 
 .button.active {
@@ -264,6 +263,12 @@ p {
     object-fit: cover;
 }
 
+.slides video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .displaySlide {
     z-index: 2;
     opacity: 1;
@@ -360,24 +365,24 @@ p {
 /* New image */
 .move-right-in {
     right: 100%;
-    animation: slide-right 0.5s ease;
+    animation: slide-right 0.5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
 .move-left-in {
     left: 100%;
-    animation: slide-left 0.5s ease;
+    animation: slide-left 0.5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
 /* Previous image */
 .move-right-out {
-    animation: slide-right 0.5s ease;
+    animation: slide-right 0.5s ease-in-out;
     animation-fill-mode: backwards;
 }
 
 .move-left-out {
-    animation: slide-left 0.5s ease;
+    animation: slide-left 0.5s ease-in-out;
     animation-fill-mode: backwards;
 }
 

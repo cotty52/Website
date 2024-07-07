@@ -41,11 +41,29 @@ const ShowPage = (pageName, btnName) => {
     const newPage = document.getElementById(pageName);
     newPage.style.display = "flex";
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // Construct the new URL
     //const newUrl = window.location.origin + "/#" + pageName;
     // Update the URL without triggering a page reload
     //window.history.pushState({ path: newUrl }, "", newUrl);
 };
+
+// function MoreText() {
+//     let dots = document.getElementById("dots");
+//     let moreText = document.getElementById("more-text");
+//     let btnText = document.getElementById("text-btn");
+//     if (dots.style.display === "none") {
+//         dots.style.display = "inline";
+//         btnText.innerHTML = "More";
+//         moreText.style.display = "none";
+//     }
+//     else {
+//         dots.style.display = "none";
+//         btnText.innerHTML = "Less";
+//         moreText.style.display = "inline";
+//     }
+// }
 
 // IMAGE SLIDER
 class Slider {

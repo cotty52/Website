@@ -16,7 +16,7 @@
 <body> <!--onload="SiteLoad()" -->
     <!--<div class="center-line"></div>     --delete this later-->
     <div class="header">
-        <img id="portrait" class="image " src="./Images/Portrait.jpg" alt="sad :'(" />
+        <img id="portrait" src="./Images/Portrait.jpg" alt="sad :'(" />
         <div class="h1">Christian Otty | Computer Engineer</div>
         <div class="links">
             <a href="https://www.linkedin.com/in/christian-otty/" target="_blank" title="Visit my LinkedIn">LinkedIn</a>
@@ -42,6 +42,15 @@
                     Binghamton University. I am currently a senior computer engineering major, and am on track to
                     graduate with my masters in May of 2026.
                 </p>
+                <div class="home-section">
+                    <img src="" alt="sad" />
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati incidunt iusto voluptatum
+                        nisi cupiditate perferendis nemo fuga perspiciatis quas eaque veniam expedita molestiae
+                        molestias non animi dolores, optio saepe alias.
+                    </p>
+
+                </div>
             </div>
         </div> <!-- end home -->
 
@@ -75,7 +84,11 @@
                         <button class="prev">&#10148</button>
                         <button class="next">&#10148</button>
                     </div>
-                    <div class="slider-nav"></div>
+                    <div class="slider-nav">
+                        <!-- <button class="sliderDot" onclick="ChangeSlide(0)"></button>
+                            <button class="sliderDot" onclick="ChangeSlide(1)"></button>
+                            <button class="sliderDot" onclick="ChangeSlide(2)"></button> -->
+                    </div>
                 </div> <!-- end slider-container -->
             </div> <!-- end botty -->
 
@@ -86,7 +99,7 @@
                         bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame
                         subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld
                         from industry proffesionals.
-                        <a href="https://binghamtonmotorsports.com/" target="_blank">Binghamton Motorsports</a>
+						<a href="https://binghamtonmotorsports.com/" target="_blank">Binghamton Motorsports</a>
                     </p>
                 </div>
                 <div id="formula" class="slider-container">
@@ -108,7 +121,7 @@
                     </div>
                     <div class="slider-nav"></div>
                 </div>
-            </div> <!-- end formula -->
+            </div>
 
             <div class="project">
                 <div class="project-content">
@@ -130,18 +143,19 @@
                     <div id="slide-4" class="slides">
                         <img class="slide" src="./Images/Top.png" alt="sad :'(" />
                     </div>
-                    <div id="slide-5" class="slides">
+					<div id="slide-5" class="slides">
                         <video width="100%" height="100%" autoplay muted loop controls>
                             <source src="./Images/Arduino_Video.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
-
                     <div class="nav-buttons">
                         <button class="prev">&#10148</button>
                         <button class="next">&#10148</button>
                     </div>
-                    <div class="slider-nav"></div>
+                    <div class="slider-nav">
+                        <!-- where the slider dots go -->
+                    </div>
                 </div> <!-- end slider-container -->
             </div> <!-- end arduino -->
 
@@ -150,18 +164,18 @@
 
 
         <div id="coding" class="page " style="display: none">
-            <!-- <h2>My Coding Projects</h2> -->
             <div class="page-content">
                 <p>
-                    Here are some coding projects I have done. Aside from these, I have made many small-scale school
-                    projects in languages such as Python, Java and C. I built this website from scratch using HTML, CSS,
-                    and JavaScript. Larning new languages is fun for me. Getting familiar with how they work and what
-                    makes them different or similar to other ones I've used is an enjoyable process.
+                    Here are some coding projects I have done. Most of them are in python, but I have made small
+                    scale school projects in other languages such as Java and C. I built this website from scratch
+                    using HTML, CSS, and JavaScript. Larning new languages is fun for me. Getting familiar with how
+                    they work and what makes them different or similar to other ones I've used is an enjoyable
+                    process.
                     <br><br>
                     During my internship of summer 2024, I got a variety of programming experience. Most of my tasks
-                    revolved around interacting with a SQL server and creating automation scripts for others to use. I
-                    utilized PowerShell to create most of the scripts, and I would sometimes impliment them into a
-                    website for easy access. This website used .NET 6 Razor Pages as its building blocks, which gave me
+                    revolved around the SQL server and creating automation scripts for others to use. I utilized
+                    PowerShell to create most of the scripts, and I would sometimes impliment them into a website
+                    for easy access. This website used .NET 6 Razor Pages as its building blocks, which gave me
                     experience with real world applications of C#, HTML, and CSS.
                 </p>
             </div>
@@ -175,13 +189,31 @@
                 </div>
                 <div id="idle-screen" class="single-container">
                     <div class="slides displaySlide">
+                        <img class="slide" src="" alt="sad :'(" />
+                    </div>
+                </div> <!-- end single-container -->
+            </div> <!-- end idle-screen -->
+
+            <div class="project ">
+                <div class="project-content">
+                    <p>
+                        Click the link below to play a simple JavaScript snake game.
+                    </p>
+                </div>
+                <div id="snake-game" class="single-container">
+                    <div class="slides displaySlide">
                         <video width="100%" height="100%" class="slide" autoplay muted loop>
                             <source src="./Images/IdleBounce.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
+
                 </div> <!-- end single-container -->
-            </div> <!-- end   -->
+                <div class="more-button">
+                    <a href="snake.html" title="Snake Game">More</a>
+                </div>
+            </div> <!-- end idle-screen -->
+
 
 
         </div> <!-- end coding -->

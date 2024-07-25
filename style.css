@@ -1,6 +1,6 @@
 /* Global variables */
 :root {
-	--mainRGB: 50, 140, 220;
+	--mainRGB: 50, 140, 220; /* hex(#328cdc) */
 	--blueColor: rgb(var(--mainRGB));
 	--unselectedColor: rgb(220, 220, 235);
 	--hoverColor: rgba(var(--mainRGB), 0.5);
@@ -87,22 +87,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
 	background: rgba(var(--mainRGB), 0.8);
 }
-/* .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
-    /*border: #18ff03 5px solid; /*delete later
-} */
 
 .main {
 	width: 100%;
 	flex-grow: 1;
 }
-
-/* .item {
-    /* padding: var(--sidePadding); 
-  } */
 
 p {
 	text-align: left;

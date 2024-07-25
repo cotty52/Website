@@ -8,17 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("homeBtn").click();
 
 	const projectContents = document.querySelectorAll(".project-content");
-	// console.log("project contents: " + projectContents);
 	projectContents.forEach((content) => {
 		const moreButton = content.querySelector(".more-button button"); // Adjusted selector
-		// console.log("button: " + moreButton);
-		// console.log("next sibling: " + content.nextElementSibling);
-		// console.log("height: " + CheckHeight(content));
 		if (moreButton && CheckHeight(content)) {
 			moreButton.style.display = "block";
 			console.log("display: " + moreButton.style.display);
 		}
 	});
+});
+
+let staticVar = 0;
+window.addEventListener("resize", () => {
+	//setTimeout(staticVar = 0, 100);
+	if (staticVar === 0) {
+		staticVar = 1;
+		console.log("resize");
+		InitializeMoreButtons();
+		setTimeout(() => {
+			staticVar = 0;
+			console.log("staticVar: " + staticVar);
+		}, 1000);
+	}
 });
 
 const ShowPage = (pageName, btnName) => {
@@ -192,7 +202,7 @@ function InitializeMoreButtons() {
 
 		if (CheckHeight(content)) {
 			moreButton.style.display = "block";
-			console.log("display: " + moreButton.style.display);
+
 			if (
 				!content.classList.contains("truncate-text") &&
 				!content.classList.contains("show-more")

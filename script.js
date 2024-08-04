@@ -19,19 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let staticVar = 0;
 window.addEventListener("resize", () => {
-	//setTimeout(staticVar = 0, 100);
 	if (staticVar === 0) {
 		staticVar = 1;
-		console.log("resize");
+		console.log("\nresize\n");
 		InitializeMoreButtons();
 		setTimeout(() => {
 			staticVar = 0;
-			console.log("staticVar: " + staticVar);
-		}, 1000);
+			InitializeMoreButtons();
+		}, 100);
 	}
 });
 
-const ShowPage = (pageName, btnName) => {
+function ShowPage (pageName, btnName) {
 	const clickedButton = document.getElementById(btnName);
 	const buttons = Array.from(
 		clickedButton.parentNode.querySelectorAll(".button")
@@ -196,22 +195,33 @@ class Slider {
 
 function InitializeMoreButtons() {
 	const projectContents = document.querySelectorAll(".project-content");
+	
 
 	projectContents.forEach((content) => {
 		const moreButton = content.querySelector(".more-button");
+		const paragraphBlock = content.querySelector("p")
+		const isTruncated = CheckOverflow(paragraphBlock);
 
-		if (CheckHeight(content)) {
+		// console.log("checkheight: ", CheckHeight(content));
+		// console.log("isTruncated: ", isTruncated);
+		if (CheckHeight(content) && !(isTruncated)) 
+		{
+			// console.log("check if")
 			moreButton.style.display = "block";
-
-			if (
-				!content.classList.contains("truncate-text") &&
-				!content.classList.contains("show-more")
-			) {
-				content.querySelector("p").classList.add("truncate-text");
+			if (!paragraphBlock.classList.contains("truncate-text") && !paragraphBlock.classList.contains("show-more")) 
+			{
+				paragraphBlock.classList.add("truncate-text");
 			}
-		} else {
+		}
+		else if (!CheckHeight(content) && !(isTruncated))
+		{
+			// console.log("else if check")
 			moreButton.style.display = "none";
-			content.querySelector("p").classList.remove("truncate-text");
+			paragraphBlock.classList.remove("truncate-text");
+		}
+		else
+		{
+			// console.log("end else")
 		}
 	});
 }
@@ -238,14 +248,9 @@ function ToggleMore(button) {
 
 function CheckHeight(element) {
 	const rootStyle = getComputedStyle(document.documentElement);
-	const lineHeight =
-		parseFloat(rootStyle.getPropertyValue("--lineHeight")) || 1.5; // Default to 1.5 if not found
-	const maxLines =
-		parseFloat(rootStyle.getPropertyValue("--linesShown")) || 2; // Default to 2 if not found
-	const maxHeight =
-		lineHeight *
-		maxLines *
-		parseFloat(getComputedStyle(document.body).fontSize);
+	const lineHeight = parseFloat(rootStyle.getPropertyValue("--lineHeight")) || 1.5; // Default to 1.5 if not found
+	const maxLines = parseFloat(rootStyle.getPropertyValue("--linesShown")) || 2; // Default to 2 if not found
+	const maxHeight = lineHeight * maxLines * parseFloat(getComputedStyle(document.body).fontSize);
 	const paragraph = element.querySelector("p");
 
 	if (paragraph.offsetHeight > maxHeight) {
@@ -256,10 +261,8 @@ function CheckHeight(element) {
 }
 
 function CheckOverflow(element) {
-	setTimeout(() => {
-		return (
-			element.scrollHeight > element.clientHeight ||
-			element.scrollWidth > element.clientWidth
-		);
-	}, 100);
+	return (
+		element.scrollHeight > element.clientHeight ||
+		element.scrollWidth > element.clientWidth
+	);
 }

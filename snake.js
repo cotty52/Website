@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    pTag = document.querySelector("div");
-    newVal = document.createElement("p");
-    newVal.innerHTML = '';
-    pTag.appendChild(newVal);
+    document.querySelector("div").appendChild(newVal);
+    document.createElement("p").innerHTML = '';
 });
 
 const board_border = 'black';

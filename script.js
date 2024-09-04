@@ -266,3 +266,20 @@ function CheckOverflow(element) {
 		element.scrollWidth > element.clientWidth
 	);
 }
+
+function ImgZoom(img) {
+	// Check if the image is already zoomed
+	if (img.classList.contains("img-zoom")) {
+		img.classList.remove("img-zoom");
+		document.body.style.overflow = ""; // Enable scroll when image is not zoomed
+	} else {
+		// Remove img-zoom class from any currently zoomed image
+		const currentZoomed = document.querySelector(".img-zoom");
+		if (currentZoomed) {
+			currentZoomed.classList.remove("img-zoom");
+		}
+
+		img.classList.add("img-zoom");
+		document.body.style.overflow = "hidden"; // Disable scroll when image is zoomed
+	}
+}

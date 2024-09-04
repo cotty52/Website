@@ -272,8 +272,8 @@ p {
 	cursor: pointer;
 }
 
-.home-section-left > img:hover,
-.home-section-right > img:hover {
+.home-section-left > img:hover:not(.img-zoom),
+.home-section-right > img:hover:not(.img-zoom) {
 	transform: scale(1.005);
 	box-shadow: var(--shadow-elevation-medium);
 }
@@ -284,8 +284,10 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    max-width: 90%;
-    max-height: 90%;
+	width: 100%;
+    max-width: 80vw !important;
+    max-height: 80vh !important;
+	aspect-ratio: 1 / 1;
     box-shadow: var(--shadow-elevation-high);
     transition: all 0.3s ease;
 }

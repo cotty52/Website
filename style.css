@@ -120,7 +120,7 @@ p {
 }
 
 #portrait:hover {
-	animation: slow-rotate 500s linear infinite;
+	animation: slow-rotate 400s linear infinite;
 }
 
 @keyframes slow-rotate {
@@ -257,11 +257,10 @@ p {
 	padding: .3rem 0 .3rem 0;
 }
 
-.home-section-left > img,
-.home-section-right > img {
+.home-section-left > img:not(.img-zoom),
+.home-section-right > img:not(.img-zoom) {
 	grid-area: imgArea;
 	width: 100%;
-	/* height: 100%; */
 	max-width: 800px;
 	max-height: 800px;
 	align-self: center;
@@ -284,23 +283,13 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-	width: 100%;
-    max-width: 80vw !important;
-    max-height: 80vh !important;
-	aspect-ratio: 1 / 1;
+	/* width: 100%; */
+    max-width: 80vw;
+    max-height: 80vh;
     box-shadow: var(--shadow-elevation-high);
     transition: all 0.3s ease;
-}
-
-.img-zoom::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+	border-radius: .5rem;
+	cursor: pointer;
 }
 
 

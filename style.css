@@ -2,7 +2,8 @@
 :root {
 	--mainRGB: 50, 140, 220;
 	/* hex(#328cdc) */
-	--blueColor: rgb(102, 153, 204);/* --blueColor: rgb(var(--mainRGB)); */
+	--blueColor: rgb(102, 153, 204);
+	/* --blueColor: rgb(var(--mainRGB)); */
 	/* secondary: #66cccc, tertiary: 6666cc */
 	--unselectedColor: rgb(220, 220, 235);
 	--hoverColor: rgba(var(--mainRGB), 0.5);
@@ -117,6 +118,7 @@ p {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	box-shadow: var(--shadow-elevation-medium);
+	cursor: pointer;
 }
 
 #portrait:hover {
@@ -127,6 +129,7 @@ p {
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}
@@ -254,7 +257,7 @@ p {
 .home-section-right > p {
 	grid-area: pArea;
 	max-width: 60vw;
-	padding: .3rem 0 .3rem 0;
+	padding: 0.3rem 0 0.3rem 0;
 }
 
 .home-section-left > img:not(.img-zoom),
@@ -265,7 +268,7 @@ p {
 	max-height: 800px;
 	align-self: center;
 	object-fit: cover;
-	border-radius: .5rem;
+	border-radius: 0.5rem;
 	box-shadow: var(--shadow-elevation-low);
 	transition: 0.2s ease-out;
 	cursor: pointer;
@@ -278,20 +281,19 @@ p {
 }
 
 .img-zoom {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
 	/* width: 100%; */
-    max-width: 80vw;
-    max-height: 80vh;
-    box-shadow: var(--shadow-elevation-high);
-    transition: all 0.3s ease;
-	border-radius: .5rem;
+	max-width: 80vw;
+	max-height: 80vh;
+	box-shadow: var(--shadow-elevation-high);
+	transition: all 0.3s ease;
+	border-radius: 0.5rem;
 	cursor: pointer;
 }
-
 
 .project {
 	display: grid;
@@ -355,15 +357,17 @@ p {
 
 .more-button button {
 	display: block;
-	padding: .2rem;
+	padding: 0.2rem;
 	font-size: 0.7em;
 	background-color: transparent;
 	color: white;
-	border: .5px solid white;
-	border-radius: .4rem;
+	border: 0.5px solid white;
+	border-radius: 0.4rem;
 	cursor: pointer;
 }
 
+/* IMAGE SLIDER */
+.slider-container,
 .single-container {
 	display: flex;
 	position: relative;
@@ -371,19 +375,7 @@ p {
 	max-width: var(--project-img-width);
 	aspect-ratio: 1 / 1;
 	overflow: hidden;
-	/* margin: 10px; */
-	border-radius: 5%;
-}
-
-/* IMAGE SLIDER */
-.slider-container {
-	display: flex;
-	position: relative;
-	width: 100%;
-	max-width: var(--project-img-width);
-	aspect-ratio: 1 / 1;
-	overflow: hidden;
-	border-radius: 5%;
+	border-radius: 1rem;
 }
 
 .slides {
@@ -410,6 +402,12 @@ p {
 .displaySlide {
 	z-index: 2;
 	opacity: 1;
+}
+
+#idle-screen {
+	aspect-ratio: 16/9;
+	max-width: none;
+	/* max-height: var(--project-img-width); */
 }
 
 .z-offset {

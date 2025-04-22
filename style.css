@@ -189,9 +189,16 @@ p {
 	margin: 0;
 	padding: 0;
 	border-radius: 999em;
-	transition: 0.3s ease-out;
 	background-color: var(--blueColor);
 	box-shadow: var(--shadow-elevation-low);
+	transform: translateX(0);
+	/* Remove width transition during resize */
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add a class specifically for width transitions */
+.button-selector.resizing {
+	transition: none;
 }
 
 .button:hover {
@@ -323,6 +330,7 @@ p {
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
+	/* padding: 0 0.5rem; */
 }
 
 .project-content p {
@@ -596,4 +604,108 @@ p {
 	flex-grow: 1;
 	background-color: var(--blueColor);
 	border-radius: 1rem 0 0 1rem;
+}
+
+/* =================
+   MEDIA QUERIES
+   ================= */
+@media screen and (max-width: 768px) {
+    /* Typography adjustments */
+    * {
+        font-size: calc(0.9rem + 0.5vw);
+    }
+
+    /* Header adjustments */
+    .header {
+        margin: 0.5rem;
+    }
+
+    #portrait {
+        width: 8rem;
+        margin: 1rem 0;
+    }
+
+    /* Navigation adjustments */
+    .nav {
+        padding: 0.5rem;
+    }
+
+    .button {
+        width: calc(var(--buttonWidth) * 0.8);
+        font-size: 0.8em;
+    }
+
+    .button-container {
+        gap: calc(var(--buttonContainerGap) * 0.8);
+    }
+
+    .button-selector {
+        width: calc(var(--buttonWidth) * 0.8);
+    }
+
+    /* Project layout adjustments */
+    .project {
+        width: 95%;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    /* Home section layout fixes */
+    .home-section-left,
+    .home-section-right {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "imgArea"
+            "pArea";
+        row-gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .home-section-left > p,
+    .home-section-right > p {
+        max-width: 100%;
+    }
+
+    /* Footer adjustments */
+    .footer {
+        padding: 1rem 0.5rem;
+        font-size: 0.8em;
+    }
+
+    .fa {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .project {
+        width: 100%;
+        padding: 1rem;
+        margin: 0.75rem 0;
+        border-radius: 1rem;
+    }
+
+    .project-content {
+        padding: 0 0.5rem;
+    }
+
+    .slider-container,
+    .single-container {
+        max-width: 100%;
+    }
+
+    /* Navigation for smallest screens */
+    .button {
+        width: calc(var(--buttonWidth) * 0.7);
+        font-size: 0.75em;
+    }
+
+    .button-selector {
+        width: calc(var(--buttonWidth) * 0.7);
+    }
+
+    .button-container {
+        gap: calc(var(--buttonContainerGap) * 0.7);
+    }
 }

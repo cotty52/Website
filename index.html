@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
         <meta name="author" content="Christian Otty" />
         <title>Christian Otty</title>
         <script src="script.js" defer></script>
@@ -17,7 +17,7 @@
     <body> <!--onload="SiteLoad()" -->
         <!--<div class="center-line"></div>     --delete this later-->
         <div class="header">
-            <img id="portrait" src="./Images/Portrait.jpg" alt="Portrait Photo" />
+            <img id="portrait" src="./Images/Portrait.jpg" alt="portrait" />
             <div class="h1">Christian Otty | Computer Engineer</div>
             <div class="links">
                 <a href="https://www.linkedin.com/in/christian-otty/" target="_blank"
@@ -31,8 +31,8 @@
                 <div class="button-selector"></div>
                 <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')"
                     aria-label="Home page">Home</button>
-                <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')">Designs</button>
-                <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')">Coding</button>
+                <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')" aria-label="Designs">Designs</button>
+                <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')" aria-label="Coding">Coding</button>
             </div> <!-- end button-container -->
         </div> <!-- end nav -->
 
@@ -52,7 +52,7 @@
                         and system automation projects.
                     </p>
                     <div class="home-section-left">
-                        <img src="./Images/Canyon.png" alt="sad" onclick="ImgZoom(this)" />
+                        <img src="./Images/Canyon.png" alt="canyon" onclick="ImgZoom(this)" />
                         <p>
                             When I'm not coding or building robots, I enjoy exploring the world with my family. In the
                             summer of 2023, we went out west to visit national parks and to see amazing natural
@@ -92,13 +92,13 @@
                     </div>
                     <div id="botty" class="slider-container">
                         <div id="slide-1" class="slides displaySlide">
-                            <img class="slide" src="./Images/BOTTY_front.png" alt="sad :'(" />
+                            <img class="slide" src="./Images/BOTTY_front.png" alt="botty-front" />
                         </div>
                         <div id="slide-2" class="slides">
-                            <img class="slide" src="./Images/BOTTY_back.png" alt="sad :'(" />
+                            <img class="slide" src="./Images/BOTTY_back.png" alt="botty-back" />
                         </div>
                         <div id="slide-3" class="slides">
-                            <img class="slide" src="./Images/BOTTY_side.png" alt="sad :'(" />
+                            <img class="slide" src="./Images/BOTTY_side.png" alt="botty-side :'(" />
                         </div>
                         <div class="nav-buttons">
                             <button class="prev">&#10148</button>
@@ -118,7 +118,8 @@
                             I am part of Binghamton's Formula SAE club, where many students work in teams to design and
                             bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame
                             subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld
-                            from industry professionals. In my senior year, I was part of the Accumulator subteam, where I
+                            from industry professionals. In my senior year, I was part of the Accumulator subteam, where
+                            I
                             worked on the battery pack for the car.
                             <a href="https://binghamtonmotorsports.com/" target="_blank">Binghamton Motorsports</a>
                         </p>
@@ -128,16 +129,16 @@
                     </div>
                     <div id="formula" class="slider-container">
                         <div id="slide-1" class="slides displaySlide">
-                            <img class="slide" src="./Images/Car_Side.png" alt="sad" />
+                            <img class="slide" src="./Images/Car_Side.png" alt="car-side" />
                         </div>
                         <div id="slide-2" class="slides">
-                            <img class="slide" src="./Images/Car_Back.png" alt="sad" />
+                            <img class="slide" src="./Images/Car_Back.png" alt="car-back" />
                         </div>
                         <div id="slide-3" class="slides">
-                            <img class="slide" src="./Images/Car_Front.png" alt="sad" />
+                            <img class="slide" src="./Images/Car_Front.png" alt="car-front" />
                         </div>
                         <div id="slide-4" class="slides">
-                            <img class="slide" src="./Images/Welding.png" alt="sad" />
+                            <img class="slide" src="./Images/Welding.png" alt="welding" />
                         </div>
                         <div class="nav-buttons">
                             <button class="prev">&#10148</button>
@@ -150,7 +151,8 @@
                 <div class="project"> <!-- start arduino -->
                     <div class="project-content">
                         <p>
-                            This is a group project for an engineering class where we created a simple Simon Says game using
+                            This is a group project for an engineering class where we created a simple Simon Says game
+                            using
                             Arduino. The project had to include a theme. Our theme centered around aliens, and we were
                             conspiracy theorists who built an alien comunication device in a garage, hence why it looks
                             dishevelled.
@@ -161,16 +163,16 @@
                     </div>
                     <div id="arduino" class="slider-container">
                         <div id="slide-1" class="slides displaySlide">
-                            <img class="slide" src="./Images/Angle-1.png" alt="sad" />
+                            <img class="slide" src="./Images/Angle-1.png" alt="angle-1" />
                         </div>
                         <div id="slide-2" class="slides">
-                            <img class="slide" src="./Images/Angle-2.png" alt="sad" />
+                            <img class="slide" src="./Images/Angle-2.png" alt="angle-2" />
                         </div>
                         <div id="slide-3" class="slides">
-                            <img class="slide" src="./Images/Top.png" alt="sad" />
+                            <img class="slide" src="./Images/Top.png" alt="Top" />
                         </div>
                         <div id="slide-4" class="slides">
-                            <img class="slide" src="./Images/Poster.png" alt="sad" />
+                            <img class="slide" src="./Images/Poster.png" alt="poster" />
                         </div>
                         <div id="slide-5" class="slides">
                             <video width="100%" height="100%" muted loop controls>
@@ -200,7 +202,8 @@
                         process.
                         <br><br>
                         During my internship of summer 2024, I got a variety of programming experience. Most of my tasks
-                        revolved around using SQL to collect data from the server and creating automation scripts for others to use. I utilized
+                        revolved around using SQL to collect data from the server and creating automation scripts for
+                        others to use. I utilized
                         PowerShell to create most of the scripts, and I would sometimes implement them into a website
                         for easy access. This website used .NET 6 Razor Pages as its building blocks, which gave me
                         experience with real world applications of C#, HTML, and CSS.
@@ -226,6 +229,25 @@
                         </div>
                     </div> <!-- end single-container -->
                 </div> <!-- end idle-screen -->
+
+                <div class="project "> <!-- start senior-project-display -->
+                    <div class="project-content">
+                        <p>
+                            For my senior project, I worked with a group of four to create a portable solar power
+                            station. One aspect of the project I worked on was the external display. Shown below, it
+                            allows users to view statistics about the battery like the state of charge, battery voltage,
+                            overall wattage, etc. We used an ESP32 microcontroller to run the code for the SPI display.
+                        </p>
+                        <div class="more-button">
+                            <button onclick="ToggleMore(this)">More</button>
+                        </div>
+                    </div>
+                    <div id="senior-project" class="single-container">
+                        <div class="slides displaySlide">
+                            <img class="slide" src="./Images/Display_img.png" alt="external-display" />
+                        </div>
+                    </div> <!-- end single-container -->
+                </div> <!-- end senior-project-display -->
 
                 <div class="project "> <!-- start snake-game -->
                     <div class="project-content">

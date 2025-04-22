@@ -1,3 +1,15 @@
+// Use ResizeObserver to detect size changes
+let resizeTimer;
+const resizeObserver = new ResizeObserver(entries => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        const activeButton = document.querySelector(".button.active");
+        if (activeButton) {
+            activeButton.click();
+        }
+    }, 3000);
+});
+
 // Whenever the site is loaded, this function is called
 document.addEventListener("DOMContentLoaded", () => {
 	const sliders = document.querySelectorAll(".slider-container");
@@ -15,69 +27,48 @@ document.addEventListener("DOMContentLoaded", () => {
 			console.log("display: " + moreButton.style.display);
 		}
 	});
+
+    // Start observing the button container
+    const buttonContainer = document.querySelector(".button-container");
+    if (buttonContainer) {
+        resizeObserver.observe(buttonContainer);
+    }
 });
 
-let staticVar = 0;
-window.addEventListener("resize", () => {
-	if (staticVar === 0) {
-		staticVar = 1;
-		console.log("\nresize\n");
-		InitializeMoreButtons();
-		setTimeout(() => {
-			staticVar = 0;
-			InitializeMoreButtons();
-		}, 100);
-	}
-});
+function ShowPage(pageName, btnName) {
+    // Hide all pages
+    const pages = document.getElementsByClassName("page");
+    for (let i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
 
-function ShowPage (pageName, btnName) {
-	const clickedButton = document.getElementById(btnName);
-	const buttons = Array.from(
-		clickedButton.parentNode.querySelectorAll(".button")
-	);
-	const currentIndex = buttons.findIndex((button) => button.id === btnName);
+    // Update active button and pill
+    const activeButton = document.querySelector(".button.active");
+    const clickedButton = document.getElementById(btnName);
+    activeButton.classList.remove("active");
+    clickedButton.classList.add("active");
+    
+    updatePillPosition(clickedButton);
 
-	//Future proofing in case more pages and buttons are added
-	var pageContent, i;
-	pageContent = document.getElementsByClassName("page");
-	for (i = 0; i < pageContent.length; i++) {
-		pageContent[i].style.display = "none";
-	}
+    // Show new page
+    document.getElementById(pageName).style.display = "flex";
+    InitializeMoreButtons();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-	// Get id of previously active button, then remove the active class
-	const activeButton = document.querySelector(".button.active");
-	activeButton.classList.remove("active");
-	clickedButton.classList.add("active");
-
-	// Get root variables from CSS
-	const rootStyles = getComputedStyle(document.documentElement);
-	const buttonWidth = parseFloat(
-		rootStyles.getPropertyValue("--buttonWidth")
-	);
-	const buttonGap = parseFloat(
-		rootStyles.getPropertyValue("--buttonContainerGap")
-	);
-
-	// Based off of the index, multiply the total width and then set the x-offset of the pill
-	if (currentIndex !== -1) {
-		const translateX = currentIndex * (buttonWidth + buttonGap);
-		const pill = document.querySelector(".button-selector");
-		pill.style.transform = `translateX(${translateX}px)`;
-	}
-
-	// Get id of the new page and show it
-	const newPage = document.getElementById(pageName);
-	newPage.style.display = "flex";
-
-	InitializeMoreButtons();
-
-	window.scrollTo({ top: 0, behavior: "smooth" });
-
-	// Construct the new URL
-	//const newUrl = window.location.origin + "/#" + pageName;
-	// Update the URL without triggering a page reload
-	//window.history.pushState({ path: newUrl }, "", newUrl);
-};
+function updatePillPosition(activeButton) {
+    const buttonContainer = activeButton.parentNode;
+    const buttons = Array.from(buttonContainer.querySelectorAll(".button"));
+    const currentIndex = buttons.findIndex(button => button === activeButton);
+    const buttonGap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--buttonContainerGap"));
+    const pill = document.querySelector(".button-selector");
+    
+    if (currentIndex !== -1 && pill) {
+        const translateX = currentIndex * (activeButton.offsetWidth + buttonGap);
+        pill.style.width = `${activeButton.offsetWidth}px`;
+        pill.style.transform = `translateX(${translateX}px)`;
+    }
+}
 
 // IMAGE SLIDER
 class Slider {

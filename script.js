@@ -1,13 +1,12 @@
 // Use ResizeObserver to detect size changes
-let resizeTimer;
 const resizeObserver = new ResizeObserver(entries => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        const activeButton = document.querySelector(".button.active");
-        if (activeButton) {
-            activeButton.click();
-        }
-    }, 3000);
+	// Gets current active page button
+    const activeButton = document.querySelector(".button.active");
+
+	// Clicks the active button to refresh size
+	if (activeButton) {
+		activeButton.click();
+	}  
 });
 
 // Whenever the site is loaded, this function is called

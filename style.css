@@ -560,39 +560,36 @@ p {
 	clip-path: inset(-10px 0px 0px 0px);
 }
 
-.fa {
-	text-decoration: none;
-	font-size: 2rem;
-	width: 1.375rem;
-	aspect-ratio: 1/1;
-	border: none;
-	border-radius: 0.3rem;
-}
-
-.fa:hover {
-	opacity: var(--hover-opacity);
-}
-
-.fa-linkedin {
+/* Common styles for footer icons */
+.footer-icon {
+	display: flex; /* Use flexbox for centering */
+	justify-content: center; /* Horizontally center the icon */
+	align-items: center; /* Vertically center the icon */
+	/* text-decoration: none; */
+	/* font-size: 2rem; */
+	width: 1.3rem; /* Adjust width for consistent sizing */
 	margin-left: var(--footerGap);
-	background: #007bb5;
-	color: white;
-	padding-top: 0.25rem;
-	padding-bottom: 0.25rem;
-	padding-left: 0.25rem;
-	padding-right: 0.5rem;
+	/* height: 2.5rem; */
+	/* border: none; */
+	/* border-radius: 0.3rem; */
 }
 
-.fa-github {
+/* LinkedIn icon */
+/* .fa-linkedin {
+	width: 2rem;
 	margin-left: var(--footerGap);
-	background: #333;
+	/* background: #007bb5; 
+	/* color: white; 
+} */
+
+/* GitHub icon */
+/* .fa-github {
+	width: 2rem;
+	margin-left: var(--footerGap);
+	/* background: #333;
 	color: white;
-	padding-top: 0.1875rem;
-	padding-bottom: 0.1875rem;
-	padding-left: 0.25rem;
-	padding-right: 0.5rem;
-	border-radius: 100%;
-}
+	border-radius: 100%; Keep the circular shape 
+} */
 
 .horizontal-line {
 	height: 0.2rem;
@@ -608,7 +605,7 @@ p {
 @media screen and (max-width: 768px) {
     /* Typography adjustments */
     * {
-        font-size: calc(0.9rem + 0.5vw);
+		font-size: clamp(0.9rem, calc(0.9rem + 0.5vw), 1rem);
     }
 
     /* Header adjustments */
@@ -639,6 +636,10 @@ p {
         width: calc(var(--buttonWidth) * 0.8);
     }
 
+	.page {
+		margin: 0.8rem;
+	}
+
     /* Project layout adjustments */
     .project {
         width: 95%;
@@ -664,12 +665,15 @@ p {
 
     /* Footer adjustments */
     .footer {
-        padding: 1rem 0.5rem;
+        /* padding: 1rem 0.5rem; */
+		padding: 1rem 0rem 1rem 0.5rem;
         font-size: 0.8em;
     }
 
     .fa {
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* Scale down the icon size */
+        width: 2rem; /* Adjust width */
+        height: 2rem; /* Adjust height */
     }
 }
 

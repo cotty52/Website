@@ -1,12 +1,12 @@
 // Use ResizeObserver to detect size changes
-const resizeObserver = new ResizeObserver(entries => {
+const resizeObserver = new ResizeObserver((entries) => {
 	// Gets current active page button
-    const activeButton = document.querySelector(".button.active");
+	const activeButton = document.querySelector(".button.active");
 
 	// Clicks the active button to refresh size
 	if (activeButton) {
 		activeButton.click();
-	}  
+	}
 });
 
 // Whenever the site is loaded, this function is called
@@ -27,46 +27,144 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-    // Start observing the button container
-    const buttonContainer = document.querySelector(".button-container");
-    if (buttonContainer) {
-        resizeObserver.observe(buttonContainer);
-    }
+	// Start observing the button container
+	const buttonContainer = document.querySelector(".button-container");
+	if (buttonContainer) {
+		resizeObserver.observe(buttonContainer);
+	}
 });
 
 function ShowPage(pageName, btnName) {
-    // Hide all pages
-    const pages = document.getElementsByClassName("page");
-    for (let i = 0; i < pages.length; i++) {
-        pages[i].style.display = "none";
-    }
+	// Hide all pages
+	const pages = document.getElementsByClassName("page");
+	for (let i = 0; i < pages.length; i++) {
+		pages[i].style.display = "none";
+	}
 
-    // Update active button and pill
-    const activeButton = document.querySelector(".button.active");
-    const clickedButton = document.getElementById(btnName);
-    activeButton.classList.remove("active");
-    clickedButton.classList.add("active");
-    
-    updatePillPosition(clickedButton);
+	// Update active button and pill
+	const activeButton = document.querySelector(".button.active");
+	const clickedButton = document.getElementById(btnName);
+	activeButton.classList.remove("active");
+	clickedButton.classList.add("active");
 
-    // Show new page
-    document.getElementById(pageName).style.display = "flex";
-    InitializeMoreButtons();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+	updatePillPosition(clickedButton);
+
+	// Show new page
+	document.getElementById(pageName).style.display = "flex";
+	InitializeMoreButtons();
+	window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function updatePillPosition(activeButton) {
-    const buttonContainer = activeButton.parentNode;
-    const buttons = Array.from(buttonContainer.querySelectorAll(".button"));
-    const currentIndex = buttons.findIndex(button => button === activeButton);
-    const buttonGap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--buttonContainerGap"));
     const pill = document.querySelector(".button-selector");
     
-    if (currentIndex !== -1 && pill) {
-        const translateX = currentIndex * (activeButton.offsetWidth + buttonGap);
-        pill.style.width = `${activeButton.offsetWidth}px`;
-        pill.style.transform = `translateX(${translateX}px)`;
+    if (pill && activeButton) {
+        // Get the button's exact position relative to the viewport
+        const buttonRect = activeButton.getBoundingClientRect();
+        // Get the container position to calculate relative position
+        const containerRect = activeButton.parentNode.getBoundingClientRect();
+        
+        // Calculate position relative to the container
+        const relativeLeft = buttonRect.left - containerRect.left;
+        
+        // Set the pill width to match the button's width
+        pill.style.width = `${buttonRect.width}px`;
+        
+        // Set the transform to match the button's exact position
+        pill.style.transform = `translateX(${relativeLeft}px)`;
     }
+}
+
+function InitializeMoreButtons() {
+	const projectContents = document.querySelectorAll(".project-content");
+
+	projectContents.forEach((content) => {
+		const moreButton = content.querySelector(".more-button");
+		const paragraphBlock = content.querySelector("p");
+		const isTruncated = CheckOverflow(paragraphBlock);
+
+		// console.log("checkheight: ", CheckHeight(content));
+		// console.log("isTruncated: ", isTruncated);
+		if (CheckHeight(content) && !isTruncated) {
+			// console.log("check if")
+			moreButton.style.display = "block";
+			if (
+				!paragraphBlock.classList.contains("truncate-text") &&
+				!paragraphBlock.classList.contains("show-more")
+			) {
+				paragraphBlock.classList.add("truncate-text");
+			}
+		} else if (!CheckHeight(content) && !isTruncated) {
+			// console.log("else if check")
+			moreButton.style.display = "none";
+			paragraphBlock.classList.remove("truncate-text");
+		} else {
+			// console.log("end else")
+		}
+	});
+}
+
+function ToggleMore(button) {
+	const projectContent = button.parentElement.previousElementSibling;
+
+	if (projectContent) {
+		console.log("project content: " + projectContent);
+
+		if (projectContent.classList.contains("truncate-text")) {
+			button.textContent = "Less";
+			projectContent.classList.remove("truncate-text");
+			projectContent.classList.add("show-more");
+		} else {
+			button.textContent = "More";
+			projectContent.classList.remove("show-more");
+			projectContent.classList.add("truncate-text");
+		}
+	} else {
+		console.error("projectContent is null. Check your HTML structure.");
+	}
+}
+
+function CheckHeight(element) {
+	const rootStyle = getComputedStyle(document.documentElement);
+	const lineHeight =
+		parseFloat(rootStyle.getPropertyValue("--lineHeight")) || 1.5; // Default to 1.5 if not found
+	const maxLines =
+		parseFloat(rootStyle.getPropertyValue("--linesShown")) || 2; // Default to 2 if not found
+	const maxHeight =
+		lineHeight *
+		maxLines *
+		parseFloat(getComputedStyle(document.body).fontSize);
+	const paragraph = element.querySelector("p");
+
+	if (paragraph.offsetHeight > maxHeight) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function CheckOverflow(element) {
+	return (
+		element.scrollHeight > element.clientHeight ||
+		element.scrollWidth > element.clientWidth
+	);
+}
+
+function ImgZoom(img) {
+	// Check if the image is already zoomed
+	if (img.classList.contains("img-zoom")) {
+		img.classList.remove("img-zoom");
+		document.body.style.overflow = ""; // Enable scroll when image is not zoomed
+	} else {
+		// Remove img-zoom class from any currently zoomed image
+		const currentZoomed = document.querySelector(".img-zoom");
+		if (currentZoomed) {
+			currentZoomed.classList.remove("img-zoom");
+		}
+
+		img.classList.add("img-zoom");
+		document.body.style.overflow = "hidden"; // Disable scroll when image is zoomed
+	}
 }
 
 // IMAGE SLIDER
@@ -180,96 +278,5 @@ class Slider {
 			direction = "right";
 		}
 		this.ShowSlide(index, direction);
-	}
-}
-
-function InitializeMoreButtons() {
-	const projectContents = document.querySelectorAll(".project-content");
-	
-
-	projectContents.forEach((content) => {
-		const moreButton = content.querySelector(".more-button");
-		const paragraphBlock = content.querySelector("p")
-		const isTruncated = CheckOverflow(paragraphBlock);
-
-		// console.log("checkheight: ", CheckHeight(content));
-		// console.log("isTruncated: ", isTruncated);
-		if (CheckHeight(content) && !(isTruncated)) 
-		{
-			// console.log("check if")
-			moreButton.style.display = "block";
-			if (!paragraphBlock.classList.contains("truncate-text") && !paragraphBlock.classList.contains("show-more")) 
-			{
-				paragraphBlock.classList.add("truncate-text");
-			}
-		}
-		else if (!CheckHeight(content) && !(isTruncated))
-		{
-			// console.log("else if check")
-			moreButton.style.display = "none";
-			paragraphBlock.classList.remove("truncate-text");
-		}
-		else
-		{
-			// console.log("end else")
-		}
-	});
-}
-
-function ToggleMore(button) {
-	const projectContent = button.parentElement.previousElementSibling;
-
-	if (projectContent) {
-		console.log("project content: " + projectContent);
-
-		if (projectContent.classList.contains("truncate-text")) {
-			button.textContent = "Less";
-			projectContent.classList.remove("truncate-text");
-			projectContent.classList.add("show-more");
-		} else {
-			button.textContent = "More";
-			projectContent.classList.remove("show-more");
-			projectContent.classList.add("truncate-text");
-		}
-	} else {
-		console.error("projectContent is null. Check your HTML structure.");
-	}
-}
-
-function CheckHeight(element) {
-	const rootStyle = getComputedStyle(document.documentElement);
-	const lineHeight = parseFloat(rootStyle.getPropertyValue("--lineHeight")) || 1.5; // Default to 1.5 if not found
-	const maxLines = parseFloat(rootStyle.getPropertyValue("--linesShown")) || 2; // Default to 2 if not found
-	const maxHeight = lineHeight * maxLines * parseFloat(getComputedStyle(document.body).fontSize);
-	const paragraph = element.querySelector("p");
-
-	if (paragraph.offsetHeight > maxHeight) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function CheckOverflow(element) {
-	return (
-		element.scrollHeight > element.clientHeight ||
-		element.scrollWidth > element.clientWidth
-	);
-}
-
-function ImgZoom(img) {
-	// Check if the image is already zoomed
-	if (img.classList.contains("img-zoom")) {
-		img.classList.remove("img-zoom");
-		document.body.style.overflow = ""; // Enable scroll when image is not zoomed
-	} else {
-		// Remove img-zoom class from any currently zoomed image
-		const currentZoomed = document.querySelector(".img-zoom");
-		if (currentZoomed) {
-			currentZoomed.classList.remove("img-zoom");
-		}
-
-		img.classList.add("img-zoom");
-		document.body.style.overflow = "hidden"; // Disable scroll when image is zoomed
 	}
 }

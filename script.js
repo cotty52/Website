@@ -56,23 +56,28 @@ function ShowPage(pageName, btnName) {
 }
 
 function updatePillPosition(activeButton) {
-    const pill = document.querySelector(".button-selector");
-    
-    if (pill && activeButton) {
-        // Get the button's exact position relative to the viewport
-        const buttonRect = activeButton.getBoundingClientRect();
-        // Get the container position to calculate relative position
-        const containerRect = activeButton.parentNode.getBoundingClientRect();
-        
-        // Calculate position relative to the container
-        const relativeLeft = buttonRect.left - containerRect.left;
-        
-        // Set the pill width to match the button's width
-        pill.style.width = `${buttonRect.width}px`;
-        
-        // Set the transform to match the button's exact position
-        pill.style.transform = `translateX(${relativeLeft}px)`;
-    }
+	const buttonContainer = activeButton.parentNode;
+	const buttons = Array.from(buttonContainer.querySelectorAll(".button"));
+	const currentIndex = buttons.findIndex((button) => button === activeButton);
+	const pill = document.querySelector(".button-selector");
+	let buttonGap = parseFloat(
+		getComputedStyle(document.documentElement).getPropertyValue(
+			"--buttonContainerGap"
+		)
+	);
+
+	if (window.matchMedia("(max-width: 768px)").matches) {
+		buttonGap = buttonGap * 0.8;
+	} else if (window.matchMedia("(max-width: 480px)").matches) {
+		buttonGap = buttonGap * 0.7;
+	}
+
+	if (currentIndex !== -1 && pill) {
+		const translateX =
+			currentIndex * (activeButton.offsetWidth + buttonGap);
+		pill.style.width = `${activeButton.offsetWidth}px`;
+		pill.style.transform = `translateX(${translateX}px)`;
+	}
 }
 
 function InitializeMoreButtons() {

@@ -156,20 +156,93 @@ function CheckOverflow(element) {
 }
 
 function ImgZoom(img) {
-	// Check if the image is already zoomed
-	if (img.classList.contains("img-zoom")) {
-		img.classList.remove("img-zoom");
-		document.body.style.overflow = ""; // Enable scroll when image is not zoomed
-	} else {
-		// Remove img-zoom class from any currently zoomed image
-		const currentZoomed = document.querySelector(".img-zoom");
-		if (currentZoomed) {
-			currentZoomed.classList.remove("img-zoom");
-		}
+    // Check if the image is already zoomed
+    if (img.classList.contains("img-zoom")) {
+        img.classList.remove("img-zoom");
+        document.body.style.overflow = ""; // Enable scroll when image is not zoomed
+        
+        // Remove the placeholder if it exists
+        const placeholder = document.getElementById("img-placeholder");
+        if (placeholder) {
+            // Restore the original position of the image
+            img.style.position = "";
+            img.style.zIndex = "";
+            img.style.animation = "";
+            placeholder.parentNode.insertBefore(img, placeholder);
+            placeholder.parentNode.removeChild(placeholder);
+        }
+        
+        // Remove the overlay
+        const overlay = document.getElementById("zoom-overlay");
+        if (overlay) {
+            document.body.removeChild(overlay);
+        }
+    } else {
+        // Remove img-zoom class from any currently zoomed image and its placeholder
+        const currentZoomed = document.querySelector(".img-zoom");
+        if (currentZoomed) {
+            currentZoomed.classList.remove("img-zoom");
+            const oldPlaceholder = document.getElementById("img-placeholder");
+            if (oldPlaceholder) {
+                currentZoomed.style.position = "";
+                currentZoomed.style.zIndex = "";
+                currentZoomed.style.animation = "";
+                oldPlaceholder.parentNode.insertBefore(currentZoomed, oldPlaceholder);
+                oldPlaceholder.parentNode.removeChild(oldPlaceholder);
+            }
+            
+            // Remove any existing overlay
+            const existingOverlay = document.getElementById("zoom-overlay");
+            if (existingOverlay) {
+                document.body.removeChild(existingOverlay);
+            }
+        }
 
-		img.classList.add("img-zoom");
-		document.body.style.overflow = "hidden"; // Disable scroll when image is zoomed
-	}
+        // Create a placeholder with the same dimensions as the image
+        const placeholder = document.createElement("div");
+        placeholder.id = "img-placeholder";
+        placeholder.style.width = img.offsetWidth + "px";
+        placeholder.style.height = img.offsetHeight + "px";
+        placeholder.style.display = "inline-block"; // Maintain inline nature of the image
+        placeholder.style.backgroundColor = "white"; // White background
+        placeholder.style.borderRadius = "0.5rem"; // Match image border radius
+        placeholder.style.boxShadow = "inset 0 0 10px rgba(0, 0, 0, 0.2)"; // Add inset shadow
+        
+        // Insert the placeholder where the image was
+        img.parentNode.insertBefore(placeholder, img);
+        
+        // Create overlay element
+        const overlay = document.createElement("div");
+        overlay.id = "zoom-overlay";
+        overlay.style.position = "fixed";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.width = "100%";
+        overlay.style.height = "100%";
+        overlay.style.backgroundColor = "rgba(0, 0, 0, 0.75)"; // Dark overlay with 75% opacity
+        overlay.style.zIndex = "999"; // Just below the zoomed image
+        
+        // Add click event to close on overlay click
+        overlay.addEventListener("click", () => {
+            ImgZoom(img); // Close the zoom when clicking outside the image
+        });
+        
+        // Add the overlay to the body
+        document.body.appendChild(overlay);
+        
+        // Apply zoom class and modify position
+        img.classList.add("img-zoom");
+        img.style.position = "fixed";
+        img.style.zIndex = "1000";
+        document.body.style.overflow = "hidden"; // Disable scroll when image is zoomed
+        
+        // Move the image to the body to ensure it appears on top
+        document.body.appendChild(img);
+        
+        // Ensure animation plays
+        // Force browser to recognize the change by accessing offsetWidth
+        void img.offsetWidth;
+    }
 }
 
 // IMAGE SLIDER

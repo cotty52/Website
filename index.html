@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,8 +13,8 @@
         <link rel="icon" type="image/png" href="./Images/Favicon.png">
     </head>
 
-    <body> <!--onload="SiteLoad()" -->
-        <!--<div class="center-line"></div>     --delete this later-->
+    <body>
+        <div id="particles-js"></div>
         <div class="header">
             <img id="portrait" src="./Images/Portrait.jpg" alt="portrait" />
             <div class="h1">Christian Otty | Computer Engineer</div>
@@ -260,5 +261,13 @@
                 <img src="./Images/GitHub_2.png" class="footer-icon" alt="GitHub" /></a>
             <div class="horizontal-line"></div>
         </div> <!-- end footer -->
+
+        <script src="./particles.min.js"></script>
+        <script>
+            particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+                console.log('particles.js config loaded');
+            });
+        </script>
     </body>
+
 </html>

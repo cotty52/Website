@@ -16,14 +16,16 @@ window.onload = () => {
 
 // Function to initialize particles.js
 function initializeParticles() {
+    console.log('Initializing particles...');
+    
     particlesJS.load('particles-js', 'particlesjs-config.json', function() {
         console.log('particles.js config loaded');
+        
+        // Set particlesInitialized to true only AFTER particles are fully loaded
         particlesInitialized = true;
         
         // Adjust particles container after initialization
-        setTimeout(() => {
-            AdjustParticlesContainer();
-        }, 100);
+        AdjustParticlesContainer();
     });
 }
 
@@ -131,44 +133,31 @@ function AdjustParticlesContainer() {
     }
 
     if (!particlesInitialized) {
-        console.error('Particles not initialized yet');
+        console.warn('Particles not initialized yet, skipping adjustment');
         return;
     }
 
-    if (window.pJSDom && window.pJSDom.length > 0) {
-        const pJSInstance = window.pJSDom.find(
-            (instance) => instance.pJS.canvas.tag_id === "particles-js"
-        );
+    // Directly target the canvas element
+    const canvas = particlesContainer.querySelector('canvas');
 
-        if (pJSInstance) {
-            console.log('Found particles instance, updating canvas dimensions...');
-
-            const containerWidth = particlesContainer.offsetWidth;
-            const containerHeight = particlesContainer.offsetHeight;
-
-            // Update internal dimensions
-            pJSInstance.pJS.fn.canvas.w = containerWidth;
-            pJSInstance.pJS.fn.canvas.h = containerHeight;
-
-            // Update canvas element dimensions
-            pJSInstance.pJS.canvas.el.width = containerWidth;
-            pJSInstance.pJS.canvas.el.height = containerHeight;
-            pJSInstance.pJS.canvas.el.style.width = containerWidth + 'px';
-            pJSInstance.pJS.canvas.el.style.height = containerHeight + 'px';
-
-            // Clear and recreate particles
-            pJSInstance.pJS.particles.array = [];
-            pJSInstance.pJS.fn.vendors.densityPxByValue();
-            pJSInstance.pJS.fn.particlesCreate();
-            pJSInstance.pJS.fn.particlesDraw();
-
-            console.log(`Particles adjusted to: ${containerWidth}x${containerHeight}`);
-        } else {
-            console.error('Particles instance not found in pJSDom');
-        }
-    } else {
-        console.error('pJSDom not available or empty');
+    if (!canvas) {
+        console.error('Canvas element not found within particles container');
+        return;
     }
+
+    const containerWidth = particlesContainer.offsetWidth;
+    const containerHeight = particlesContainer.offsetHeight;
+
+    console.log(`Container dimensions: ${containerWidth}x${containerHeight}`);
+    console.log(`Canvas current dimensions: ${canvas.width}x${canvas.height}`);
+
+    // Update canvas element dimensions
+    canvas.width = containerWidth;
+    canvas.height = containerHeight;
+    canvas.style.width = containerWidth + 'px';
+    canvas.style.height = containerHeight + 'px';
+
+    console.log(`Canvas adjusted to: ${containerWidth}x${containerHeight}`);
 }
 
 function UpdatePillPosition(activeButton) {

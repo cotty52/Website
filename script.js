@@ -1,5 +1,33 @@
-// Use ResizeObserver to detect size changes
-const resizeObserver = new ResizeObserver((entries) => {
+// Waits for the page to load before executing the script
+// Does not wait for CSS, images, etc.
+document.addEventListener("DOMContentLoaded", () => {
+    // Initialize Sliders (they operate on existing HTML, may not force layout immediately)
+    const sliders = document.querySelectorAll(".slider-container");
+    sliders.forEach((sliderContainer) => {
+        new Slider(sliderContainer);
+    });
+});
+
+// Waits for all resources to load before executing
+window.onload = () => {
+    // Call the initial page show (e.g., home page)
+    // This will then call updatePillPosition and InitializeMoreButtons, which access layout properties.
+    document.getElementById("homeBtn").click();
+
+    // The following block was moved from DOMContentLoaded to here:
+    const projectContents = document.querySelectorAll(".project-content");
+    projectContents.forEach((content) => {
+        const moreButton = content.querySelector(".more-button button");
+        // CheckHeight also accesses layout, safer to do after load
+        if (moreButton && CheckHeight(content)) {
+            moreButton.style.display = "block";
+        }
+    });
+
+	AdjustParticlesHeight();
+};
+
+window.addEventListener("resize", () => {
 	// Gets current active page button
 	const activeButton = document.querySelector(".button.active");
 
@@ -7,32 +35,38 @@ const resizeObserver = new ResizeObserver((entries) => {
 	if (activeButton) {
 		activeButton.click();
 	}
+
+    AdjustParticlesHeight();
 });
 
-// Whenever the site is loaded, this function is called
-document.addEventListener("DOMContentLoaded", () => {
-	const sliders = document.querySelectorAll(".slider-container");
-	sliders.forEach((sliderContainer) => {
-		new Slider(sliderContainer);
-	});
-	// When site is loaded, press that button. Could also call ShowPage
-	document.getElementById("homeBtn").click();
+// Function to adjust particles height and trigger a refresh
+function AdjustParticlesHeight() {
+    const particlesContainer = document.getElementById("particles-js");
+    const headerElement = document.querySelector(".header");
 
-	const projectContents = document.querySelectorAll(".project-content");
-	projectContents.forEach((content) => {
-		const moreButton = content.querySelector(".more-button button"); // Adjusted selector
-		if (moreButton && CheckHeight(content)) {
-			moreButton.style.display = "block";
-			console.log("display: " + moreButton.style.display);
-		}
-	});
+    if (particlesContainer && headerElement) {
+        const headerStyle = window.getComputedStyle(headerElement);
+        const marginBottom = parseFloat(headerStyle.marginBottom);
+        particlesContainer.style.height = `${headerElement.offsetHeight + (marginBottom)}px`;
 
-	// Start observing the button container
-	const buttonContainer = document.querySelector(".button-container");
-	if (buttonContainer) {
-		resizeObserver.observe(buttonContainer);
-	}
-});
+        // Check if particles has initialized and update its instance
+        if (window.pJSDom && window.pJSDom.length > 0) {
+            // Find the instance for 'particles-js'
+            const pJSInstance = window.pJSDom.find(instance => instance.pJS.canvas.tag_id === 'particles-js');
+            if (pJSInstance) {
+                // Manually trigger the resize event on the canvas
+                // This forces particles.js to recalculate and redraw its canvas
+                pJSInstance.pJS.fn.vendors.densityPxByValue(); // Recalculate density for squish fix
+                pJSInstance.pJS.fn.canvas.w = particlesContainer.offsetWidth; // Update internal width
+                pJSInstance.pJS.fn.canvas.h = particlesContainer.offsetHeight; // Update internal height
+                pJSInstance.pJS.canvas.el.width = particlesContainer.offsetWidth; // Set actual canvas element width
+                pJSInstance.pJS.canvas.el.height = particlesContainer.offsetHeight; // Set actual canvas element height
+                pJSInstance.pJS.fn.particlesCreate(); // Re-create particles with new dimensions
+                pJSInstance.pJS.fn.particlesDraw(); // Redraw them
+            }
+        }
+    }
+}
 
 function ShowPage(pageName, btnName) {
 	// Hide all pages
@@ -113,9 +147,7 @@ function ToggleMore(button) {
 	const projectContent = button.parentElement.previousElementSibling;
 
 	if (projectContent) {
-		console.log("project content: " + projectContent);
-
-		if (projectContent.classList.contains("truncate-text")) {
+				if (projectContent.classList.contains("truncate-text")) {
 			button.textContent = "Less";
 			projectContent.classList.remove("truncate-text");
 			projectContent.classList.add("show-more");

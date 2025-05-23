@@ -7,9 +7,8 @@
         <meta name="author" content="Christian Otty" />
         <title>Christian Otty</title>
         <script src="script.js" defer></script>
+        <script src="particles.min.js"></script>
         <link rel="stylesheet" href="style.css" />
-        <!-- <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
         <link rel="icon" type="image/png" href="./Images/Favicon.png">
     </head>
 
@@ -22,237 +21,28 @@
                 <a href="https://www.linkedin.com/in/christian-otty/" target="_blank" rel="noopener"
                     title="Visit my LinkedIn">LinkedIn</a>
                 <a href="https://github.com/cotty52" target="_blank" rel="noopener" title="Visit my GitHub">GitHub</a>
-            </div> <!-- end links -->
-        </div> <!-- end header -->
+            </div>
+        </div>
 
         <div class="nav">
             <div class="button-container">
                 <div class="button-selector"></div>
-                <button id="homeBtn" class="button active" onclick="ShowPage('home', 'homeBtn')"
+                <button id="homeBtn" class="button active" onclick="LoadPage('home.html', 'homeBtn')"
                     aria-label="Home page">Home</button>
-                <button id="designsBtn" class="button" onclick="ShowPage('designs', 'designsBtn')"
+                <button id="designsBtn" class="button" onclick="LoadPage('designs.html', 'designsBtn')"
                     aria-label="Designs">Designs</button>
-                <button id="codingBtn" class="button" onclick="ShowPage('coding', 'codingBtn')"
+                <button id="codingBtn" class="button" onclick="LoadPage('coding.html', 'codingBtn')"
                     aria-label="Coding">Coding</button>
-            </div> <!-- end button-container -->
-        </div> <!-- end nav -->
+            </div>
+        </div>
 
         <div class="main">
-            <div id="home" class="page " style="display: none">
-                <!-- <h2>Welcome to My Portfolio!</h2> -->
-                <div class="page-content">
-                    <p>
-                        Hello, welcome to my website! My name is Christian and I am an engineering student studying at
-                        Binghamton University. I am currently a senior computer engineering major and am on track to
-                        graduate with my masters in May of 2026.
-                        <br><br>
-                        Balancing academics with hands-on experience, I'm actively involved in clubs such as the Society
-                        of Automotive Engineers and Watson Combat Robotics League. These clubs have honed my teamwork
-                        and project management skills. This past summer, I had the opportunity to intern at New York
-                        State's ITS department, where I collaborated with experienced developers on server maintenance
-                        and system automation projects.
-                    </p>
-                    <div class="home-section-left">
-                        <img src="./Images/Canyon.png" alt="canyon" onclick="ImgZoom(this)" />
-                        <p>
-                            When I'm not coding or building robots, I enjoy exploring the world with my family. In the
-                            summer of 2023, we went out west to visit national parks and to see amazing natural
-                            creations, like the Grand Canyon.
-                        </p>
-                    </div>
-                    <div class="home-section-right">
-                        <p>
-                            I love learning about anything technology related. Current news about recent tech
-                            developments, how different computer parts work, or even learning different programs to try
-                            them out. I had a lot of fun using the 3D modeling software Blender at one point, and this
-                            is a rendering of a scene I created from scratch following a tutorial.
-                        </p>
-                        <img src="./Images/Donut.png" alt="sad" onclick="ImgZoom(this)" />
-                    </div>
-                </div> <!-- end page-content -->
-            </div> <!-- end home -->
+            <div id="page-content" class="page">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
 
-            <div id="designs" class="page " style="display: none">
-                <div class="page-content">
-                    <p>
-                        These are some projects I have worked on that involved design and creation. I really enjoy
-                        creating and working on all types of projects, ranging from 3D printed battle bot, to hands on
-                        work, to this very website. I have always had a passion for learning new things, especially if
-                        it allows me to express my creativity.
-                    </p>
-                </div>
-                <div class="project"> <!-- start botty -->
-                    <div class="project-content">
-                        <p>
-                            This is BOTTY, a 3D printed battlebot created to compete in
-                            Binghamton's Watson Combat Robotics League (WCRL)
-                        </p>
-                        <div class="more-button">
-                            <button onclick="ToggleMore(this)">More</button>
-                        </div>
-                    </div>
-                    <div id="botty" class="slider-container">
-                        <div id="slide-1" class="slides displaySlide">
-                            <img class="slide" src="./Images/BOTTY_front.png" alt="botty-front" />
-                        </div>
-                        <div id="slide-2" class="slides">
-                            <img class="slide" src="./Images/BOTTY_back.png" alt="botty-back" />
-                        </div>
-                        <div id="slide-3" class="slides">
-                            <img class="slide" src="./Images/BOTTY_side.png" alt="botty-side :'(" />
-                        </div>
-                        <div class="nav-buttons">
-                            <button class="prev">&#10148</button>
-                            <button class="next">&#10148</button>
-                        </div>
-                        <div class="slider-nav">
-                            <!-- <button class="sliderDot" onclick="ChangeSlide(0)"></button>
-                            <button class="sliderDot" onclick="ChangeSlide(1)"></button>
-                            <button class="sliderDot" onclick="ChangeSlide(2)"></button> -->
-                        </div>
-                    </div> <!-- end slider-container -->
-                </div> <!-- end botty -->
-
-                <div class="project"> <!-- start formula -->
-                    <div class="project-content">
-                        <p>
-                            I am part of Binghamton's Formula SAE club, where many students work in teams to design and
-                            bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame
-                            subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld
-                            from industry professionals. In my senior year, I was part of the Accumulator subteam, where
-                            I
-                            worked on the battery pack for the car.
-                            <a href="https://binghamtonmotorsports.com/" target="_blank" rel="noopener">Binghamton
-                                Motorsports</a>
-                        </p>
-                        <div class="more-button">
-                            <button onclick="ToggleMore(this)">More</button>
-                        </div>
-                    </div>
-                    <div id="formula" class="slider-container">
-                        <div id="slide-1" class="slides displaySlide">
-                            <img class="slide" src="./Images/Car_Side.png" alt="car-side" />
-                        </div>
-                        <div id="slide-2" class="slides">
-                            <img class="slide" src="./Images/Car_Back.png" alt="car-back" />
-                        </div>
-                        <div id="slide-3" class="slides">
-                            <img class="slide" src="./Images/Car_Front.png" alt="car-front" />
-                        </div>
-                        <div id="slide-4" class="slides">
-                            <img class="slide" src="./Images/Welding.png" alt="welding" />
-                        </div>
-                        <div class="nav-buttons">
-                            <button class="prev">&#10148</button>
-                            <button class="next">&#10148</button>
-                        </div>
-                        <div class="slider-nav"></div>
-                    </div> <!-- end slider-container -->
-                </div> <!-- end formula -->
-
-                <div class="project"> <!-- start arduino -->
-                    <div class="project-content">
-                        <p>
-                            This is a group project for an engineering class where we created a simple Simon Says game
-                            using
-                            Arduino. The project had to include a theme. Our theme centered around aliens, and we were
-                            conspiracy theorists who built an alien comunication device in a garage, hence why it looks
-                            dishevelled.
-                        </p>
-                        <div class="more-button">
-                            <button onclick="ToggleMore(this)">More</button>
-                        </div>
-                    </div>
-                    <div id="arduino" class="slider-container">
-                        <div id="slide-1" class="slides displaySlide">
-                            <img class="slide" src="./Images/Angle-1.png" alt="angle-1" />
-                        </div>
-                        <div id="slide-2" class="slides">
-                            <img class="slide" src="./Images/Angle-2.png" alt="angle-2" />
-                        </div>
-                        <div id="slide-3" class="slides">
-                            <img class="slide" src="./Images/Top.png" alt="Top" />
-                        </div>
-                        <div id="slide-4" class="slides">
-                            <img class="slide" src="./Images/Poster.png" alt="poster" />
-                        </div>
-                        <div id="slide-5" class="slides">
-                            <video width="100%" height="100%" muted loop controls>
-                                <source src="./Images/Arduino_Video.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div class="nav-buttons">
-                            <button class="prev">&#10148</button>
-                            <button class="next">&#10148</button>
-                        </div>
-                        <div class="slider-nav">
-                            <!-- where the slider dots go -->
-                        </div>
-                    </div> <!-- end slider-container -->
-                </div> <!-- end arduino -->
-            </div> <!-- end designs -->
-
-            <div id="coding" class="page " style="display: none">
-                <div class="page-content">
-                    <p>
-                        Here are some coding projects I have done. Most of them are in python, but I have made small
-                        scale school projects in other languages such as Java and C. I built this website from scratch
-                        using HTML, CSS, and JavaScript. Larning new languages is fun for me. Getting familiar with how
-                        they work and what makes them different or similar to other ones I've used is an enjoyable
-                        process.
-                        <br><br>
-                        During my internship of summer 2024, I got a variety of programming experience. Most of my tasks
-                        revolved around using SQL to collect data from the server and creating automation scripts for
-                        others to use. I utilized
-                        PowerShell to create most of the scripts, and I would sometimes implement them into a website
-                        for easy access. This website used .NET 6 Razor Pages as its building blocks, which gave me
-                        experience with real world applications of C#, HTML, and CSS.
-                    </p>
-                </div>
-
-                <div class="project "> <!-- start idle-screen -->
-                    <div class="project-content">
-                        <p>
-                            This is a python script that allows you to input an image and it creates a bouncing idle
-                            screen from it, like the classic DVD logo.
-                        </p>
-                        <div class="more-button">
-                            <button onclick="ToggleMore(this)">More</button>
-                        </div>
-                    </div>
-                    <div id="idle-screen" class="single-container">
-                        <div class="slides displaySlide">
-                            <video muted loop controls autoplay>
-                                <source src="./Images/Idle_Bounce.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div> <!-- end single-container -->
-                </div> <!-- end idle-screen -->
-
-                <div class="project "> <!-- start senior-project-display -->
-                    <div class="project-content">
-                        <p>
-                            For my senior project, I worked with a group of four to create a portable solar power
-                            station. One aspect of the project I worked on was the external display. Shown below, it
-                            allows users to view statistics about the battery like the state of charge, battery voltage,
-                            overall wattage, etc. We used an ESP32 microcontroller to run the code for the SPI display.
-                        </p>
-                        <div class="more-button">
-                            <button onclick="ToggleMore(this)">More</button>
-                        </div>
-                    </div>
-                    <div id="senior-project" class="single-container">
-                        <div class="slides displaySlide">
-                            <img class="slide" src="./Images/Display_img.png" alt="external-display" />
-                        </div>
-                    </div> <!-- end single-container -->
-                </div> <!-- end senior-project-display -->
-            </div> <!-- end coding -->
-        </div> <!-- end main -->
-
-        <div class="footer ">
+        <div class="footer">
             <div>2025 | Christian Otty</div>
             <a href="https://www.linkedin.com/in/christian-otty/" target="_blank" rel="noopener"
                 title="Visit my LinkedIn">
@@ -260,14 +50,7 @@
             <a href="https://github.com/cotty52" target="_blank" rel="noopener" title="Visit my GitHub">
                 <img src="./Images/GitHub_2.png" class="footer-icon" alt="GitHub" /></a>
             <div class="horizontal-line"></div>
-        </div> <!-- end footer -->
-
-        <script src="./particles.min.js"></script>
-        <script>
-            particlesJS.load('particles-js', 'particlesjs-config.json', function() {
-                console.log('particles.js config loaded');
-            });
-        </script>
+        </div>
     </body>
 
 </html>

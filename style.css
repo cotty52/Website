@@ -2,7 +2,8 @@
 :root {
 	--mainRGB: 50, 140, 220;
 	/* hex(#328cdc) */
-	--blueColor: rgb(102, 153, 204); /* #6699cc */
+	--blueColor: rgb(102, 153, 204);
+	/* #6699cc */
 	/* --blueColor: rgb(var(--mainRGB)); */
 	/* secondary: #66cccc, tertiary: 6666cc */
 	--unselectedColor: rgb(220, 220, 235);
@@ -78,6 +79,7 @@ body {
 	background-color: white;
 	align-items: center;
 	text-align: left;
+	position: relative;
 }
 
 /* Custom Scrollbar */
@@ -97,6 +99,9 @@ body {
 .main {
 	width: 100%;
 	flex-grow: 1;
+	z-index: 2;
+	background-color: white;
+	padding-top: 1rem;
 }
 
 p {
@@ -140,12 +145,14 @@ p {
 }
 
 #particles-js {
-    position: absolute; /* Position relative to the body */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: transparent;
-    z-index: 1;
+	position: fixed;
+	/* Fixed position to cover the whole screen */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	z-index: 1;
 }
 
 .nav {
@@ -157,7 +164,6 @@ p {
 	z-index: 10;
 	width: 100%;
 	padding: 1rem;
-	margin-bottom: 1rem;
 	background-color: var(--blueColor);
 	box-shadow: var(--shadow-elevation-medium);
 }
@@ -211,7 +217,8 @@ p {
 
 .button:hover {
 	background-color: var(--hoverColor);
-    box-shadow: var(--shadow-elevation-medium); /* More prominent shadow */
+	box-shadow: var(--shadow-elevation-medium);
+	/* More prominent shadow */
 }
 
 .button.active {
@@ -317,6 +324,7 @@ p {
 	0% {
 		transform: translate(-50%, -50%) scale(0.3);
 	}
+
 	100% {
 		transform: translate(-50%, -50%) scale(1);
 	}
@@ -573,13 +581,18 @@ p {
 }
 
 #zoom-overlay {
-    opacity: 0;
-    animation: fade-in 0.3s forwards;
+	opacity: 0;
+	animation: fade-in 0.3s forwards;
 }
 
 @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }
 
 .footer {
@@ -591,16 +604,22 @@ p {
 	padding: 1rem 0rem 1rem 1.5rem;
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.06);
 	clip-path: inset(-10px 0px 0px 0px);
+	z-index: 5;
+	background-color: white;
 }
 
 /* Common styles for footer icons */
 .footer-icon {
-	display: flex; /* Use flexbox for centering */
-	justify-content: center; /* Horizontally center the icon */
-	align-items: center; /* Vertically center the icon */
+	display: flex;
+	/* Use flexbox for centering */
+	justify-content: center;
+	/* Horizontally center the icon */
+	align-items: center;
+	/* Vertically center the icon */
 	/* text-decoration: none; */
 	/* font-size: 2rem; */
-	width: 1.3rem; /* Adjust width for consistent sizing */
+	width: 1.3rem;
+	/* Adjust width for consistent sizing */
 	margin-left: var(--footerGap);
 	/* height: 2.5rem; */
 	/* border: none; */
@@ -619,38 +638,39 @@ p {
    MEDIA QUERIES
    ================= */
 @media screen and (max-width: 768px) {
-    /* Typography adjustments */
-    * {
+
+	/* Typography adjustments */
+	* {
 		font-size: clamp(0.9rem, calc(0.9rem + 0.5vw), 1rem);
-    }
+	}
 
-    /* Header adjustments */
-    .header {
-        margin: 0.5rem;
-    }
+	/* Header adjustments */
+	.header {
+		margin: 0.5rem;
+	}
 
-    #portrait {
-        width: 8rem;
-        margin: 1rem 0;
-    }
+	#portrait {
+		width: 8rem;
+		margin: 1rem 0;
+	}
 
-    /* Navigation adjustments */
-    .nav {
-        padding: 0.5rem;
-    }
+	/* Navigation adjustments */
+	.nav {
+		padding: 0.5rem;
+	}
 
-    .button {
-        width: calc(var(--buttonWidth) * 0.8);
-        font-size: 0.8em;
-    }
+	.button {
+		width: calc(var(--buttonWidth) * 0.8);
+		font-size: 0.8em;
+	}
 
-    .button-container {
-        gap: calc(var(--buttonContainerGap) * 0.8);
-    }
+	.button-container {
+		gap: calc(var(--buttonContainerGap) * 0.8);
+	}
 
-    .button-selector {
-        width: calc(var(--buttonWidth) * 0.8);
-    }
+	.button-selector {
+		width: calc(var(--buttonWidth) * 0.8);
+	}
 
 	.page {
 		margin: 0.8rem;
@@ -661,72 +681,76 @@ p {
 		max-height: 98vh;
 	}
 
-    /* Project layout adjustments */
-    .project {
-        width: 95%;
-        padding: 1rem;
-        margin: 1rem 0;
-    }
+	/* Project layout adjustments */
+	.project {
+		width: 95%;
+		padding: 1rem;
+		margin: 1rem 0;
+	}
 
-    /* Home section layout fixes */
-    .home-section-left,
-    .home-section-right {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-            "imgArea"
-            "pArea";
-        row-gap: 1rem;
-        margin-top: 1.5rem;
-    }
+	/* Home section layout fixes */
+	.home-section-left,
+	.home-section-right {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"imgArea"
+			"pArea";
+		row-gap: 1rem;
+		margin-top: 1.5rem;
+	}
 
-    .home-section-left > p,
-    .home-section-right > p {
-        max-width: 100%;
-    }
+	.home-section-left > p,
+	.home-section-right > p {
+		max-width: 100%;
+	}
 
-    /* Footer adjustments */
-    .footer {
-        /* padding: 1rem 0.5rem; */
+	/* Footer adjustments */
+	.footer {
+		/* padding: 1rem 0.5rem; */
 		padding: 1rem 0rem 1rem 0.5rem;
-        font-size: 0.8em;
-    }
+		font-size: 0.8em;
+	}
 
-    .fa {
-        font-size: 1.5rem; /* Scale down the icon size */
-        width: 2rem; /* Adjust width */
-        height: 2rem; /* Adjust height */
-    }
+	.fa {
+		font-size: 1.5rem;
+		/* Scale down the icon size */
+		width: 2rem;
+		/* Adjust width */
+		height: 2rem;
+		/* Adjust height */
+	}
 }
 
 @media screen and (max-width: 480px) {
-    /* Further adjustments for very small screens */
-    .project {
-        width: 100%;
-        padding: 1rem;
-        margin: 0.75rem 0;
-        border-radius: 1rem;
-    }
 
-    .project-content {
-        padding: 0 0.5rem;
-    }
+	/* Further adjustments for very small screens */
+	.project {
+		width: 100%;
+		padding: 1rem;
+		margin: 0.75rem 0;
+		border-radius: 1rem;
+	}
 
-    .slider-container,
-    .single-container {
-        max-width: 100%;
-    }
+	.project-content {
+		padding: 0 0.5rem;
+	}
 
-    /* Navigation for smallest screens */
-    .button {
-        width: calc(var(--buttonWidth) * 0.7);
-        font-size: 0.75em;
-    }
+	.slider-container,
+	.single-container {
+		max-width: 100%;
+	}
 
-    .button-selector {
-        width: calc(var(--buttonWidth) * 0.7);
-    }
+	/* Navigation for smallest screens */
+	.button {
+		width: calc(var(--buttonWidth) * 0.7);
+		font-size: 0.75em;
+	}
 
-    .button-container {
-        gap: calc(var(--buttonContainerGap) * 0.7);
-    }
+	.button-selector {
+		width: calc(var(--buttonWidth) * 0.7);
+	}
+
+	.button-container {
+		gap: calc(var(--buttonContainerGap) * 0.7);
+	}
 }

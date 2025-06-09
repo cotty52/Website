@@ -84,6 +84,10 @@ async function LoadPage(pageName, btnName) {
 
 		currentPage = pageName;
 
+		 // Update URL hash without triggering hashchange event
+		const section = btnName.replace('Btn', '');
+		history.replaceState(null, null, `#${section}`);
+
 		// Return a promise so we can chain .then() in window.onload
 		return Promise.resolve();
 	} catch (error) {
@@ -93,6 +97,39 @@ async function LoadPage(pageName, btnName) {
 		return Promise.reject(error);
 	}
 }
+
+// Add hash-based routing
+function InitializeRouting() {
+    // Handle initial page load
+    HandleRoute();
+    
+    // Listen for hash changes
+    window.addEventListener('hashchange', HandleRoute);
+}
+
+function HandleRoute() {
+    const hash = window.location.hash.slice(1) || 'home';
+    
+    switch(hash) {
+        case 'home':
+            LoadPage('home.html', 'homeBtn');
+            break;
+        case 'designs':
+            LoadPage('designs.html', 'designsBtn');
+            break;
+        case 'coding':
+            LoadPage('coding.html', 'codingBtn');
+            break;
+        case 'formula':
+            LoadPage('formula.html', 'formulaBtn');
+            break;
+        default:
+            LoadPage('home.html', 'homeBtn');
+    }
+}
+
+// Initialize routing when DOM is loaded
+document.addEventListener('DOMContentLoaded', InitializeRouting);
 
 // Initialize components after page load
 function InitializePageComponents() {

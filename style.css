@@ -423,6 +423,22 @@ p {
 	object-fit: cover;
 }
 
+video:-webkit-full-screen { /* For Webkit browsers (Chrome, Safari, Edge) */
+    object-fit: contain;
+}
+
+video:-moz-full-screen { /* For Mozilla Firefox */
+    object-fit: contain;
+}
+
+video:-ms-fullscreen { /* For Internet Explorer/Edge Legacy */
+    object-fit: contain;
+}
+
+video:fullscreen { /* Standard syntax */
+    object-fit: contain;
+}
+
 .displaySlide {
 	z-index: 12;
 	opacity: 1;

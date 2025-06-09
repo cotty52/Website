@@ -50,18 +50,6 @@
 	/* font-size: calc(0.7rem + 0.5vw); */
 }
 
-/*delete this later*/
-.center-line {
-	position: absolute;
-	left: 50%;
-	top: 0;
-	bottom: 0;
-	width: 2px;
-	background-color: black;
-}
-
-/*delete this later*/
-
 html,
 body {
 	width: 100%;
@@ -696,7 +684,7 @@ p {
 			"imgArea"
 			"pArea";
 		row-gap: 1rem;
-		margin-top: 1.5rem;
+		margin-top: 2.25rem;
 	}
 
 	.home-section-left > p,

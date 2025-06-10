@@ -6,7 +6,7 @@ let particlesInitialized = false;
 // Waits for all resources to load before executing
 window.onload = () => {
 	// Load the home page FIRST, then initialize particles
-	LoadPage("home.html", "homeBtn").then(() => {
+	LoadPage("home.html", "HomeBtn").then(() => {
 		// Wait a bit for the page to render, then initialize particles
 		setTimeout(() => {
 			InitializeParticles();
@@ -61,18 +61,37 @@ async function LoadPage(pageName, btnName) {
 			// Cache the content
 			pageCache.set(pageName, content);
 		}
-
 		// Update the page content
 		const pageContainer = document.getElementById("page-content");
 		pageContainer.innerHTML = content;
-
 		// Update active button and pill
-		const activeButton = document.querySelector(".button.active");
+		const activeButton = document.querySelector(".button.active, .dropdown-item.active");
 		const clickedButton = document.getElementById(btnName);
-		if (activeButton) activeButton.classList.remove("active");
+		const moreButton = document.getElementById('moreBtn');
+		
+		// Remove active class from all buttons and dropdown items
+		if (activeButton) {
+			activeButton.classList.remove("active");
+		}
+		document.querySelectorAll('.button.active, .dropdown-item.active').forEach(btn => {
+			btn.classList.remove('active');
+		});
+				// Add active class to clicked button
 		clickedButton.classList.add("active");
-
-		UpdatePillPosition(clickedButton);
+		
+		// If clicking a dropdown item, also add active class to More button and close dropdown
+		if (clickedButton.classList.contains('dropdown-item')) {
+			moreButton.classList.add("active");
+			const dropdownMenu = document.querySelector('.dropdown-menu');
+			if (dropdownMenu) {
+				dropdownMenu.classList.remove('show');
+			}
+			// Position pill over More button since dropdown is now closed
+			UpdatePillPosition(moreButton);
+		} else {
+			// For main navigation buttons, position pill normally
+			UpdatePillPosition(clickedButton);
+		}
 		InitializePageComponents();
 
 		// Only adjust particles if they're already initialized AND this isn't the first load
@@ -84,7 +103,7 @@ async function LoadPage(pageName, btnName) {
 
 		currentPage = pageName;
 
-		 // Update URL hash without triggering hashchange event
+		// Update URL hash without triggering hashchange event
 		const section = btnName.replace('Btn', '');
 		history.replaceState(null, null, `#${section}`);
 
@@ -108,23 +127,26 @@ function InitializeRouting() {
 }
 
 function HandleRoute() {
-    const hash = window.location.hash.slice(1) || 'home';
+    const hash = window.location.hash.slice(1) || 'Home';
     
     switch(hash) {
-        case 'home':
-            LoadPage('home.html', 'homeBtn');
+        case 'Home':
+            LoadPage('home.html', 'HomeBtn');
             break;
-        case 'designs':
-            LoadPage('designs.html', 'designsBtn');
+        case 'Designs':
+            LoadPage('designs.html', 'DesignsBtn');
             break;
-        case 'coding':
-            LoadPage('coding.html', 'codingBtn');
+        case 'Coding':
+            LoadPage('coding.html', 'CodingBtn');
             break;
-        case 'formula':
-            LoadPage('formula.html', 'formulaBtn');
+        case 'Formula':
+            LoadPage('formula.html', 'FormulaBtn');
+            break;
+        case 'Senior-Project':
+            LoadPage('senior-project.html', 'Senior-ProjectBtn');
             break;
         default:
-            LoadPage('home.html', 'homeBtn');
+            LoadPage('home.html', 'HomeBtn');
     }
 }
 
@@ -142,6 +164,49 @@ function InitializePageComponents() {
 	// Initialize More buttons
 	InitializeMoreButtons();
 }
+
+// Dropdown functionality
+function toggleDropdown() {
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const moreButton = document.getElementById('moreBtn');
+    const isDropdownOpen = dropdownMenu.classList.contains('show');
+    
+    dropdownMenu.classList.toggle('show');
+    
+    // Handle pill positioning based on current active item
+    const activeDropdownItem = document.querySelector('.dropdown-item.active');
+    
+    if (!isDropdownOpen && activeDropdownItem) {
+        // Dropdown is opening and there's an active dropdown item
+        setTimeout(() => {
+            UpdatePillPosition(activeDropdownItem);
+        }, 100); // Small delay to allow dropdown animation
+    } else if (isDropdownOpen && activeDropdownItem) {
+        // Dropdown is closing and there's an active dropdown item
+        // Move pill to More button and ensure it has active class
+        moreButton.classList.add("active");
+        UpdatePillPosition(moreButton);
+    }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+    if (!dropdown.contains(event.target) && dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.remove('show');
+          // Handle pill positioning when dropdown closes
+        const activeDropdownItem = document.querySelector('.dropdown-item.active');
+        const moreButton = document.getElementById('moreBtn');
+        
+        if (activeDropdownItem) {
+            // Move pill to More button when dropdown closes and ensure it has active class
+            moreButton.classList.add("active");
+            UpdatePillPosition(moreButton);
+        }
+    }
+});
 
 // Function to initialize particles.js
 function InitializeParticles() {
@@ -194,27 +259,167 @@ function AdjustParticlesContainer() {
 }
 
 function UpdatePillPosition(activeButton) {
-	const buttonContainer = activeButton.parentNode;
-	const buttons = Array.from(buttonContainer.querySelectorAll(".button"));
-	const currentIndex = buttons.findIndex((button) => button === activeButton);
-	const pill = document.querySelector(".button-selector");
-	let buttonGap = parseFloat(
-		getComputedStyle(document.documentElement).getPropertyValue(
-			"--buttonContainerGap"
-		)
-	);
-
-	if (window.matchMedia("(max-width: 768px)").matches) {
-		buttonGap = buttonGap * 0.8;
-	} else if (window.matchMedia("(max-width: 480px)").matches) {
-		buttonGap = buttonGap * 0.7;
+	const isDropdownItem = activeButton.classList.contains('dropdown-item');
+	const isMoreButton = activeButton.id === 'moreBtn';
+	
+	if (isDropdownItem) {
+		updateDropdownPill(activeButton);
+	} else if (isMoreButton) {
+		updateMoreButtonPill();
+	} else {
+		updateMainNavPill(activeButton);
 	}
+}
 
-	if (currentIndex !== -1 && pill) {
-		const translateX =
-			currentIndex * (activeButton.offsetWidth + buttonGap);
-		pill.style.width = `${activeButton.offsetWidth}px`;
-		pill.style.transform = `translateX(${translateX}px)`;
+function updateMainNavPill(activeButton) {
+	const mainPill = document.querySelector('.main-nav .button-selector');
+	const dropdownPill = document.querySelector('.dropdown .button-selector');
+	const dropdownMenuPill = document.querySelector('.dropdown-menu .button-selector');
+	const moreButton = document.getElementById('moreBtn');
+	
+	// Check if we're transitioning from a dropdown state
+	const wasDropdownActive = dropdownPill && dropdownPill.style.opacity === '1';
+	
+	// Hide dropdown pills and show main pill
+	if (dropdownPill) {
+		dropdownPill.style.opacity = '0';
+	}
+	if (dropdownMenuPill) {
+		dropdownMenuPill.style.opacity = '0';
+	}
+	
+	// Remove active class from More button when switching to main nav
+	if (moreButton) {
+		moreButton.classList.remove('active');
+	}
+	
+	if (mainPill) {
+		mainPill.style.opacity = '1';
+		
+		const buttonContainer = activeButton.parentNode;
+		const buttons = Array.from(buttonContainer.querySelectorAll(".button"));
+		const currentIndex = buttons.findIndex((button) => button === activeButton);
+		let buttonGap = parseFloat(
+			getComputedStyle(document.documentElement).getPropertyValue(
+				"--buttonContainerGap"
+			)
+		);
+
+		if (window.matchMedia("(max-width: 768px)").matches) {
+			buttonGap = buttonGap * 0.8;
+		} else if (window.matchMedia("(max-width: 480px)").matches) {
+			buttonGap = buttonGap * 0.7;
+		}
+
+		if (currentIndex !== -1) {
+			const translateX = currentIndex * (activeButton.offsetWidth + buttonGap);
+			
+			// If transitioning from dropdown state, temporarily disable transition to snap to position
+			if (wasDropdownActive) {
+				const originalTransition = mainPill.style.transition;
+				mainPill.style.transition = 'none';
+				mainPill.style.width = `${activeButton.offsetWidth}px`;
+				mainPill.style.transform = `translateX(${translateX}px)`;
+				
+				// Force a reflow to apply the position immediately
+				mainPill.offsetHeight;
+				
+				// Re-enable transitions
+				mainPill.style.transition = originalTransition;
+			} else {
+				mainPill.style.width = `${activeButton.offsetWidth}px`;
+				mainPill.style.transform = `translateX(${translateX}px)`;
+			}
+		}
+	}
+}
+
+function updateMoreButtonPill() {
+	const mainPill = document.querySelector('.main-nav .button-selector');
+	const dropdownPill = document.querySelector('.dropdown .button-selector');
+	const dropdownMenuPill = document.querySelector('.dropdown-menu .button-selector');
+	const moreButton = document.getElementById('moreBtn');
+	
+	// Hide main pill and dropdown menu pill, show dropdown pill positioned over More button
+	if (mainPill) {
+		mainPill.style.opacity = '0';
+	}
+	if (dropdownMenuPill) {
+		dropdownMenuPill.style.opacity = '0';
+	}
+	if (dropdownPill && moreButton) {
+		dropdownPill.style.opacity = '1';
+		
+		// Get position of More button relative to dropdown container
+		const dropdownContainer = dropdownPill.parentNode;
+		const containerRect = dropdownContainer.getBoundingClientRect();
+		const buttonRect = moreButton.getBoundingClientRect();
+		
+		// Calculate relative position
+		const relativeX = buttonRect.left - containerRect.left;
+		const relativeY = buttonRect.top - containerRect.top;
+		
+		dropdownPill.style.width = `${moreButton.offsetWidth}px`;
+		dropdownPill.style.transform = `translateX(${relativeX}px) translateY(${relativeY}px)`;
+	}
+}
+
+function updateDropdownPill(activeButton) {
+	const mainPill = document.querySelector('.main-nav .button-selector');
+	const dropdownPill = document.querySelector('.dropdown .button-selector');
+	const dropdownMenuPill = document.querySelector('.dropdown-menu .button-selector');
+	const dropdownMenu = document.querySelector('.dropdown-menu');
+	const moreButton = document.getElementById('moreBtn');
+	
+	// Check if we're transitioning from a closed dropdown state (More button was active)
+	const wasMoreButtonActive = dropdownPill && dropdownPill.style.opacity === '1';
+	
+	// Hide main pill and external dropdown pill
+	if (mainPill) {
+		mainPill.style.opacity = '0';
+	}
+	if (dropdownPill) {
+		dropdownPill.style.opacity = '0';
+	}
+	
+	// Remove active class from More button when dropdown pill is active
+	if (moreButton) {
+		moreButton.classList.remove('active');
+	}
+	
+	// Show and position the internal dropdown menu pill
+	if (dropdownMenuPill && dropdownMenu && activeButton) {
+		dropdownMenuPill.style.opacity = '1';
+		
+		// Get the dropdown items (excluding the pill selector)
+		const dropdownItems = Array.from(dropdownMenu.querySelectorAll('.dropdown-item'));
+		const itemIndex = dropdownItems.findIndex((item) => item === activeButton);
+		
+		if (itemIndex !== -1) {
+			// With flexbox gap, positioning is much simpler
+			const itemHeight = activeButton.offsetHeight;
+			const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--buttonContainerGap"));
+			
+			// Calculate position: (item height + gap) * index
+			const itemTop = (itemHeight + gap) * itemIndex;
+			
+			// If transitioning from More button state, temporarily disable transition to snap to position
+			if (wasMoreButtonActive) {
+				const originalTransition = dropdownMenuPill.style.transition;
+				dropdownMenuPill.style.transition = 'none';
+				dropdownMenuPill.style.width = `${activeButton.offsetWidth}px`;
+				dropdownMenuPill.style.transform = `translateX(0px) translateY(${itemTop}px)`;
+				
+				// Force a reflow to apply the position immediately
+				dropdownMenuPill.offsetHeight;
+				
+				// Re-enable transitions
+				dropdownMenuPill.style.transition = originalTransition;
+			} else {
+				dropdownMenuPill.style.width = `${activeButton.offsetWidth}px`;
+				dropdownMenuPill.style.transform = `translateX(0px) translateY(${itemTop}px)`;
+			}
+		}
 	}
 }
 

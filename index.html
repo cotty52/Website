@@ -5,6 +5,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="Christian Otty" />
+        <meta name="format-detection" content="telephone=no, address=no, email=no">
         <title>Christian Otty</title>
         <script src="particles.min.js"></script>
         <script src="script.js" defer></script>
@@ -25,14 +26,33 @@
         </div>
 
         <div class="nav">
-            <div class="button-container">
-                <div class="button-selector"></div>
-                <button id="homeBtn" class="button active" onclick="LoadPage('home.html', 'homeBtn')"
-                    aria-label="Home page">Home</button>
-                <button id="designsBtn" class="button" onclick="LoadPage('designs.html', 'designsBtn')"
-                    aria-label="Designs">Designs</button>
-                <button id="codingBtn" class="button" onclick="LoadPage('coding.html', 'codingBtn')"
-                    aria-label="Coding">Coding</button>
+            <div class="main-nav">
+                <div class="button-container">
+                    <div class="button-selector main-nav-mode"></div>
+                    <button id="HomeBtn" class="button active" onclick="LoadPage('home.html', 'HomeBtn')"
+                        aria-label="Home page">Home</button>
+                    <button id="DesignsBtn" class="button" onclick="LoadPage('designs.html', 'DesignsBtn')"
+                        aria-label="Designs">Designs</button>
+                    <button id="CodingBtn" class="button" onclick="LoadPage('coding.html', 'CodingBtn')"
+                        aria-label="Coding">Coding</button>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div class="button-container">
+                    <div class="button-selector dropdown-pill dropdown-mode"></div>
+                    <button id="moreBtn" class="button" onclick="toggleDropdown()" aria-label="More pages">More
+                        &#9662;</button>
+                    <div class="dropdown-menu">
+                        <div class="button-selector dropdown-menu-pill"></div>
+                        <button id="FormulaBtn" class="dropdown-item" onclick="LoadPage('formula.html', 'FormulaBtn')"
+                            aria-label="Formula SAE">Formula SAE</button>
+                        <button id="Senior-ProjectBtn" class="dropdown-item"
+                            onclick="LoadPage('senior-project.html', 'Senior-ProjectBtn')"
+                            aria-label="Senior Project">Senior Project</button>
+                        <!-- Future project pages can be added here -->
+                    </div>
+                </div>
             </div>
         </div>
 

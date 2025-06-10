@@ -156,6 +156,12 @@ p {
 	box-shadow: var(--shadow-elevation-medium);
 }
 
+.main-nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .button-container {
 	height: auto;
 	display: grid;
@@ -184,8 +190,9 @@ p {
 	background: none;
 	cursor: pointer;
 	transition: 0.3s ease-in;
-	z-index: 10;
+	z-index: 999; /* Above dropdown container pill (z-index: 998) */
 	font-size: 0.9em;
+	position: relative; /* Ensure z-index works */
 }
 
 .button-selector {
@@ -203,13 +210,157 @@ p {
 	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Pill selector positioning modes */
+.button-selector.main-nav-mode {
+	/* Default positioning for main navigation */
+	position: absolute;
+	opacity: 1;
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+	           width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+	           opacity 200ms ease;
+}
+
+.button-selector.dropdown-mode {
+	/* Positioning for dropdown items and More button */
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateX(0) translateY(0);
+	opacity: 0;
+	z-index: 998; /* Below dropdown menu but above other elements */
+	pointer-events: none; /* Allow clicks to pass through */
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+	           width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+	           opacity 200ms ease;
+}
+
+.button-selector.more-button-mode {
+	/* Positioning when targeting the More button */
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 .button:hover {
 	background-color: var(--hoverColor);
-	box-shadow: var(--shadow-elevation-medium);
-	/* More prominent shadow */
+	/* box-shadow: var(--shadow-elevation-medium); */
 }
 
 .button.active {
+	color: white;
+}
+
+/* Dropdown container */
+.dropdown {
+	position: absolute;
+	right: 2rem;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
+}
+
+/* Dropdown button container - only needs one button */
+.dropdown .button-container {
+	grid-template-columns: 1fr;
+	width: fit-content;
+}
+
+/* Dropdown toggle button - matches existing button styles */
+.dropdown-toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	width: var(--buttonWidth);
+	height: var(--buttonHeight);
+	border: 1px solid rgba(60, 60, 60, 0.3);
+	border-radius: 999em;
+	margin: 0;
+	padding: 0;
+	background-color: var(--unselectedColor);
+	cursor: pointer;
+	transition: 0.3s ease-in;
+	font-size: 0.9em;
+	justify-content: center;
+	box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.25);
+}
+
+.dropdown-toggle:hover {
+	background-color: var(--hoverColor);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+	position: absolute;
+	top: calc(100% + 0.5rem);
+	right: 0;
+	background-color: var(--unselectedColor);
+	border: 1px solid rgba(60, 60, 60, 0.5);
+	border-radius: 1.25em;
+	box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36) inset,
+		0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36) inset,
+		2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36) inset,
+		5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36) inset;
+	width: max-content;
+	padding: 2px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-10px);
+	transition: all 0.3s ease;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: var(--buttonContainerGap);
+}
+
+/* Dropdown menu pill selector */
+.dropdown-menu .button-selector {
+	position: absolute;
+	height: var(--buttonHeight);
+	width: auto;
+	margin: 0;
+	padding: 0;
+	border-radius: 999em;
+	background-color: var(--blueColor);
+	box-shadow: var(--shadow-elevation-low);
+	opacity: 0;
+	z-index: 1; /* Behind dropdown items but above menu background */
+	pointer-events: none;
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
+	           width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+	           opacity 200ms ease;
+}
+
+.dropdown-menu.show {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.dropdown-item {
+	display: block;
+	width: 100%;
+	height: var(--buttonHeight);
+	margin: 0;
+	padding: 0 1rem;
+	text-align: left;
+	background: none;
+	border: none;
+	border-radius: 999em;
+	color: black;
+	cursor: pointer;
+	transition: 0.3s ease-in;
+	font-size: 0.9em;
+	font-family: inherit;
+	white-space: nowrap;
+	position: relative;
+	z-index: 2; /* Above the dropdown menu pill */
+}
+
+.dropdown-item:hover {
+	background-color: var(--hoverColor);
+}
+
+.dropdown-item.active {
 	color: white;
 }
 
@@ -320,8 +471,11 @@ p {
 
 .project {
 	display: grid;
-	grid-template-columns: auto;
-	align-items: center;
+	grid-template-columns: 1fr;
+	grid-template-areas: 
+		"content"
+		"slider";
+	align-items: start;
 	justify-items: center;
 	width: 80%;
 	max-width: 800px;
@@ -332,6 +486,8 @@ p {
 	background-color: var(--blueColor);
 	box-shadow: var(--shadow-elevation-medium);
 	transition: 0.3s ease-out;
+	gap: 1rem;
+	position: relative;
 }
 
 .project:hover {
@@ -340,12 +496,11 @@ p {
 }
 
 .project-content {
-	margin-bottom: 0.75rem;
+	grid-area: content;
 	color: white;
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	/* padding: 0 0.5rem; */
 }
 
 .project-content p {
@@ -390,9 +545,41 @@ p {
 	cursor: pointer;
 }
 
+.project-nav-button {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.project-nav-button button {
+    padding: 0.5rem;
+    font-size: 0.8em;
+    background-color: white;
+    color: var(--blueColor);
+    border: 2px solid white;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-nav-button button:hover {
+    background-color: var(--blueColor);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevation-medium);
+}
+
+.project-nav-button button:active {
+    transform: translateY(0);
+}
+
 /* IMAGE SLIDER */
 .slider-container,
 .single-container {
+	grid-area: slider;
 	display: flex;
 	position: relative;
 	width: 100%;
@@ -661,6 +848,42 @@ video:fullscreen { /* Standard syntax */
 	/* Navigation adjustments */
 	.nav {
 		padding: 0.5rem;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.main-nav {
+		order: 1;
+	}	
+	
+	.dropdown {
+		order: 2;
+		position: absolute;
+		right: 0.5rem;
+		top: auto;
+		bottom: 0.5rem;
+		transform: none;
+	}
+
+	.dropdown-toggle {
+		width: calc(var(--buttonWidth) * 0.8);
+		height: var(--buttonHeight);
+		font-size: 0.8em;
+	}
+
+	.dropdown-menu {
+		right: 0;
+		left: auto;
+		transform: translateY(-10px);
+	}
+
+	.dropdown-menu.show {
+		transform: translateY(0);
+	}
+	.dropdown-item {
+		width: 100%;
+		height: var(--buttonHeight);
+		font-size: 0.8em;
 	}
 
 	.button {
@@ -679,7 +902,7 @@ video:fullscreen { /* Standard syntax */
 	.page {
 		margin: 0.8rem;
 	}
-
+	
 	.img-zoom {
 		max-width: 98vw;
 		max-height: 98vh;
@@ -687,9 +910,23 @@ video:fullscreen { /* Standard syntax */
 
 	/* Project layout adjustments */
 	.project {
+		grid-template-columns: 1fr;
+		grid-template-areas: 
+			"content"
+			"slider"
+			"button";
+		align-items: center;
 		width: 95%;
 		padding: 1rem;
 		margin: 1rem 0;
+	}
+
+	.project-nav-button {
+		position: static;
+		grid-area: button;
+		align-self: center;
+		/* margin-top: 1rem; */
+		justify-content: center;
 	}
 
 	/* Home section layout fixes */
@@ -756,5 +993,14 @@ video:fullscreen { /* Standard syntax */
 
 	.button-container {
 		gap: calc(var(--buttonContainerGap) * 0.7);
+	}
+	
+	.dropdown-toggle {
+		width: calc(var(--buttonWidth) * 0.7);
+		font-size: 0.75em;
+	}
+
+	.dropdown-item {
+		font-size: 0.75em;
 	}
 }

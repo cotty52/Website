@@ -19,7 +19,7 @@ let resizeTimer;
 let resized = false;
 window.addEventListener("resize", () => {
 	if (resized === false) {
-		console.log("Resized");
+		// console.log("Resized");
 		const activeButton = document.querySelector(".button.active");
 		if (activeButton) {
 			UpdatePillPosition(activeButton);
@@ -31,7 +31,7 @@ window.addEventListener("resize", () => {
 	}
 	clearTimeout(resizeTimer);
 	resizeTimer = setTimeout(() => {
-		console.log("Resized");
+		// console.log("Resized");
 		const activeButton = document.querySelector(".button.active");
 		if (activeButton) {
 			UpdatePillPosition(activeButton);
@@ -62,7 +62,7 @@ async function LoadPage(pageName, btnName) {
 			pageCache.set(pageName, content);
 		}
 		// Update the page content
-		const pageContainer = document.getElementById("page-content");
+		const pageContainer = document.getElementById("page-container");
 		pageContainer.innerHTML = content;
 		// Update active button and pill
 		const activeButton = document.querySelector(".button.active, .dropdown-item.active");
@@ -111,7 +111,7 @@ async function LoadPage(pageName, btnName) {
 		return Promise.resolve();
 	} catch (error) {
 		console.error("Error loading page:", error);
-		document.getElementById("page-content").innerHTML =
+		document.getElementById("page-container").innerHTML =
 			"<p>Error loading page content.</p>";
 		return Promise.reject(error);
 	}
@@ -210,10 +210,10 @@ document.addEventListener('click', function(event) {
 
 // Function to initialize particles.js
 function InitializeParticles() {
-	console.log("Initializing particles...");
+	// console.log("Initializing particles...");
 
 	particlesJS.load("particles-js", "particlesjs-config.json", function () {
-		console.log("particles.js config loaded");
+		// console.log("particles.js config loaded");
 
 		// Set particlesInitialized to true only AFTER particles are fully loaded
 		particlesInitialized = true;
@@ -225,10 +225,10 @@ function InitializeParticles() {
 
 // Function to adjust particles height and trigger a refresh
 function AdjustParticlesContainer() {
-	console.log("AdjustParticlesContainer called");
+	// console.log("AdjustParticlesContainer called");
 
 	if (!particlesInitialized) {
-		console.warn("Particles not initialized yet, skipping adjustment");
+		// console.warn("Particles not initialized yet, skipping adjustment");
 		return;
 	}
 
@@ -236,7 +236,7 @@ function AdjustParticlesContainer() {
 		const pJSInstance = window.pJSDom[0].pJS;
 
 		if (pJSInstance) {
-			console.log("Triggering particles.js resize event");
+			// console.log("Triggering particles.js resize event");
 
 			// Trigger the built-in resize handler
 			if (pJSInstance.fn.vendors.resize) {
@@ -247,14 +247,12 @@ function AdjustParticlesContainer() {
 			pJSInstance.fn.particlesDraw();
 			// pJSInstance.fn.vendors.checkOverlap(); // Remove this line
 
-			console.log(
-				`Particles refreshed. Canvas dimensions: ${pJSInstance.canvas.w}x${pJSInstance.canvas.h}`
-			);
+			// console.log(`Particles refreshed. Canvas dimensions: ${pJSInstance.canvas.w}x${pJSInstance.canvas.h}`);
 		} else {
-			console.error("Particles instance not found");
+			// console.error("Particles instance not found");
 		}
 	} else {
-		console.error("pJSDom not available");
+		// console.error("pJSDom not available");
 	}
 }
 
@@ -535,11 +533,7 @@ function ImgZoom(img) {
 		placeholder.id = "img-placeholder";
 		placeholder.style.width = img.offsetWidth + "px";
 		placeholder.style.height = img.offsetHeight + "px";
-		placeholder.style.display = "inline-block";
-		placeholder.style.backgroundColor = "white";
-		placeholder.style.borderRadius = "0.5rem";
-		placeholder.style.boxShadow = "inset 0 0 10px rgba(0, 0, 0, 0.2)";
-
+		
 		img.parentNode.insertBefore(placeholder, img);
 
 		const overlay = document.createElement("div");

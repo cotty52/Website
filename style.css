@@ -190,9 +190,11 @@ p {
 	background: none;
 	cursor: pointer;
 	transition: 0.3s ease-in;
-	z-index: 999; /* Above dropdown container pill (z-index: 998) */
+	z-index: 999;
+	/* Above dropdown container pill (z-index: 998) */
 	font-size: 0.9em;
-	position: relative; /* Ensure z-index works */
+	position: relative;
+	/* Ensure z-index works */
 }
 
 .button-selector {
@@ -215,9 +217,9 @@ p {
 	/* Default positioning for main navigation */
 	position: absolute;
 	opacity: 1;
-	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
-	           width 300ms cubic-bezier(0.4, 0, 0.2, 1),
-	           opacity 200ms ease;
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+		width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 200ms ease;
 }
 
 .button-selector.dropdown-mode {
@@ -227,11 +229,13 @@ p {
 	left: 0;
 	transform: translateX(0) translateY(0);
 	opacity: 0;
-	z-index: 998; /* Below dropdown menu but above other elements */
-	pointer-events: none; /* Allow clicks to pass through */
-	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
-	           width 300ms cubic-bezier(0.4, 0, 0.2, 1),
-	           opacity 200ms ease;
+	z-index: 998;
+	/* Below dropdown menu but above other elements */
+	pointer-events: none;
+	/* Allow clicks to pass through */
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+		width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 200ms ease;
 }
 
 .button-selector.more-button-mode {
@@ -323,11 +327,12 @@ p {
 	background-color: var(--blueColor);
 	box-shadow: var(--shadow-elevation-low);
 	opacity: 0;
-	z-index: 1; /* Behind dropdown items but above menu background */
+	z-index: 1;
+	/* Behind dropdown items but above menu background */
 	pointer-events: none;
-	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), 
-	           width 300ms cubic-bezier(0.4, 0, 0.2, 1),
-	           opacity 200ms ease;
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+		width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 200ms ease;
 }
 
 .dropdown-menu.show {
@@ -353,7 +358,8 @@ p {
 	font-family: inherit;
 	white-space: nowrap;
 	position: relative;
-	z-index: 2; /* Above the dropdown menu pill */
+	z-index: 2;
+	/* Above the dropdown menu pill */
 }
 
 .dropdown-item:hover {
@@ -396,8 +402,18 @@ p {
 }
 
 .page-content {
+	display: flex;
+	flex-direction: column;
 	align-self: flex-start;
 	margin-bottom: 1rem;
+}
+
+.page-content img {
+	max-width: 100%;
+	max-height: 80vh;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow-elevation-low);
+	justify-content: center;
 }
 
 .home-section-left {
@@ -445,6 +461,51 @@ p {
 	box-shadow: var(--shadow-elevation-medium);
 }
 
+.project-section-left {
+	grid-template-areas: "imgArea pArea";
+	grid-template-columns: 20vw auto;
+}
+
+.project-section-right {
+	grid-template-areas: "pArea imgArea";
+	grid-template-columns: auto 20vw;
+}
+
+.project-section-left,
+.project-section-right {
+	display: grid;
+	column-gap: 1.5rem;
+	margin-top: 3rem;
+	justify-content: center;
+}
+
+.project-section-left > p,
+.project-section-right > p {
+	grid-area: pArea;
+	/* max-width: 60vw; */
+	padding: 0.3rem 0 0.3rem 0;
+}
+
+.project-section-left > img:not(.img-zoom),
+.project-section-right > img:not(.img-zoom) {
+	grid-area: imgArea;
+	width: 100%;
+	max-width: 800px;
+	max-height: 800px;
+	align-self: center;
+	object-fit: cover;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow-elevation-low);
+	transition: 0.2s ease-out;
+	cursor: pointer;
+}
+
+.project-section-left > img:hover:not(.img-zoom),
+.project-section-right > img:hover:not(.img-zoom) {
+	transform: scale(1.005);
+	box-shadow: var(--shadow-elevation-medium);
+}
+
 .img-zoom {
 	position: fixed;
 	top: 50%;
@@ -469,10 +530,20 @@ p {
 	}
 }
 
+#img-placeholder {
+	grid-area: imgArea;
+	align-self: center;
+	background-color: var(--lightGray);
+	border-radius: 0.5rem;
+	display: inline-block;
+	background-color: white;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .project {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-areas: 
+	grid-template-areas:
 		"content"
 		"slider";
 	align-items: start;
@@ -546,34 +617,34 @@ p {
 }
 
 .project-nav-button {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    width: auto;
-    display: flex;
-    justify-content: center;
+	position: absolute;
+	right: 1rem;
+	bottom: 1rem;
+	width: auto;
+	display: flex;
+	justify-content: center;
 }
 
 .project-nav-button button {
-    padding: 0.5rem;
-    font-size: 0.8em;
-    background-color: white;
-    color: var(--blueColor);
-    border: 2px solid white;
-    border-radius: 0.6rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+	padding: 0.5rem;
+	font-size: 0.8em;
+	background-color: white;
+	color: var(--blueColor);
+	border: 2px solid white;
+	border-radius: 0.6rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
 }
 
 .project-nav-button button:hover {
-    background-color: var(--blueColor);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-elevation-medium);
+	background-color: var(--blueColor);
+	color: white;
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-elevation-medium);
 }
 
 .project-nav-button button:active {
-    transform: translateY(0);
+	transform: translateY(0);
 }
 
 /* IMAGE SLIDER */
@@ -610,20 +681,24 @@ p {
 	object-fit: cover;
 }
 
-video:-webkit-full-screen { /* For Webkit browsers (Chrome, Safari, Edge) */
-    object-fit: contain;
+video:-webkit-full-screen {
+	/* For Webkit browsers (Chrome, Safari, Edge) */
+	object-fit: contain;
 }
 
-video:-moz-full-screen { /* For Mozilla Firefox */
-    object-fit: contain;
+video:-moz-full-screen {
+	/* For Mozilla Firefox */
+	object-fit: contain;
 }
 
-video:-ms-fullscreen { /* For Internet Explorer/Edge Legacy */
-    object-fit: contain;
+video:-ms-fullscreen {
+	/* For Internet Explorer/Edge Legacy */
+	object-fit: contain;
 }
 
-video:fullscreen { /* Standard syntax */
-    object-fit: contain;
+video:fullscreen {
+	/* Standard syntax */
+	object-fit: contain;
 }
 
 .displaySlide {
@@ -854,8 +929,8 @@ video:fullscreen { /* Standard syntax */
 
 	.main-nav {
 		order: 1;
-	}	
-	
+	}
+
 	.dropdown {
 		order: 2;
 		position: absolute;
@@ -880,6 +955,7 @@ video:fullscreen { /* Standard syntax */
 	.dropdown-menu.show {
 		transform: translateY(0);
 	}
+
 	.dropdown-item {
 		width: 100%;
 		height: var(--buttonHeight);
@@ -902,7 +978,7 @@ video:fullscreen { /* Standard syntax */
 	.page {
 		margin: 0.8rem;
 	}
-	
+
 	.img-zoom {
 		max-width: 98vw;
 		max-height: 98vh;
@@ -911,7 +987,7 @@ video:fullscreen { /* Standard syntax */
 	/* Project layout adjustments */
 	.project {
 		grid-template-columns: 1fr;
-		grid-template-areas: 
+		grid-template-areas:
 			"content"
 			"slider"
 			"button";
@@ -994,7 +1070,7 @@ video:fullscreen { /* Standard syntax */
 	.button-container {
 		gap: calc(var(--buttonContainerGap) * 0.7);
 	}
-	
+
 	.dropdown-toggle {
 		width: calc(var(--buttonWidth) * 0.7);
 		font-size: 0.75em;

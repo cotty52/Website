@@ -1,20 +1,58 @@
 <div class="page-content">
     <p>
-        My senior project focused on developing an interactive display system that combines hardware and software engineering principles. This project allowed me to apply everything I've learned throughout my academic career, from embedded systems programming to user interface design.
+        As part of my senior design project, I collaborated with a team to develop a Portable Solar Power Station. This
+        system was designed to provide reliable, off-grid power for various applications, such as camping and emergency
+        backup, featuring both solar and wall charging inputs and multiple power outputs.
         <br><br>
-        The project involved creating a custom display interface with real-time data visualization and user interaction capabilities. It showcases my skills in both front-end development and embedded systems integration.
+        My primary contributions focused on [Your specific roles, e.g., developing the external display system,
+        integrating the BMS with the microcontroller, circuit design, and testing]. This project significantly enhanced
+        my skills in [mention relevant skills like embedded systems, power electronics, CAD, project management,
+        teamwork].
     </p>
-    <div class="home-section-left">
-        <img src="./Images/Display_img.png" alt="Senior Project Display" onclick="ImgZoom(this)" />
+    <div class="project-section-left">
+        <img src="./Images/Display_img.png" alt="External Display" onclick="ImgZoom(this)" />
         <p>
-            The display system features a clean, intuitive interface designed for optimal user experience. 
-            The hardware integration ensures reliable performance and responsive interactions.
+            A key component of the system was the custom external display, which I was primarily responsible for
+            developing. Built around a 3.2-inch TFT LCD Touchscreen and an ESP32 microcontroller, this display provides
+            users with real-time statistics directly from the Battery Management System (BMS). Key metrics include the
+            State of Charge (%), total battery voltage (V), overall system current (A), battery temperature (°F), and
+            wattage (W).
+            <br><br>
+            During development, we prioritized rapid data updates over full touchscreen functionality, as critical
+            information was accessible on the main screen. Integrating the BMS's UART communication directly into our
+            code significantly improved performance and update speeds.
         </p>
     </div>
-    <div class="home-section-right">
-        <p>
-            content
-        </p>
-        <img src="replace" alt="empty" onclick="ImgZoom(this)" />
-    </div>
+
+    <h3>Battery System</h3>
+    <p>
+        The core of our power station is a 12.8V nominal battery pack composed of four 3.2V, 230Ah LiFePO4
+        prismatic cells. We chose LiFePO4 chemistry for its high power density and inherent safety and
+        stability, especially crucial for a portable device exposed to varying environments. Prismatic cells
+        offered easier setup and greater customizability compared to cylindrical alternatives. A significant
+        advantage of using individual cells was the ability to integrate an external Battery Management System
+        (BMS), which provides detailed, real-time data inaccessible with all-in-one battery solutions.
+        <br><br>
+        During assembly, we encountered a critical issue where the thin blue rubber coating on the cells could
+        rub off, exposing live bare metal. This highlighted the absolute necessity of properly protecting the
+        cells with electrically insulated materials to prevent short circuits.
+    </p>
+
+    <h3>Circuit Diagrams and CAD</h3>
+    <p>
+        [Brief description of the diagrams/models.] These visuals illustrate the intricate wiring of the power
+        station and the detailed mechanical design of its enclosure.
+    </p>
+
+    <h3>Future Improvements & Key Learnings</h3>
+    <p>
+        Throughout the project, we identified several areas for future enhancements, such as implementing a global
+        system switch, potentially controlled by the ESP32 to manage power draw, and refining the touchscreen
+        functionality for smoother updates.
+        <br><br>
+        This senior project was an invaluable experience that taught me the complexities of integrating diverse
+        electrical and software components. I learned critical lessons in problem-solving, like diagnosing and
+        resolving the inverter's grounding issue, and the importance of thorough component research and safety
+        considerations, especially concerning exposed live metal on battery cells.
+    </p>
 </div>

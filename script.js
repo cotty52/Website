@@ -133,17 +133,22 @@ function HandleRoute() {
         case 'Home':
             LoadPage('home.html', 'HomeBtn');
             break;
-        case 'Designs':
-            LoadPage('designs.html', 'DesignsBtn');
+        case 'Projects':
+            LoadPage('projects.html', 'ProjectsBtn');
             break;
-        case 'Coding':
-            LoadPage('coding.html', 'CodingBtn');
+        case 'Contact':
+            LoadPage('contact.html', 'ContactBtn');
             break;
         case 'Formula':
             LoadPage('formula.html', 'FormulaBtn');
             break;
         case 'Senior-Project':
             LoadPage('senior-project.html', 'Senior-ProjectBtn');
+            break;
+        // Legacy redirects for old URLs
+        case 'Designs':
+        case 'Coding':
+            LoadPage('projects.html', 'ProjectsBtn');
             break;
         default:
             LoadPage('home.html', 'HomeBtn');

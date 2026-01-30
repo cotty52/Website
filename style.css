@@ -384,6 +384,12 @@ p {
 	box-shadow: var(--shadow-elevation-low);
 }
 
+.h-name {
+	margin-bottom: 1.5rem;
+	text-align: center;
+	font-size: large;
+}
+
 h1 {
 	margin-bottom: 1.5rem;
 	text-align: center;
@@ -423,6 +429,10 @@ h3 {
 	display: block;
 	margin: 0 auto;
 }
+
+/*==================/
+    Home Section  
+/==================*/
 
 .home-section-left {
 	grid-template-areas: "imgArea pArea";
@@ -469,6 +479,14 @@ h3 {
 	box-shadow: var(--shadow-elevation-medium);
 }
 
+/*==================/
+   Project Section 
+/==================*/
+
+.project-section {
+	margin-bottom: 3rem;
+}
+
 .project-section-left {
 	grid-template-areas: "imgArea pArea";
 	grid-template-columns: 20vw auto;
@@ -477,10 +495,6 @@ h3 {
 .project-section-right {
 	grid-template-areas: "pArea imgArea";
 	grid-template-columns: auto 20vw;
-}
-
-.project-section {
-	margin-bottom: 3rem;
 }
 
 .project-section-left,
@@ -493,11 +507,16 @@ h3 {
 	text-align: left;
 }
 
+.project-section > p,
 .project-section-left > p,
 .project-section-right > p {
-	grid-area: pArea;
-	/* max-width: 60vw; */
 	padding: 0.3rem 0 0.3rem 0;
+}
+
+.project-section-left > p,
+.project-section-right > p {
+	/* max-width: 60vw; */
+	grid-area: pArea;
 }
 
 .project-section-left > img:not(.img-zoom),
@@ -518,6 +537,46 @@ h3 {
 .project-section-right > img:hover:not(.img-zoom) {
 	transform: scale(1.005);
 	box-shadow: var(--shadow-elevation-medium);
+}
+
+.project-section-centered {
+	display: grid;
+	grid-template-areas: "imgArea pArea";
+	grid-template-columns: 20vw auto;
+	column-gap: 1.5rem;
+	margin-bottom: 3rem;
+	/* justify-content: center; */
+	align-items: center;
+	text-align: left;
+}
+
+.project-section-centered > p {
+	grid-area: pArea;
+	/* max-width: 60vw; */
+	padding: 0.3rem 0 0.3rem 0;
+}
+
+.project-section-centered > img:not(.img-zoom) {
+	grid-area: imgArea;
+	width: 100%;
+	max-width: 800px;
+	max-height: 800px;
+	align-self: center;
+	object-fit: cover;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow-elevation-low);
+	transition: 0.2s ease-out;
+	cursor: pointer;
+}
+
+.no-shadow {
+	box-shadow: none !important;
+	outline: black solid 1px;
+	aspect-ratio: auto;
+}
+
+.no-shadow > img {
+	pointer-events: none;
 }
 
 .img-zoom {
@@ -553,6 +612,10 @@ h3 {
 	background-color: white;
 	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+/*==================/
+   Project Cards
+/==================*/
 
 .project {
 	display: grid;
@@ -875,6 +938,10 @@ video:fullscreen {
 	}
 }
 
+/*==================/
+   Contact Section
+/==================*/
+
 .contact-section {
 	max-width: 600px;
 	margin: 2rem auto;
@@ -923,6 +990,10 @@ video:fullscreen {
 	margin-bottom: 0;
 }
 
+/*==================/
+   Footer Section
+/==================*/
+
 .footer {
 	height: 3rem;
 	width: 100%;
@@ -962,9 +1033,9 @@ video:fullscreen {
 	border-radius: 1rem 0 0 1rem;
 }
 
-/* =================
-   MEDIA QUERIES
-   ================= */
+/*==================/
+    MEDIA QUERIES
+/==================*/
 @media screen and (max-width: 768px) {
 
 	/* Typography adjustments */
@@ -987,10 +1058,24 @@ video:fullscreen {
 		padding: 0.5rem;
 		flex-direction: column;
 		gap: 0.5rem;
+
 	}
 
 	.main-nav {
 		order: 1;
+	}
+
+	.button {
+		width: calc(var(--buttonWidth) * 0.8);
+		font-size: 0.8em;
+	}
+
+	.button-container {
+		gap: calc(var(--buttonContainerGap) * 0.8);
+	}
+
+	.button-selector {
+		width: calc(var(--buttonWidth) * 0.8);
 	}
 
 	.dropdown {
@@ -1022,19 +1107,6 @@ video:fullscreen {
 		width: 100%;
 		height: var(--buttonHeight);
 		font-size: 0.8em;
-	}
-
-	.button {
-		width: calc(var(--buttonWidth) * 0.8);
-		font-size: 0.8em;
-	}
-
-	.button-container {
-		gap: calc(var(--buttonContainerGap) * 0.8);
-	}
-
-	.button-selector {
-		width: calc(var(--buttonWidth) * 0.8);
 	}
 
 	.page {
@@ -1108,8 +1180,28 @@ video:fullscreen {
 }
 
 @media screen and (max-width: 480px) {
+	.button {
+		width: calc(var(--buttonWidth) * 0.8);
+		font-size: 0.8em;
+	}
 
-	/* Further adjustments for very small screens */
+	.button-selector {
+		width: calc(var(--buttonWidth) * 0.8);
+	}
+
+	.button-container {
+		gap: calc(var(--buttonContainerGap) * 0.8);
+	}
+
+	.dropdown-toggle {
+		width: calc(var(--buttonWidth) * 0.8);
+		font-size: 0.8em;
+	}
+
+	.dropdown-item {
+		font-size: 0.8em;
+	}
+
 	.project {
 		width: 100%;
 		padding: 1rem;
@@ -1126,30 +1218,6 @@ video:fullscreen {
 		max-width: 100%;
 	}
 
-	/* Navigation for smallest screens */
-	.button {
-		width: calc(var(--buttonWidth) * 0.7);
-		font-size: 0.75em;
-	}
-
-	.button-selector {
-		width: calc(var(--buttonWidth) * 0.7);
-	}
-
-	.button-container {
-		gap: calc(var(--buttonContainerGap) * 0.7);
-	}
-
-	.dropdown-toggle {
-		width: calc(var(--buttonWidth) * 0.7);
-		font-size: 0.75em;
-	}
-
-	.dropdown-item {
-		font-size: 0.75em;
-	}
-
-	/* Contact section adjustments for small screens */
 	.contact-section {
 		margin: 0.5rem auto;
 		padding: 0.75rem;

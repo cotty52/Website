@@ -14,6 +14,9 @@ window.onload = () => {
 	});
 };
 
+// Initialize routing when DOM is loaded
+document.addEventListener('DOMContentLoaded', InitializeRouting);
+
 // Debounce variable
 let resizeTimer;
 let resized = false;
@@ -64,6 +67,16 @@ async function LoadPage(pageName, btnName) {
 		// Update the page content
 		const pageContainer = document.getElementById("page-container");
 		pageContainer.innerHTML = content;
+
+		// If loading contact.html, insert the profile card
+		if (pageName === 'contact.html' && typeof insertProfileCard === 'function') {
+			insertProfileCard();
+		}
+		// If navigating away from contact.html, remove the card if present
+		if (pageName !== 'contact.html') {
+			const cardContainer = document.getElementById('profile-card-container');
+			if (cardContainer) cardContainer.innerHTML = '';
+		}
 		// Update active button and pill
 		const activeButton = document.querySelector(".button.active, .dropdown-item.active");
 		const clickedButton = document.getElementById(btnName);
@@ -117,6 +130,7 @@ async function LoadPage(pageName, btnName) {
 	}
 }
 
+// DOMContent loaded event to initialize routing
 // Add hash-based routing
 function InitializeRouting() {
     // Handle initial page load
@@ -155,9 +169,6 @@ function HandleRoute() {
     }
 }
 
-// Initialize routing when DOM is loaded
-document.addEventListener('DOMContentLoaded', InitializeRouting);
-
 // Initialize components after page load
 function InitializePageComponents() {
 	// Initialize Sliders
@@ -169,49 +180,6 @@ function InitializePageComponents() {
 	// Initialize More buttons
 	InitializeMoreButtons();
 }
-
-// Dropdown functionality
-function toggleDropdown() {
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const moreButton = document.getElementById('moreBtn');
-    const isDropdownOpen = dropdownMenu.classList.contains('show');
-    
-    dropdownMenu.classList.toggle('show');
-    
-    // Handle pill positioning based on current active item
-    const activeDropdownItem = document.querySelector('.dropdown-item.active');
-    
-    if (!isDropdownOpen && activeDropdownItem) {
-        // Dropdown is opening and there's an active dropdown item
-        setTimeout(() => {
-            UpdatePillPosition(activeDropdownItem);
-        }, 100); // Small delay to allow dropdown animation
-    } else if (isDropdownOpen && activeDropdownItem) {
-        // Dropdown is closing and there's an active dropdown item
-        // Move pill to More button and ensure it has active class
-        moreButton.classList.add("active");
-        UpdatePillPosition(moreButton);
-    }
-}
-
-// Close dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    
-    if (!dropdown.contains(event.target) && dropdownMenu.classList.contains('show')) {
-        dropdownMenu.classList.remove('show');
-          // Handle pill positioning when dropdown closes
-        const activeDropdownItem = document.querySelector('.dropdown-item.active');
-        const moreButton = document.getElementById('moreBtn');
-        
-        if (activeDropdownItem) {
-            // Move pill to More button when dropdown closes and ensure it has active class
-            moreButton.classList.add("active");
-            UpdatePillPosition(moreButton);
-        }
-    }
-});
 
 // Function to initialize particles.js
 function InitializeParticles() {
@@ -336,6 +304,49 @@ function updateMainNavPill(activeButton) {
 		}
 	}
 }
+
+// Dropdown functionality
+function toggleDropdown() {
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const moreButton = document.getElementById('moreBtn');
+    const isDropdownOpen = dropdownMenu.classList.contains('show');
+    
+    dropdownMenu.classList.toggle('show');
+    
+    // Handle pill positioning based on current active item
+    const activeDropdownItem = document.querySelector('.dropdown-item.active');
+    
+    if (!isDropdownOpen && activeDropdownItem) {
+        // Dropdown is opening and there's an active dropdown item
+        setTimeout(() => {
+            UpdatePillPosition(activeDropdownItem);
+        }, 100); // Small delay to allow dropdown animation
+    } else if (isDropdownOpen && activeDropdownItem) {
+        // Dropdown is closing and there's an active dropdown item
+        // Move pill to More button and ensure it has active class
+        moreButton.classList.add("active");
+        UpdatePillPosition(moreButton);
+    }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+    if (!dropdown.contains(event.target) && dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.remove('show');
+          // Handle pill positioning when dropdown closes
+        const activeDropdownItem = document.querySelector('.dropdown-item.active');
+        const moreButton = document.getElementById('moreBtn');
+        
+        if (activeDropdownItem) {
+            // Move pill to More button when dropdown closes and ensure it has active class
+            moreButton.classList.add("active");
+            UpdatePillPosition(moreButton);
+        }
+    }
+});
 
 function updateMoreButtonPill() {
 	const mainPill = document.querySelector('.main-nav .button-selector');

@@ -5,23 +5,56 @@
 @import "tailwindcss";
 
 /*
-  DaisyUI v5: registered as a Tailwind plugin via @plugin.
-  The `themes` option limits which DaisyUI themes are bundled.
+  daisyUI v5: registered as a Tailwind plugin via @plugin.
+  `themes` limits which themes get bundled — here, only our own.
 */
 @plugin "daisyui" {
-  themes: light;
+  themes: mytheme --default;
+}
+
+/*
+  A named custom theme. Setting --color-primary once means every daisyUI
+  component (btn-primary, bg-primary, tabs, focus rings) picks up the brand
+  blue automatically, with --color-primary-content used for text on top of it.
+  This is what makes "modernize with daisyUI" different from restyling by hand.
+*/
+@plugin "daisyui/theme" {
+  name: "mytheme";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f4f6f8;
+  --color-base-300: #e6eaee;
+  --color-base-content: #213547;
+
+  --color-primary: #6699cc;
+  --color-primary-content: #ffffff;
+
+  --radius-box: 1.5rem;   /* cards, modals — the old site's generous rounding */
+  --radius-field: 999px;  /* buttons and nav pills */
+  --radius-selector: 999px;
+
+  --depth: 1;
+  --noise: 0;
 }
 
 /*
   @theme is Tailwind v4's way of extending the design system.
-  These values become utility classes — e.g. `bg-brand`, `text-brand`.
-  This replaces the `extend.colors` block in tailwind.config.js from v3.
+  These become utility classes — `bg-brand`, `animate-slow-spin`.
+  This replaces the `extend` block in tailwind.config.js from v3.
 */
 @theme {
   --color-brand: #6699cc;
+  --animate-slow-spin: slow-spin 400s linear infinite;
 }
 
-/* Global base styles */
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,56 +62,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Custom scrollbar, carried over from the original site */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+::-webkit-scrollbar-thumb {
+  background: rgb(32 32 32 / 0.6);
+  border-radius: 4px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand);
 }

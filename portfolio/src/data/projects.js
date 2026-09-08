@@ -25,6 +25,7 @@ export const projects = [
     id: 'senior-project',
     blurb:
       'For my senior project, I worked with a group of four to create a portable solar power station. One aspect of the project I worked on was the external display. Shown below, it allows users to view statistics about the battery like the state of charge, battery voltage, overall wattage, etc. We used an ESP32 microcontroller to run the code for the SPI display.',
+    moreInfo: '/projects/senior-project',
     aspect: 'aspect-square',
     media: [{ type: 'image', src: displayImg, alt: 'external-display' }],
   },
@@ -33,6 +34,7 @@ export const projects = [
     blurb:
     "I am part of Binghamton's Formula SAE club, where many students work in teams to design and bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld from industry professionals. In my senior year, I was part of the Accumulator subteam, where I worked on the battery pack for the car.",
     link: { href: 'https://binghamtonmotorsports.com/', label: 'Binghamton Motorsports' },
+    moreInfo: '/projects/formula',
     aspect: 'aspect-square',
     media: [
       { type: 'image', src: carSide, alt: 'car-side' },

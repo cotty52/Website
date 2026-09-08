@@ -28,7 +28,12 @@ export default function Projects() {
       </p>
 
       {projects.map((project) => (
-        <ProjectCard key={project.id} blurb={project.blurb} link={project.link}>
+        <ProjectCard
+          key={project.id}
+          blurb={project.blurb}
+          link={project.link}
+          moreInfo={project.moreInfo}
+        >
           <ImageSlider media={project.media} aspect={project.aspect} />
         </ProjectCard>
       ))}

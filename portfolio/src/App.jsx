@@ -3,6 +3,8 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
+import SeniorProject from './pages/projects/SeniorProject'
+import Formula from './pages/projects/Formula'
 
 /*
   A pathless layout route: <Layout /> renders once and stays mounted while
@@ -29,6 +31,8 @@ function App() {
           <Route index element={<Navigate to="/home" replace />} />
           <Route path="home" element={<Home />} />
           <Route path="projects" element={<Projects />} />
+          <Route path="projects/senior-project" element={<SeniorProject />} />
+          <Route path="projects/formula" element={<Formula />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Route>

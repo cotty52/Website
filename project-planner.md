@@ -32,7 +32,7 @@ The original site (`old-reference/`) is read-only reference material — use it 
 
 ### Layout Shell (persistent across all pages)
 - [x] `Header.jsx` — portrait, name/title, LinkedIn + GitHub buttons
-- [x] `NavBar.jsx` — 3-tab nav with Framer Motion animated sliding pill
+- [x] `NavBar.jsx` — 3-tab nav (Home / Projects / Contact) with Framer Motion animated sliding pill
 - [x] `Footer.jsx` — copyright, social icons, blue decorative line
 - [x] `ParticlesBackground.jsx` — fixed full-screen particle animation
 
@@ -44,8 +44,9 @@ The original site (`old-reference/`) is read-only reference material — use it 
 
 ### Pages
 - [x] `Home.jsx` — intro paragraph, Grand Canyon + Blender donut image sections
-- [x] `Coding.jsx` — intro, Idle Bounce Screen (video), Senior Project (static image)
-- [x] `Designs.jsx` — intro, BOTTY (3 imgs), Formula SAE (4 imgs + link), Arduino Simon Says (4 imgs + 1 video)
+- [x] `Projects.jsx` — merged Designs + Coding: intro, BOTTY (3 imgs), Formula SAE (4 imgs + link),
+      Arduino Simon Says (4 imgs + 1 video), Idle Bounce Screen (video), Senior Project (static image)
+- [ ] `Contact.jsx` — placeholder only, needs real content (form/email/resume link)
 
 ### Polish
 - [x] Responsive layout (`md:` breakpoints; verified at 375px)
@@ -90,18 +91,21 @@ Reference implementation lives in `old-reference/` (read-only). Use it to unders
 - Intro paragraph about Christian (senior Computer Engineering student, Binghamton University, May 2026 graduation)
 - Two image+caption sections: Grand Canyon photo (national parks trip) and Blender 3D donut render
 
-### `/coding` — Coding Projects
-- Intro paragraph about project stack (Python primary, Java/C; internship with SQL, PowerShell, .NET 6 Razor Pages)
-- Project: **Idle Bounce Screen** — Python bouncing image script; has a demo video (16:9 container)
-- Project: **Senior Project — Solar Power Station Display** — ESP32 SPI display for battery stats; static image
-
-### `/designs` — Design Projects
-- Intro paragraph about creative/physical design work
+### `/projects` — Projects
+- Merged the former Designs and Coding tabs into one, since the split was somewhat arbitrary —
+  everything here is "things I built," just spanning hands-on/physical and software work
+- Intro paragraph covering both the creative/physical design work and the software stack (Python
+  primary, Java/C; internship with SQL, PowerShell, .NET 6 Razor Pages)
 - Project: **BOTTY** — 3D-printed battlebot; 3-image carousel
 - Project: **Formula SAE** — race car, CAD + welding; 4-image carousel; external link
 - Project: **Arduino Simon Says** — alien-themed Simon Says device; 4 images + 1 video carousel
+- Project: **Idle Bounce Screen** — Python bouncing image script; has a demo video (16:9 container)
+- Project: **Senior Project — Solar Power Station Display** — ESP32 SPI display for battery stats; static image
 
-> Note: the `fixing` git branch (unmerged) restructured the old vanilla site into `projects.html`/`contact.html`/`formula.html`/`senior-project.html` with more content than what's captured above — worth mining for copy/details when fleshing out these pages.
+### `/contact` — Contact
+- Placeholder only ("Contact page coming soon") — real content (form, email, resume link) still TODO
+
+> Note: the `fixing` git branch (unmerged) restructured the old vanilla site into `projects.html`/`contact.html`/`formula.html`/`senior-project.html` with more content than what's captured above. Decided not to mine it for the Contact placeholder — didn't have much there anyway.
 
 ---
 
@@ -129,5 +133,5 @@ Known follow-ups:
   dominate the build. Worth compressing before deploying.
 - **Bundle size.** The JS chunk is ~513 KB (161 KB gzipped), mostly tsParticles
   and Framer Motion. Fine for now; code-splitting the particles is the easy win.
-- Not yet done: mining the `fixing` branch for expanded copy, the Contact page,
-  and the deploy workflow.
+- Not yet done: real Contact page content (currently a placeholder) and the
+  deploy workflow.

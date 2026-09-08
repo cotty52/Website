@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Coding from './pages/Coding'
-import Designs from './pages/Designs'
+import Projects from './pages/Projects'
+import Contact from './pages/Contact'
 
 /*
   A pathless layout route: <Layout /> renders once and stays mounted while
@@ -28,8 +28,8 @@ function App() {
           */}
           <Route index element={<Navigate to="/home" replace />} />
           <Route path="home" element={<Home />} />
-          <Route path="designs" element={<Designs />} />
-          <Route path="coding" element={<Coding />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Route>
       </Routes>

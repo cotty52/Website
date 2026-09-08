@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 
 const TABS = [
   { to: '/home', label: 'Home' },
-  { to: '/designs', label: 'Designs' },
-  { to: '/coding', label: 'Coding' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 /*

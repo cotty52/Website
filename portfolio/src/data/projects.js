@@ -15,29 +15,32 @@ import arduinoVideo from '../assets/Arduino_Video.mp4'
 
 /*
   The project cards are structurally identical — a blurb plus one or more
-  media items — so they live as data and the pages just map over them.
+  media items — so they live as data and the page just maps over them.
   Assets are imported (not referenced by path) so Vite verifies them at build
   time and content-hashes the output filenames.
 */
 
-export const codingProjects = [
-  {
-    id: 'idle-screen',
-    blurb:
-      'This is a python script that allows you to input an image and it creates a bouncing idle screen from it, like the classic DVD logo.',
-    aspect: 'aspect-video',
-    media: [{ type: 'video', src: idleBounceVideo, alt: 'idle bounce screen demo' }],
-  },
-  {
+export const projects = [
+    {
     id: 'senior-project',
     blurb:
       'For my senior project, I worked with a group of four to create a portable solar power station. One aspect of the project I worked on was the external display. Shown below, it allows users to view statistics about the battery like the state of charge, battery voltage, overall wattage, etc. We used an ESP32 microcontroller to run the code for the SPI display.',
     aspect: 'aspect-square',
     media: [{ type: 'image', src: displayImg, alt: 'external-display' }],
   },
-]
-
-export const designProjects = [
+  {
+    id: 'formula',
+    blurb:
+    "I am part of Binghamton's Formula SAE club, where many students work in teams to design and bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld from industry professionals. In my senior year, I was part of the Accumulator subteam, where I worked on the battery pack for the car.",
+    link: { href: 'https://binghamtonmotorsports.com/', label: 'Binghamton Motorsports' },
+    aspect: 'aspect-square',
+    media: [
+      { type: 'image', src: carSide, alt: 'car-side' },
+      { type: 'image', src: carBack, alt: 'car-back' },
+      { type: 'image', src: carFront, alt: 'car-front' },
+      { type: 'image', src: welding, alt: 'welding' },
+    ],
+  },
   {
     id: 'botty',
     blurb:
@@ -47,19 +50,6 @@ export const designProjects = [
       { type: 'image', src: bottyFront, alt: 'botty-front' },
       { type: 'image', src: bottyBack, alt: 'botty-back' },
       { type: 'image', src: bottySide, alt: "botty-side :'(" },
-    ],
-  },
-  {
-    id: 'formula',
-    blurb:
-      "I am part of Binghamton's Formula SAE club, where many students work in teams to design and bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld from industry professionals. In my senior year, I was part of the Accumulator subteam, where I worked on the battery pack for the car.",
-    link: { href: 'https://binghamtonmotorsports.com/', label: 'Binghamton Motorsports' },
-    aspect: 'aspect-square',
-    media: [
-      { type: 'image', src: carSide, alt: 'car-side' },
-      { type: 'image', src: carBack, alt: 'car-back' },
-      { type: 'image', src: carFront, alt: 'car-front' },
-      { type: 'image', src: welding, alt: 'welding' },
     ],
   },
   {
@@ -74,5 +64,12 @@ export const designProjects = [
       { type: 'image', src: poster, alt: 'poster' },
       { type: 'video', src: arduinoVideo, alt: 'arduino simon says demo' },
     ],
+  },
+  {
+    id: 'idle-screen',
+    blurb:
+      'This is a python script that allows you to input an image and it creates a bouncing idle screen from it, like the classic DVD logo.',
+    aspect: 'aspect-video',
+    media: [{ type: 'video', src: idleBounceVideo, alt: 'idle bounce screen demo' }],
   },
 ]

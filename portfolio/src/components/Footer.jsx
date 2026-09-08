@@ -1,5 +1,6 @@
 import linkedInIcon from '../assets/LinkedIn_2.png'
 import gitHubIcon from '../assets/GitHub_2.png'
+import ThemeToggle from './ThemeToggle'
 
 const LINKEDIN = 'https://www.linkedin.com/in/christian-otty/'
 const GITHUB = 'https://github.com/cotty52'
@@ -14,7 +15,7 @@ const GITHUB = 'https://github.com/cotty52'
 export default function Footer() {
   return (
     <footer className="flex items-center gap-3 bg-base-100 px-6 py-4 text-sm shadow-[0_0_10px_0_rgba(0,0,0,0.06)]">
-      <span>2025 | Christian Otty</span>
+      <span>2026 | Christian Otty</span>
 
       <a href={LINKEDIN} target="_blank" rel="noopener" title="Visit my LinkedIn">
         <img src={linkedInIcon} alt="LinkedIn" className="w-5 transition hover:opacity-70" />
@@ -24,6 +25,8 @@ export default function Footer() {
       </a>
 
       <div className="h-1 flex-1 rounded-l-full rounded-r-full bg-brand" />
+
+      <ThemeToggle />
     </footer>
   )
 }

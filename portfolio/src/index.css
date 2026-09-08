@@ -9,7 +9,7 @@
   `themes` limits which themes get bundled — here, only our own.
 */
 @plugin "daisyui" {
-  themes: mytheme --default;
+  themes: mytheme, mytheme-dark;
 }
 
 /*
@@ -20,7 +20,8 @@
 */
 @plugin "daisyui/theme" {
   name: "mytheme";
-  default: true;
+  default: false;
+  prefersdark: false;
   color-scheme: light;
 
   --color-base-100: #ffffff;
@@ -33,6 +34,32 @@
 
   --radius-box: 1.5rem;   /* cards, modals — the old site's generous rounding */
   --radius-field: 999px;  /* buttons and nav pills */
+  --radius-selector: 999px;
+
+  --depth: 1;
+  --noise: 0;
+}
+
+/*
+  Dark counterpart, marked as the default theme — ThemeToggle.jsx falls back
+  to this when localStorage has no saved preference yet.
+*/
+@plugin "daisyui/theme" {
+  name: "mytheme-dark";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #12161f;
+  --color-base-200: #1a2029;
+  --color-base-300: #232a37;
+  --color-base-content: #e5e9f0;
+
+  --color-primary: #6a89a7;
+  --color-primary-content: #ffffff;
+
+  --radius-box: 1.5rem;
+  --radius-field: 999px;
   --radius-selector: 999px;
 
   --depth: 1;

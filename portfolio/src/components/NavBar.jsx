@@ -18,7 +18,10 @@ const TABS = [
 export default function NavBar() {
   return (
     <div className="sticky top-0 z-20 flex w-full justify-center bg-primary p-3 shadow-md">
-      <div role="tablist" className="tabs rounded-full bg-base-300 p-1">
+      <div
+        role="tablist"
+        className="tabs rounded-full bg-base-300 p-1 shadow-[inset_0_2px_5px_0_rgba(0,0,0,0.18)]"
+      >
         {TABS.map(({ to, label }) => (
           <NavLink key={to} to={to} role="tab" className="tab relative w-20 md:w-24">
             {({ isActive }) => (
@@ -40,7 +43,7 @@ export default function NavBar() {
                   className={`relative z-10 transition-colors ${
                     isActive
                       ? 'font-medium text-primary-content'
-                      : 'text-base-content/70 hover:text-base-content'
+                      : 'text-base-content hover:text-primary'
                   }`}
                 >
                   {label}

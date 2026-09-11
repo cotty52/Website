@@ -94,7 +94,7 @@ export default function ImageZoom({ src, alt, className = '' }) {
         src={src}
         alt={alt}
         onClick={() => setOpen(true)}
-        className={`cursor-pointer rounded-lg bg-white object-cover shadow-md transition hover:shadow-xl ${className}`}
+        className={`cursor-pointer rounded-lg bg-white object-cover shadow-sm shadow-black/15 transition duration-500 hover:shadow-lg hover:shadow-black/25 dark:shadow-black/30 dark:hover:shadow-black/45 ${className}`}
       />
 
       {open && (

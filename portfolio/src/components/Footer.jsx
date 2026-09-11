@@ -14,7 +14,7 @@ const GITHUB = 'https://github.com/cotty52'
 */
 export default function Footer() {
   return (
-    <footer className="flex items-center gap-3 bg-base-100 px-6 py-4 text-sm shadow-[0_0_10px_0_rgba(0,0,0,0.06)]">
+    <footer className="flex items-center gap-3 bg-base-200 px-6 py-4 text-sm shadow-[0_0_12px_rgba(0,0,0,0.15)] dark:shadow-[0_0_14px_rgba(0,0,0,0.55)]">
       <span>2026 | Christian Otty</span>
 
       <a href={LINKEDIN} target="_blank" rel="noopener" title="Visit my LinkedIn">

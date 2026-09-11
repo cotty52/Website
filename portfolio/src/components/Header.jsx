@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="flex flex-col items-center gap-4 px-4 py-8">
       <div className="avatar">
-        <div className="w-32 rounded-full shadow-lg md:w-48">
+        <div className="w-32 rounded-full shadow-lg shadow-black/25 md:w-48 dark:shadow-black/50">
           {/*
             The 400s rotation is registered as --animate-slow-spin in index.css,
             so it stays a Tailwind utility rather than an inline style block.

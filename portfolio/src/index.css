@@ -5,6 +5,15 @@
 @import "tailwindcss";
 
 /*
+  Tailwind's `dark:` variant defaults to prefers-color-scheme (or a `.dark`
+  class). Theme switching here is done via ThemeToggle.jsx setting
+  data-theme="mytheme-dark" on <html>, so `dark:` is remapped to match that
+  instead — lets any component reach for `dark:` for a theme-specific
+  override without duplicating daisyUI's mytheme/mytheme-dark split.
+*/
+@custom-variant dark (&:where([data-theme="mytheme-dark"], [data-theme="mytheme-dark"] *));
+
+/*
   daisyUI v5: registered as a Tailwind plugin via @plugin.
   `themes` limits which themes get bundled — here, only our own.
 */

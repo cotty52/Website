@@ -11,17 +11,17 @@ export default function Home() {
         to graduate with my masters in May of 2026.
         <br />
         <br />
-        Balancing academics with hands-on experience, I&apos;m actively involved in clubs such as the
+        Balancing academics with hands-on experience, I'm actively involved in clubs such as the
         Society of Automotive Engineers and Watson Combat Robotics League. These clubs have honed my
         teamwork and project management skills. This past summer, I had the opportunity to intern at
-        New York State&apos;s ITS department, where I collaborated with experienced developers on
+        New York State's ITS department, where I collaborated with experienced developers on
         server maintenance and system automation projects.
       </p>
 
       <section className="grid items-center gap-6 md:grid-cols-[10rem_1fr]">
         <ImageZoom src={canyon} alt="canyon" className="w-full" />
         <p>
-          When I&apos;m not coding or building robots, I enjoy exploring the world with my family. In
+          When I'm not coding or building robots, I enjoy exploring the world with my family. In
           the summer of 2023, we went out west to visit national parks and to see amazing natural
           creations, like the Grand Canyon.
         </p>

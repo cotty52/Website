@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 
@@ -16,7 +16,7 @@ function startEngine() {
   return enginePromise
 }
 
-export default function ParticlesBackground() {
+function ParticlesBackground() {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
@@ -89,3 +89,12 @@ export default function ParticlesBackground() {
     />
   )
 }
+
+/*
+  memo is load-bearing here, not a micro-optimisation. @tsparticles/react 3.0.0
+  lists its whole props object in its effect deps, and that object is new on
+  every render — so any re-render destroys the canvas and respawns every
+  particle. Layout re-renders on each navigation (it reads the location), and
+  with no props to compare, memo means those re-renders never reach here.
+*/
+export default memo(ParticlesBackground)

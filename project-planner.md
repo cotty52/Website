@@ -31,10 +31,12 @@ The original site (`old-reference/`) is read-only reference material — use it 
 - [x] Set up `src/` folder structure
 
 ### Layout Shell (persistent across all pages)
-- [x] `Header.jsx` — portrait, name/title, LinkedIn + GitHub buttons
+- [x] `Header.jsx` — portrait, name/title, LinkedIn + GitHub buttons (hidden on `/projects/:slug` sub-pages)
+- [x] Scroll to top on route change (`Layout.jsx`; `<BrowserRouter>` has no `<ScrollRestoration>`)
 - [x] `NavBar.jsx` — 3-tab nav (Home / Projects / Contact) with Framer Motion animated sliding pill
+      (one persistent pill animating `x` by tab index — not `layoutId`, which mis-animates from the sticky nav's scrolled position)
 - [x] `Footer.jsx` — copyright, social icons, blue decorative line
-- [x] `ParticlesBackground.jsx` — fixed full-screen particle animation
+- [x] `ParticlesBackground.jsx` — fixed full-screen particle animation (`memo`-wrapped: `@tsparticles/react` reloads on any re-render)
 
 ### Reusable UI Components
 - [x] `ProjectCard.jsx` — daisyUI `card` + hover shadow
@@ -46,6 +48,8 @@ The original site (`old-reference/`) is read-only reference material — use it 
 - [x] `Home.jsx` — intro paragraph, Grand Canyon + Blender donut image sections
 - [x] `Projects.jsx` — merged Designs + Coding: intro, BOTTY (3 imgs), Formula SAE (4 imgs + link),
       Arduino Simon Says (4 imgs + 1 video), Idle Bounce Screen (video), Senior Project (static image)
+- [x] Project sub-pages (`pages/projects/`): `SeniorProject.jsx`, `Formula.jsx` — reached via "Learn More",
+      full-screen with nav bar + footer only (no header)
 - [ ] `Contact.jsx` — placeholder only, needs real content (form/email/resume link)
 
 ### Polish
@@ -75,7 +79,7 @@ Reference implementation lives in `old-reference/` (read-only). Use it to unders
 
 | Feature | Original implementation | React equivalent |
 |---|---|---|
-| Animated nav pill | Manual `translateX` calc in JS | Framer Motion `layoutId` on the pill |
+| Animated nav pill | Manual `translateX` calc in JS | Framer Motion `animate={{ x: index * 100% }}` — fixed-width tabs, nothing measured |
 | Page navigation | `fetch()` + `innerHTML` injection | React Router `<Routes>` + `<Link>` |
 | Image slider | OOP `Slider` class with CSS `@keyframes` | `ImageSlider.jsx` with Framer Motion `AnimatePresence` |
 | Image zoom overlay | DOM manipulation, `z-index` overlay | `ImageZoom.jsx` with Framer Motion scale animation |

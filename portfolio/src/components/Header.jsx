@@ -30,7 +30,7 @@ export default function Header() {
           target="_blank"
           rel="noopener"
           title="Visit my LinkedIn"
-          className="btn btn-primary btn-sm border-none"
+          className="btn btn-primary btn-sm border-none shadow-sm shadow-black/20 dark:shadow-black/45"
         >
           LinkedIn
         </a>
@@ -39,7 +39,7 @@ export default function Header() {
           target="_blank"
           rel="noopener"
           title="Visit my GitHub"
-          className="btn btn-primary btn-sm border-none"
+          className="btn btn-primary btn-sm border-none shadow-sm shadow-black/20 dark:shadow-black/45"
         >
           GitHub
         </a>

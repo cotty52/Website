@@ -129,17 +129,19 @@ Known follow-ups:
   serves it for any unmatched path and the SPA boots and reads the real
   `location.pathname`. Note the HTTP status on a deep link is 404 even though
   the page renders correctly — fine for a portfolio, but it does mean crawlers
-  see a 404 for `/Website/designs`.
-- **Project-site sub-path.** The repo is `cotty52/Website`, so Pages serves it
-  at `cotty52.github.io/Website/`. `vite.config.js` sets `base` to `/Website/`
-  for production builds only (dev stays at the root), and `App.jsx` passes
-  `import.meta.env.BASE_URL` to `BrowserRouter` as its basename so routing
-  follows the same setting. For a custom domain or a repo renamed to
-  `cotty52.github.io`, build with `VITE_BASE=/ npm run build`.
-- **Still to do for deploy:** a GitHub Actions workflow to build and publish
-  `dist/` to Pages (nothing exists in `.github/` yet).
+  see a 404 for `/designs`.
+- **Custom domain + deploy — set up.** The site is served at
+  `https://christian-otty.com` (Porkbun DNS: A/AAAA records for the apex, `www`
+  CNAME to `cotty52.github.io`). Because it lives at the domain root,
+  `vite.config.js` uses `base: '/'` and `App.jsx` passes
+  `import.meta.env.BASE_URL` to `BrowserRouter` as its basename. Override with
+  `VITE_BASE=/Website/ npm run build` only for a sub-path deploy.
+  `.github/workflows/deploy.yml` builds `portfolio/` and publishes `dist/` to
+  Pages on every push to `main` (Pages Source must be set to "GitHub Actions";
+  the domain is stored in Pages settings, so no `CNAME` file is needed).
+- **Branches.** `main` is the live React site; `legacy-site` archives the
+  original vanilla site that `main` served before the rework.
 - **Asset weight.** `Arduino_Video.mp4` is 33 MB and `Poster.png` 4.5 MB, which
   dominate the build. Worth compressing before deploying.
 - **Bundle size.** The JS chunk is ~513 KB (161 KB gzipped), mostly tsParticles
   and Framer Motion. Fine for now; code-splitting the particles is the easy win.
-- Not yet done: the deploy workflow.

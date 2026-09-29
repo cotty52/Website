@@ -65,7 +65,7 @@ export default function Contact() {
     <div className="flex w-full max-w-4xl flex-col items-center gap-8">
       <p>
         Feel free to reach out to me! I've recently completed my bachelor's and master's degrees in
-        computer engineering at Binghamton University and I'm available now for full-time roles. I'm
+        computer engineering at Binghamton University and I'm <b>available now for full-time roles</b>. I'm
         open to relocating, and I'm always interested in discussing new opportunities, collaborating
         on projects, or just connecting with fellow engineers and developers.
       </p>

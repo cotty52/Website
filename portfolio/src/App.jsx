@@ -15,9 +15,8 @@ import Formula from './pages/projects/Formula'
 function App() {
   return (
     /*
-      basename comes from Vite's `base`, so the app works both at the domain
-      root and under the /Website/ sub-path GitHub Pages serves a project site
-      from — without the routes below having to know which.
+      basename comes from Vite's `base` (the domain root by default), so the
+      routes below don't have to know where the site is served from.
     */
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>

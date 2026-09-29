@@ -7,13 +7,15 @@ export default function Home() {
     <div className="flex w-full max-w-4xl flex-col gap-12">
       <p>
         Hello, welcome to my website! My name is Christian and I am a computer engineer with a
-        bachelor's and master's degree from Binghamton University.
+        bachelor's and master's degree from Binghamton University. Alongside my coursework, I was 
+        actively involved in clubs such as the Society of Automotive Engineers and Watson Combat 
+        Robotics League. These clubs honed my teamwork and project management skills.
         <br />
         <br />
-        Alongside my coursework, I was actively involved in clubs such as the Society of Automotive
-        Engineers and Watson Combat Robotics League. These clubs honed my teamwork and project
-        management skills. I also interned at New York State's ITS department, where I collaborated
-        with experienced developers on server maintenance and system automation projects.
+        I also interned for 2 summers with New York State's ITS department, where I collaborated
+        with experienced developers on server maintenance and system automation projects. I then
+        started full-time after school, where I have continued building on those skills while
+        taking on larger projects and more responsibility.
       </p>
 
       <section className="grid items-center gap-6 md:grid-cols-[10rem_1fr]">

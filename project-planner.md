@@ -49,7 +49,9 @@ The original site (`old-reference/`) is read-only reference material — use it 
 - [x] `Projects.jsx` — merged Designs + Coding: intro, BOTTY (3 imgs), Formula SAE (4 imgs + link),
       Arduino Simon Says (4 imgs + 1 video), Idle Bounce Screen (video), Senior Project (static image)
 - [x] Project sub-pages (`pages/projects/`): `SeniorProject.jsx`, `Formula.jsx` — reached via "Learn More",
-      full-screen with nav bar + footer only (no header)
+      full-screen with nav bar + footer only (no header). `Formula.jsx` has first-person, recruiter-oriented
+      sections for the 2025 FSAE Electric Michigan competition, Accumulator and Frame sub-teams (each with a
+      photo; steering intentionally omitted), plus a skills line.
 - [ ] `Contact.jsx` — placeholder only, needs real content (form/email/resume link)
 
 ### Polish

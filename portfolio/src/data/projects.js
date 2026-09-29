@@ -32,7 +32,7 @@ export const projects = [
   {
     id: 'formula',
     blurb:
-    "I am part of Binghamton's Formula SAE club, where many students work in teams to design and bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame subteam. I was able to do a lot of CAD design and hands on work. I also learned how to weld from industry professionals. In my senior year, I was part of the Accumulator subteam, where I worked on the battery pack for the car.",
+    "While in school, I was part of Binghamton's Formula SAE club, where many students work in teams to design and bring to life a Formula-1 inspired race car. In my junior year, I was part of the Frame subteam where I focused on CAD design and hands on work including learning how to weld from industry professionals. In my senior year, I was part of the Accumulator subteam, where I worked on the battery and high voltage electrical systems for the car.",
     link: { href: 'https://binghamtonmotorsports.com/', label: 'Binghamton Motorsports' },
     moreInfo: '/projects/formula',
     aspect: 'aspect-square',

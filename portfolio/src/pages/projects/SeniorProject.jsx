@@ -3,6 +3,7 @@ import ImageZoom from '../../components/ImageZoom'
 import displayImg from '../../assets/Display_img.png'
 import highLevelDiagram from '../../assets/High_Level_Diagram.png'
 import systemSchematic from '../../assets/System_Schematic.png'
+import seniorProjectExpo from '../../assets/senior_project_expo.jpg'
 
 export default function SeniorProject() {
   return (
@@ -12,6 +13,12 @@ export default function SeniorProject() {
       </Link>
 
       <h1 className="text-2xl font-semibold md:text-3xl">Portable Solar Power Station</h1>
+
+      <ImageZoom
+        src={seniorProjectExpo}
+        alt="Portable Solar Power Station at the senior design exposition"
+        className="mx-auto w-full max-w-md"
+      />
 
       <p>
         For my senior capstone project, I collaborated with a team to develop a Portable Solar

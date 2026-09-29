@@ -18,8 +18,8 @@ export default function Formula() {
         dedicated to designing and building high-performance vehicles. The Formula team has created
         several Formula-1 inspired vehicles over the years. This subset of the organization got its
         start with internal combustion engines, but has since made the switch to electric drive. As
-        a member of the Formula team, I have gained a lot of hands-on experience in engineering
-        design and teamwork.
+        a member of the Formula team, I have gained a lot of hands-on experience in engineering,
+        design, and teamwork.
       </p>
     </div>
   )

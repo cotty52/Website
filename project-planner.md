@@ -52,7 +52,9 @@ The original site (`old-reference/`) is read-only reference material — use it 
       full-screen with nav bar + footer only (no header). `Formula.jsx` has first-person, recruiter-oriented
       sections for the 2025 FSAE Electric Michigan competition, Accumulator and Frame sub-teams (each with a
       photo; steering intentionally omitted), plus a skills line.
-- [ ] `Contact.jsx` — placeholder only, needs real content (form/email/resume link)
+- [x] `Contact.jsx` — availability/relocation intro plus a centered, left-aligned icon + link list
+      (Email, Resume, LinkedIn, GitHub). Resume PDF is `public/Christian_Otty_Resume.pdf` (overwrite to
+      update; linked via `import.meta.env.BASE_URL`).
 
 ### Polish
 - [x] Responsive layout (`md:` breakpoints; verified at 375px)
@@ -94,7 +96,7 @@ Reference implementation lives in `old-reference/` (read-only). Use it to unders
 ## Pages and Content
 
 ### `/` — Home
-- Intro paragraph about Christian (senior Computer Engineering student, Binghamton University, May 2026 graduation)
+- Intro paragraph about Christian (Computer Engineer, bachelor's + master's from Binghamton University; past-tense club/internship details)
 - Two image+caption sections: Grand Canyon photo (national parks trip) and Blender 3D donut render
 
 ### `/projects` — Projects
@@ -109,7 +111,8 @@ Reference implementation lives in `old-reference/` (read-only). Use it to unders
 - Project: **Senior Project — Solar Power Station Display** — ESP32 SPI display for battery stats; static image
 
 ### `/contact` — Contact
-- Placeholder only ("Contact page coming soon") — real content (form, email, resume link) still TODO
+- Intro (available now, open to relocation) + vertical icon/link list: Email `christianjotty@gmail.com`, Resume PDF, LinkedIn, GitHub
+- No form (static host would need a third-party endpoint)
 
 > Note: the `fixing` git branch (unmerged) restructured the old vanilla site into `projects.html`/`contact.html`/`formula.html`/`senior-project.html` with more content than what's captured above. Decided not to mine it for the Contact placeholder — didn't have much there anyway.
 
@@ -139,5 +142,4 @@ Known follow-ups:
   dominate the build. Worth compressing before deploying.
 - **Bundle size.** The JS chunk is ~513 KB (161 KB gzipped), mostly tsParticles
   and Framer Motion. Fine for now; code-splitting the particles is the easy win.
-- Not yet done: real Contact page content (currently a placeholder) and the
-  deploy workflow.
+- Not yet done: the deploy workflow.

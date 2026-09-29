@@ -6,16 +6,14 @@ export default function Home() {
   return (
     <div className="flex w-full max-w-4xl flex-col gap-12">
       <p>
-        Hello, welcome to my website! My name is Christian and I am an engineering student studying
-        at Binghamton University. I am currently a senior computer engineering major and am on track
-        to graduate with my masters in May of 2026.
+        Hello, welcome to my website! My name is Christian and I am a computer engineer with a
+        bachelor's and master's degree from Binghamton University.
         <br />
         <br />
-        Balancing academics with hands-on experience, I'm actively involved in clubs such as the
-        Society of Automotive Engineers and Watson Combat Robotics League. These clubs have honed my
-        teamwork and project management skills. This past summer, I had the opportunity to intern at
-        New York State's ITS department, where I collaborated with experienced developers on
-        server maintenance and system automation projects.
+        Alongside my coursework, I was actively involved in clubs such as the Society of Automotive
+        Engineers and Watson Combat Robotics League. These clubs honed my teamwork and project
+        management skills. I also interned at New York State's ITS department, where I collaborated
+        with experienced developers on server maintenance and system automation projects.
       </p>
 
       <section className="grid items-center gap-6 md:grid-cols-[10rem_1fr]">
